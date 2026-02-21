@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Noto+Sans+KR', sans-serif;
+            font-family: 'Noto Sans KR', sans-serif;
             word-break: keep-all;
             background-color: #ffffff;
         }
@@ -29,6 +29,28 @@
             background: linear-gradient(90deg, #6366f1, #a855f7);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+        
+        /* Chrome, Safari, Edge, Opera에서 화살표 제거 */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* Firefox에서 화살표 제거 */
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+
+        .form-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            transition: border-color 0.2s ease;
+        }
+        .form-card:focus-within {
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
         }
     </style>
 </head>
@@ -55,7 +77,7 @@
             <!-- Item 1: 하트 쏟아지기 Type 1 -->
             <div class="card-hover transition-all duration-300">
                 <div class="image-container rounded-2xl mb-4 group relative">
-                    <img src="./img/하트쏟아지기.webp" alt="Heart Shower Type 1" class="w-full h-full object-cover">
+                    <img src="./img/하트쏟아지기.webp" alt="Heart Shower Type 1" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/400x300?text=Heart+Type+1'">
                     <div class="absolute inset-0 bg-black/5 group-hover:bg-black/0 transition-colors"></div>
                 </div>
                 <h3 class="text-lg font-bold mb-2">하트 쏟아지기 Type 1</h3>
@@ -71,7 +93,7 @@
             <!-- Item 2: 하트 쏟아지기 Type 2 -->
             <div class="card-hover transition-all duration-300">
                 <div class="image-container rounded-2xl mb-4 group relative">
-                    <img src="./img/하트발사.webp" alt="Heart Shower Type 2" class="w-full h-full object-cover">
+                    <img src="./img/하트발사.webp" alt="Heart Shower Type 2" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/400x300?text=Heart+Type+2'">
                     <div class="absolute inset-0 bg-black/5 group-hover:bg-black/0 transition-colors"></div>
                 </div>
                 <h3 class="text-lg font-bold mb-2">하트 쏟아지기 Type 2</h3>
@@ -87,7 +109,7 @@
             <!-- Item 3: 동전 쏟아지기 -->
             <div class="card-hover transition-all duration-300">
                 <div class="image-container rounded-2xl mb-4 group relative">
-                    <img src="./img/동전쏟아지기.webp" alt="Coin Shower" class="w-full h-full object-cover">
+                    <img src="./img/동전쏟아지기.webp" alt="Coin Shower" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/400x300?text=Coin+Shower'">
                     <div class="absolute inset-0 bg-black/5 group-hover:bg-black/0 transition-colors"></div>
                 </div>
                 <h3 class="text-lg font-bold mb-2">동전 쏟아지기</h3>
@@ -103,7 +125,7 @@
             <!-- Item 4: 하나 던지기 -->
             <div class="card-hover transition-all duration-300">
                 <div class="image-container rounded-2xl mb-4 group relative">
-                    <img src="./img/한개던지기.webp" alt="Single Throw" class="w-full h-full object-cover">
+                    <img src="./img/한개던지기.webp" alt="Single Throw" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/400x300?text=Single+Throw'">
                     <div class="absolute inset-0 bg-black/5 group-hover:bg-black/0 transition-colors"></div>
                 </div>
                 <h3 class="text-lg font-bold mb-2">하나 던지기</h3>
@@ -119,7 +141,7 @@
             <!-- Item 5: 치즈 랜덤 붙이기 -->
             <div class="card-hover transition-all duration-300">
                 <div class="image-container rounded-2xl mb-4 group relative">
-                    <img src="./img/치즈붙히기.webp" alt="Cheese Random Stick" class="w-full h-full object-cover">
+                    <img src="./img/치즈붙히기.webp" alt="Cheese Random Stick" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/400x300?text=Cheese+Stick'">
                     <div class="absolute inset-0 bg-black/5 group-hover:bg-black/0 transition-colors"></div>
                 </div>
                 <h3 class="text-lg font-bold mb-2">치즈 랜덤 붙이기</h3>
@@ -135,7 +157,7 @@
             <!-- Item 6: 자리 비움 ZZZ & 졸기 -->
             <div class="card-hover transition-all duration-300">
                 <div class="image-container rounded-2xl mb-4 group relative">
-                    <img src="./img/자리비움.webp" alt="AFK Animation" class="w-full h-full object-cover">
+                    <img src="./img/자리비움.webp" alt="AFK Animation" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/400x300?text=AFK+Animation'">
                     <div class="absolute inset-0 bg-black/5 group-hover:bg-black/0 transition-colors"></div>
                 </div>
                 <h3 class="text-lg font-bold mb-2">ZZZ 애니메이션 & 졸기</h3>
@@ -151,7 +173,7 @@
             <!-- Item 7: ?물음표 채팅 반응 -->
             <div class="card-hover transition-all duration-300 md:col-span-2 lg:col-span-1">
                 <div class="image-container rounded-2xl mb-4 group relative">
-                    <img src="./img/물음표핑.webp" alt="Question Mark Interaction" class="w-full h-full object-cover">
+                    <img src="./img/물음표핑.webp" alt="Question Mark Interaction" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/400x300?text=Question+Mark'">
                     <div class="absolute inset-0 bg-black/5 group-hover:bg-black/0 transition-colors"></div>
                 </div>
                 <h3 class="text-lg font-bold mb-2">물음표 채팅 인터랙션</h3>
@@ -164,6 +186,76 @@
                 </p>
             </div>
 
+        </div>
+    </section>
+
+    <!-- Inquiry Form Section -->
+    <section class="max-w-4xl mx-auto px-6 pb-24">
+        <div class="bg-slate-50 rounded-3xl p-8 md:p-12 border border-slate-100 shadow-sm">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold mb-3">작가에게 문의하기</h2>
+                <p class="text-slate-500">아래 양식을 작성하신 후 하단의 복사 버튼을 눌러 문의 시 전달해 주세요.</p>
+            </div>
+
+            <div class="space-y-8">
+                <!-- Basic Info -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-bold text-slate-700 mb-2">1. 방송 플랫폼</label>
+                        <input type="text" id="platform" placeholder="예: 치지직, 유튜브, 아프리카TV" 
+                               class="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:border-indigo-500 transition-colors">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-slate-700 mb-2">2. 방송 닉네임</label>
+                        <input type="text" id="nickname" placeholder="활동 중이신 닉네임을 입력하세요" 
+                               class="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:border-indigo-500 transition-colors">
+                    </div>
+                </div>
+
+                <!-- Product Quantities -->
+                <div>
+                    <label class="block text-sm font-bold text-slate-700 mb-4">3. 구매 희망 수량 (필수)</label>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="flex items-center justify-between p-4 bg-white rounded-xl border border-slate-200">
+                            <span class="text-sm font-medium">하트 쏟아지기 Type 1</span>
+                            <input type="number" data-item="하트 쏟아지기 Type 1" placeholder="0" class="w-20 px-3 py-1 text-center bg-slate-50 rounded-lg border-2 border-slate-200 focus:border-indigo-500 outline-none transition-all">
+                        </div>
+                        <div class="flex items-center justify-between p-4 bg-white rounded-xl border border-slate-200">
+                            <span class="text-sm font-medium">하트 쏟아지기 Type 2</span>
+                            <input type="number" data-item="하트 쏟아지기 Type 2" placeholder="0" class="w-20 px-3 py-1 text-center bg-slate-50 rounded-lg border-2 border-slate-200 focus:border-indigo-500 outline-none transition-all">
+                        </div>
+                        <div class="flex items-center justify-between p-4 bg-white rounded-xl border border-slate-200">
+                            <span class="text-sm font-medium">동전 쏟아지기</span>
+                            <input type="number" data-item="동전 쏟아지기" placeholder="0" class="w-20 px-3 py-1 text-center bg-slate-50 rounded-lg border-2 border-slate-200 focus:border-indigo-500 outline-none transition-all">
+                        </div>
+                        <div class="flex items-center justify-between p-4 bg-white rounded-xl border border-slate-200">
+                            <span class="text-sm font-medium">하나 던지기</span>
+                            <input type="number" data-item="하나 던지기" placeholder="0" class="w-20 px-3 py-1 text-center bg-slate-50 rounded-lg border-2 border-slate-200 focus:border-indigo-500 outline-none transition-all">
+                        </div>
+                        <div class="flex items-center justify-between p-4 bg-white rounded-xl border border-slate-200">
+                            <span class="text-sm font-medium">치즈 랜덤 붙이기</span>
+                            <input type="number" data-item="치즈 랜덤 붙이기" placeholder="0" class="w-20 px-3 py-1 text-center bg-slate-50 rounded-lg border-2 border-slate-200 focus:border-indigo-500 outline-none transition-all">
+                        </div>
+                        <div class="flex items-center justify-between p-4 bg-white rounded-xl border border-slate-200">
+                            <span class="text-sm font-medium">ZZZ 애니메이션 & 졸기</span>
+                            <input type="number" data-item="ZZZ 애니메이션 & 졸기" placeholder="0" class="w-20 px-3 py-1 text-center bg-slate-50 rounded-lg border-2 border-slate-200 focus:border-indigo-500 outline-none transition-all">
+                        </div>
+                        <div class="flex items-center justify-between p-4 bg-white rounded-xl border border-slate-200">
+                            <span class="text-sm font-medium">물음표 채팅 인터랙션</span>
+                            <input type="number" data-item="물음표 채팅 인터랙션" placeholder="0" class="w-20 px-3 py-1 text-center bg-slate-50 rounded-lg border-2 border-slate-200 focus:border-indigo-500 outline-none transition-all">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Copy Button -->
+                <div class="pt-6">
+                    <button id="copyBtn" class="w-full bg-slate-900 text-white font-bold py-4 rounded-2xl hover:bg-indigo-600 transition-all transform active:scale-[0.98] flex items-center justify-center gap-2 shadow-lg">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
+                        작성한 양식 복사하기
+                    </button>
+                    <p id="copyMessage" class="text-center text-sm font-medium text-indigo-600 mt-3 opacity-0 transition-opacity">성공적으로 복사되었습니다!</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -203,6 +295,21 @@
         </div>
     </section>
 
+    <!-- Validation Modal -->
+    <div id="validationModal" class="fixed inset-0 z-50 flex items-center justify-center hidden">
+        <div class="absolute inset-0 bg-black/40 backdrop-blur-sm" id="modalOverlay"></div>
+        <div class="relative bg-white rounded-2xl shadow-2xl p-8 max-w-sm w-full mx-4 text-center">
+            <div class="w-14 h-14 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-7 h-7 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"></path>
+                </svg>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 mb-2">필수 항목 미입력</h3>
+            <p id="modalMsg" class="text-slate-500 text-sm leading-relaxed mb-6"></p>
+            <button id="modalClose" class="w-full bg-slate-900 text-white font-bold py-3 rounded-xl hover:bg-indigo-600 transition-all">확인</button>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="py-12 px-6 border-t border-slate-100">
         <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 text-slate-400 text-xs">
@@ -216,13 +323,9 @@
     </footer>
 
     <script>
-        // 간단한 스크롤 애니메이션
         document.addEventListener('DOMContentLoaded', () => {
+            // 스크롤 애니메이션
             const cards = document.querySelectorAll('.card-hover');
-            const observerOptions = {
-                threshold: 0.1
-            };
-
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach((entry, index) => {
                     if (entry.isIntersecting) {
@@ -232,13 +335,69 @@
                         }, index * 100);
                     }
                 });
-            }, observerOptions);
-
+            }, { threshold: 0.1 });
             cards.forEach(card => {
                 card.style.opacity = '0';
                 card.style.transform = 'translateY(20px)';
                 card.style.transition = 'all 0.6s ease-out';
                 observer.observe(card);
+            });
+
+            // 플레이스홀더 클릭 시 제거
+            document.querySelectorAll('input[type="text"]').forEach(input => {
+                const original = input.placeholder;
+                input.addEventListener('focus', () => input.placeholder = '');
+                input.addEventListener('blur', () => input.placeholder = original);
+            });
+
+            // 모달
+            const modal = document.getElementById('validationModal');
+            const modalMsg = document.getElementById('modalMsg');
+            const showModal = (msg) => {
+                modalMsg.textContent = msg;
+                modal.classList.remove('hidden');
+            };
+            document.getElementById('modalClose').addEventListener('click', () => modal.classList.add('hidden'));
+            document.getElementById('modalOverlay').addEventListener('click', () => modal.classList.add('hidden'));
+
+            // 복사 기능
+            const copyBtn = document.getElementById('copyBtn');
+            const copyMessage = document.getElementById('copyMessage');
+
+            copyBtn.addEventListener('click', () => {
+                const platform = document.getElementById('platform').value.trim();
+                const nickname = document.getElementById('nickname').value.trim();
+                const qtyInputs = document.querySelectorAll('input[type="number"]');
+
+                let productList = "";
+                qtyInputs.forEach(input => {
+                    const qty = parseInt(input.value) || 0;
+                    if (qty > 0) productList += `- ${input.getAttribute('data-item')}: ${qty}개\n`;
+                });
+
+                // 유효성 검사
+                if (!platform) { showModal('1. 방송 플랫폼을 입력해 주세요.'); return; }
+                if (!nickname) { showModal('2. 방송 닉네임을 입력해 주세요.'); return; }
+                if (!productList) { showModal('3. 구매 희망 수량을 최소 1개 이상 입력해 주세요.'); return; }
+
+                const finalMessage = `[Warudo API Package 문의 양식]\n\n1. 방송 플랫폼: ${platform}\n2. 방송 닉네임: ${nickname}\n\n3. 요청 내역:\n${productList}\n위와 같이 문의 드립니다.`;
+
+                const tempTextArea = document.createElement('textarea');
+                tempTextArea.value = finalMessage;
+                document.body.appendChild(tempTextArea);
+                tempTextArea.select();
+                try {
+                    document.execCommand('copy');
+                    copyMessage.classList.remove('opacity-0');
+                    copyBtn.innerText = "복사 완료!";
+                    copyBtn.classList.replace('bg-slate-900', 'bg-emerald-600');
+                    setTimeout(() => {
+                        copyMessage.classList.add('opacity-0');
+                        copyBtn.innerHTML = `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg> 작성한 양식 복사하기`;
+                        copyBtn.classList.replace('bg-emerald-600', 'bg-slate-900');
+                    }, 2000);
+                } catch (err) { console.error('복사 실패:', err); }
+                document.body.removeChild(tempTextArea);
             });
         });
     </script>
