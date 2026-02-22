@@ -164,8 +164,16 @@
                         <label class="block text-sm font-bold text-slate-800 mb-3">
                             1. 방송 플랫폼 <span class="text-red-500 font-bold">* (필수)</span>
                         </label>
-                        <input type="text" id="platform" placeholder="예: 치지직, 유튜브, 아프리카TV" 
-                               class="w-full px-5 py-4 rounded-2xl bg-slate-50 border border-slate-200 outline-none focus:bg-white focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 transition-all">
+                        <div class="flex gap-4">
+                            <label class="flex-1 flex items-center gap-3 p-4 bg-slate-50 border-2 border-slate-200 rounded-2xl cursor-pointer has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 transition-all">
+                                <input type="radio" name="platform" id="platformChzz" value="치지직" class="accent-indigo-600 w-4 h-4">
+                                <span class="font-bold text-slate-800">치지직</span>
+                            </label>
+                            <label class="flex-1 flex items-center gap-3 p-4 bg-slate-50 border-2 border-slate-200 rounded-2xl cursor-pointer has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 transition-all">
+                                <input type="radio" name="platform" id="platformSoop" value="SOOP" class="accent-indigo-600 w-4 h-4">
+                                <span class="font-bold text-slate-800">SOOP</span>
+                            </label>
+                        </div>
                     </div>
                     <div>
                         <label class="block text-sm font-bold text-slate-800 mb-3">
@@ -365,7 +373,7 @@
             const copyMessage = document.getElementById('copyMessage');
 
             copyBtn.addEventListener('click', () => {
-                const platform = document.getElementById('platform').value.trim();
+                const platform = document.querySelector('input[name="platform"]:checked')?.value;
                 const nickname = document.getElementById('nickname').value.trim();
                 const warudoMod = document.querySelector('input[name="warudoMod"]:checked')?.value;
                 const agreeTerms = document.getElementById('agreeTerms').checked;
