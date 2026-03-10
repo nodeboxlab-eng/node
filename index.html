@@ -26,6 +26,32 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+        .hero-bg {
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 50%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, rgba(168, 85, 247, 0.1) 0%, transparent 40%);
+            pointer-events: none;
+        }
+        .price-glow {
+            text-shadow: 0 0 40px rgba(99, 102, 241, 0.3);
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+        .float-anim {
+            animation: float 3s ease-in-out infinite;
+        }
         
         input::-webkit-outer-spin-button,
         input::-webkit-inner-spin-button {
@@ -41,14 +67,37 @@
 <body class="text-slate-900">
 
     <!-- Hero Section -->
-    <header class="pt-20 pb-16 px-6">
-        <div class="max-w-6xl mx-auto text-center">
-            <span class="inline-block py-1 px-3 rounded-full bg-indigo-50 text-indigo-600 text-xs font-bold mb-4 tracking-wider uppercase">Warudo Custom API</span>
-            <h1 class="text-4xl md:text-6xl font-bold mb-6 tracking-tight leading-tight">
-                Warudo API <span class="gradient-text">Package 7종</span>
+    <header class="bg-white pt-24 pb-20 px-6 rounded-b-[3rem] max-w-[72rem] mx-auto">
+        <div class="max-w-6xl mx-auto text-center relative z-10">
+            <span class="inline-block py-1.5 px-4 rounded-full bg-indigo-50 text-indigo-600 text-xs font-bold mb-6 tracking-wider uppercase border border-indigo-100">
+                Warudo Custom API
+            </span>
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-5 tracking-tight leading-tight text-slate-900">
+                API Package <span class="gradient-text">7종 + 세팅</span>
             </h1>
-            <p class="text-lg text-slate-500 max-w-2xl mx-auto font-light leading-relaxed">
-                Soop , 치지직에서 사용하실 수 있는 Warudo API 패키지 입니다
+
+            <!-- Price Card -->
+            <div class="float-anim inline-flex flex-col items-center hero-bg rounded-3xl px-10 py-6 mb-6 shadow-2xl shadow-indigo-500/20">
+                <span class="text-4xl md:text-6xl font-black text-white price-glow tracking-tight">120,000<span class="text-lg md:text-2xl font-bold text-indigo-300 ml-1">원</span></span>
+                <span class="text-xs md:text-sm text-slate-300 mt-2 font-medium">Prop · Sound · 세팅비 모두 포함</span>
+            </div>
+
+            <!-- Badges -->
+            <div class="flex items-center justify-center gap-3 mb-8">
+                <span class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-indigo-50 border border-indigo-200 text-indigo-600 text-xs md:text-sm font-bold">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    Prop 8종 증정
+                </span>
+                <span class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-600 text-xs md:text-sm font-bold">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+                    Sound 4종 증정
+                </span>
+            </div>
+
+            <!-- Description -->
+            <p class="text-sm md:text-base text-slate-600 max-w-xl mx-auto leading-relaxed">
+                Soop · 치지직 지원 · 설치부터 세팅까지  진행<br>
+                <span class="text-slate-500 text-xs">Warudo Pro / 일반 버전 모두 가능</span>
             </p>
         </div>
     </header>
@@ -196,11 +245,11 @@
                 안내사항
             </h2>
             <div class="space-y-4">
-                <div class="bg-white rounded-2xl p-6 border border-indigo-100 shadow-sm">
+                <!-- <div class="bg-white rounded-2xl p-6 border border-indigo-100 shadow-sm">
                     <p class="text-slate-700 leading-relaxed font-medium">
                         <span class="text-indigo-600 font-bold">가이드 제공</span> — 상세페이지 내용에 대해 어려워하실 필요 없습니다. 작업 진행 시 필요한 모든 가이드를 제공해드립니다.
                     </p>
-                </div>
+                </div> -->
                 <div class="bg-white rounded-2xl p-6 border border-indigo-100 shadow-sm">
                     <p class="text-slate-700 leading-relaxed font-medium">
                         <span class="text-indigo-600 font-bold">작업 기간</span> — 작업은 최대 일주일 정도 소요됩니다. 주문량과 난이도에 따라 기간이 달라질 수 있습니다.
