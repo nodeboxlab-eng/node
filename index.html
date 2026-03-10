@@ -11,6 +11,10 @@
             font-family: 'Noto Sans KR', sans-serif;
             word-break: keep-all;
             background-color: #ffffff;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
         .card-hover:hover {
             transform: translateY(-8px);
@@ -427,6 +431,13 @@
     <footer class="py-16"></footer>
 
     <script>
+        // 이미지 우클릭 방지
+        document.addEventListener('contextmenu', (e) => {
+            if (e.target.tagName === 'IMG') e.preventDefault();
+        });
+        // 드래그 방지
+        document.addEventListener('dragstart', (e) => e.preventDefault());
+
         document.addEventListener('DOMContentLoaded', () => {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach((entry, index) => {
