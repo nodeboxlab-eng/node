@@ -309,8 +309,11 @@
 
                 <!-- Important Notes -->
                 <div>
-                    <label class="block text-sm font-bold text-slate-800 mb-3">6. 필독사항</label>
+                    <label class="block text-sm font-bold text-slate-800 mb-3">6. 유의사항</label>
                     <div class="bg-amber-50 border border-amber-200 rounded-2xl p-4 space-y-2">
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            <span class="font-bold text-amber-700">권리귀속</span> — 공유해드린 모든 작업물의 저작권 및 지적재산권은 제작자(Node)에게 귀속됩니다. 타인에게 공유 및 재배포 시 저작권법 위반으로 법적 대응이 이루어질 수 있습니다.
+                        </p>
                         <p class="text-xs text-slate-600 leading-relaxed">
                             <span class="font-bold text-amber-700">포트폴리오 활용</span> — 모든 작업물은 첫 공개 이후 또는 제작 완료 3개월 뒤부터 제작자의 포트폴리오 &amp; 홍보 등에 사용될 수 있습니다.
                         </p>
@@ -342,6 +345,7 @@
                         작성한 양식 복사하기
                     </button>
                     <p id="copyMessage" class="text-center text-sm font-bold text-emerald-600 mt-4 opacity-0 transition-opacity">클립보드에 복사되었습니다!</p>
+                    <p id="errorMessage" class="text-center text-sm font-bold text-red-600 mt-4 opacity-0 transition-opacity">필수 항목을 모두 입력해 주세요.</p>
                 </div>
             </div>
         </div>
@@ -393,8 +397,39 @@
 
             const copyBtn = document.getElementById('copyBtn');
             const copyMessage = document.getElementById('copyMessage');
+            const errorMessage = document.getElementById('errorMessage');
+
+            // 에러 상태 초기화 함수
+            const resetErrors = () => {
+                errorMessage.classList.add('opacity-0');
+                copyMessage.classList.add('opacity-0');
+                
+                // 모든 입력 필드의 에러 스타일 제거
+                document.getElementById('nickname').classList.remove('border-red-500', 'ring-4', 'ring-red-500/20');
+                document.querySelectorAll('input[type="number"]').forEach(input => {
+                    input.classList.remove('border-red-500', 'ring-4', 'ring-red-500/20');
+                    input.closest('.flex').classList.remove('border-red-400');
+                });
+                document.querySelectorAll('input[name="platform"]').forEach(radio => {
+                    radio.closest('label').classList.remove('border-red-500', 'bg-red-50');
+                });
+                document.querySelectorAll('input[name="warudoMod"]').forEach(radio => {
+                    radio.closest('label').classList.remove('border-red-500', 'bg-red-50');
+                });
+                document.getElementById('agreeTerms').closest('label').classList.remove('ring-4', 'ring-red-500/20');
+            };
+
+            // 필드로 스크롤하는 함수
+            const scrollToField = (element) => {
+                element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                setTimeout(() => {
+                    element.focus();
+                }, 300);
+            };
 
             copyBtn.addEventListener('click', () => {
+                resetErrors();
+                
                 const platform = document.querySelector('input[name="platform"]:checked')?.value;
                 const nickname = document.getElementById('nickname').value.trim();
                 const warudoMod = document.querySelector('input[name="warudoMod"]:checked')?.value;
@@ -403,23 +438,58 @@
 
                 let productList = "";
                 let emptyItem = null;
+                let emptyInput = null;
                 qtyInputs.forEach(input => {
                     const qty = parseInt(input.value) || 0;
                     if (qty > 0) {
                         productList += `- ${input.getAttribute('data-item')}: ${qty}개\n`;
                     } else if (!emptyItem) {
                         emptyItem = input.getAttribute('data-item');
+                        emptyInput = input;
                     }
                 });
 
-                if (!platform) { showModal('방송 플랫폼을 입력해 주세요.'); return; }
-                if (!nickname) { showModal('방송 닉네임을 입력해 주세요.'); return; }
-                if (!warudoMod) { showModal('Warudo Mod 버전을 선택해 주세요.'); return; }
+                let errorField = null;
+                let errorText = '';
 
-                // 모든 항목이 1 이상이어야 함
-                if (emptyItem) { showModal(`'${emptyItem}' 수량을 입력해 주세요.`); return; }
+                if (!platform) {
+                    errorText = '방송 플랫폼을 선택해 주세요.';
+                    const platformLabels = document.querySelectorAll('input[name="platform"]');
+                    platformLabels.forEach(radio => {
+                        radio.closest('label').classList.add('border-red-500', 'bg-red-50');
+                    });
+                    errorField = platformLabels[0].closest('label');
+                } else if (!nickname) {
+                    errorText = '방송 닉네임을 입력해 주세요.';
+                    const nicknameInput = document.getElementById('nickname');
+                    nicknameInput.classList.add('border-red-500', 'ring-4', 'ring-red-500/20');
+                    errorField = nicknameInput;
+                } else if (!warudoMod) {
+                    errorText = 'Warudo Mod 버전을 선택해 주세요.';
+                    const modLabels = document.querySelectorAll('input[name="warudoMod"]');
+                    modLabels.forEach(radio => {
+                        radio.closest('label').classList.add('border-red-500', 'bg-red-50');
+                    });
+                    errorField = modLabels[0].closest('label');
+                } else if (emptyItem) {
+                    errorText = `'${emptyItem}' 수량을 입력해 주세요.`;
+                    emptyInput.classList.add('border-red-500', 'ring-4', 'ring-red-500/20');
+                    emptyInput.closest('.flex').classList.add('border-red-400');
+                    errorField = emptyInput;
+                } else if (!agreeTerms) {
+                    errorText = '이용 순서 확인에 체크해 주세요.';
+                    const agreeLabel = document.getElementById('agreeTerms').closest('label');
+                    agreeLabel.classList.add('ring-4', 'ring-red-500/20');
+                    errorField = agreeLabel;
+                }
 
-                if (!agreeTerms) { showModal('이용 순서 확인에 체크해 주세요.'); return; }
+                if (errorField) {
+                    errorMessage.textContent = errorText;
+                    errorMessage.classList.remove('opacity-0');
+                    errorMessage.classList.add('opacity-100');
+                    scrollToField(errorField);
+                    return;
+                }
 
                 const extraNote = document.getElementById('extraNote').value.trim();
                 const extraLine = extraNote ? `\n5. 기타 문의사항:\n${extraNote}\n` : '';
@@ -431,6 +501,7 @@
                 tempTextArea.select();
                 try {
                     document.execCommand('copy');
+                    errorMessage.classList.add('opacity-0');
                     copyMessage.classList.replace('opacity-0', 'opacity-100');
                     copyBtn.innerText = "양식 복사 성공!";
                     copyBtn.classList.replace('bg-slate-900', 'bg-emerald-600');
@@ -444,6 +515,38 @@
                     console.error('복사 실패:', err);
                 }
                 document.body.removeChild(tempTextArea);
+            });
+
+            // 입력 필드 변경 시 에러 스타일 자동 제거
+            document.getElementById('nickname').addEventListener('input', () => {
+                document.getElementById('nickname').classList.remove('border-red-500', 'ring-4', 'ring-red-500/20');
+            });
+
+            document.querySelectorAll('input[type="number"]').forEach(input => {
+                input.addEventListener('input', () => {
+                    input.classList.remove('border-red-500', 'ring-4', 'ring-red-500/20');
+                    input.closest('.flex').classList.remove('border-red-400');
+                });
+            });
+
+            document.querySelectorAll('input[name="platform"]').forEach(radio => {
+                radio.addEventListener('change', () => {
+                    document.querySelectorAll('input[name="platform"]').forEach(r => {
+                        r.closest('label').classList.remove('border-red-500', 'bg-red-50');
+                    });
+                });
+            });
+
+            document.querySelectorAll('input[name="warudoMod"]').forEach(radio => {
+                radio.addEventListener('change', () => {
+                    document.querySelectorAll('input[name="warudoMod"]').forEach(r => {
+                        r.closest('label').classList.remove('border-red-500', 'bg-red-50');
+                    });
+                });
+            });
+
+            document.getElementById('agreeTerms').addEventListener('change', () => {
+                document.getElementById('agreeTerms').closest('label').classList.remove('ring-4', 'ring-red-500/20');
             });
         });
     </script>
