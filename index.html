@@ -565,7 +565,7 @@
 
                 const extraNote = document.getElementById('extraNote').value.trim();
                 const extraLine = extraNote ? `\n5. 기타 문의사항:\n${extraNote}\n` : '';
-                const finalMessage = `[Warudo API Package 문의 양식]\n\n1. 방송 플랫폼: ${platform}\n2. 방송 닉네임: ${nickname}\n3. Warudo Mod 버전: ${warudoMod}\n\n4. 요청 내역:\n${productList}${extraLine}\n[이용 순서 확인 완료: 동의함]\n위와 같이 문의 드립니다.`;
+                const finalMessage = `[Warudo API Package 문의 양식]\n\n1. 방송 플랫폼: ${platform}\n2. 방송 닉네임: ${nickname}\n3. Warudo Mod 버전: ${warudoMod}\n\n4. 요청 내역:\n${productList}${extraLine}\n[이용 순서, 유의사항 확인 완료: 동의함]\n위와 같이 문의 드립니다.`;
 
                 const tempTextArea = document.createElement('textarea');
                 tempTextArea.value = finalMessage;
