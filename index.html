@@ -15,6 +15,10 @@
                 radial-gradient(circle at 85% 15%, rgba(168, 85, 247, 0.12), transparent 24%),
                 linear-gradient(180deg, #f8faff 0%, #eef2ff 45%, #f8fafc 100%);
             min-height: 100vh;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
         .card-hover:hover {
             transform: translateY(-8px);
@@ -24,6 +28,9 @@
             aspect-ratio: 4 / 3;
             overflow: hidden;
             background-color: #f3f4f6;
+        }
+        img {
+            -webkit-user-drag: none;
         }
         .gradient-text {
             background: linear-gradient(90deg, #6366f1, #a855f7);
@@ -720,6 +727,14 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             document.addEventListener('contextmenu', (event) => {
+                event.preventDefault();
+            });
+
+            document.addEventListener('dragstart', (event) => {
+                event.preventDefault();
+            });
+
+            document.addEventListener('selectstart', (event) => {
                 event.preventDefault();
             });
 
