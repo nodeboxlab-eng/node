@@ -234,61 +234,147 @@
     </header>
 
     <!-- 어린이날 이벤트 API (라인업 상단) -->
-    <section class="max-w-6xl mx-auto px-6 pb-12" aria-labelledby="childrens-day-title">
-        <div class="relative overflow-hidden rounded-[2rem] border border-pink-200/70 bg-gradient-to-br from-emerald-50 via-white to-pink-50 shadow-[0_24px_60px_rgba(236,72,153,0.12)]">
-            <div class="pointer-events-none absolute -right-20 -top-24 h-64 w-64 rounded-full bg-pink-200/30 blur-3xl"></div>
-            <div class="pointer-events-none absolute -left-16 bottom-0 h-48 w-48 rounded-full bg-emerald-200/35 blur-3xl"></div>
-            <div class="relative z-10 p-8 md:p-10">
-                <h2 id="childrens-day-title" class="mb-8 text-center text-2xl font-extrabold tracking-tight md:text-4xl">
-                    <span class="block text-emerald-950 drop-shadow-sm">내 캐릭터 그대로 쓰는</span>
-                    <span class="block bg-gradient-to-r from-pink-800 to-rose-700 bg-clip-text text-transparent">어린이 아바타</span>
+    <section class="max-w-6xl mx-auto px-6 pb-14" aria-labelledby="childrens-day-title">
+        <div class="section-shell rounded-[2.75rem] p-8 md:p-10">
+            <div class="mb-8 text-center">
+                <span class="mb-5 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-4 py-2 text-xs font-bold text-indigo-600 shadow-sm">
+                    어린이날 이벤트
+                </span>
+                <h2 id="childrens-day-title" class="text-3xl font-extrabold tracking-tight text-slate-900 md:text-5xl">
+                    내 캐릭터 그대로 쓰는<br>
+                    <span class="gradient-text">어린이 아바타</span>
                 </h2>
-                <div class="mx-auto grid w-full max-w-3xl grid-cols-1 gap-4 sm:grid-cols-2 sm:items-stretch">
-                    <div class="relative aspect-[3/4] w-full overflow-hidden rounded-2xl border border-white/80 bg-white/80 shadow-xl shadow-slate-900/10">
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <img
-                                src="./img/childrens-day-poster.png"
-                                alt=""
-                                class="max-h-full max-w-full object-contain"
-                                loading="lazy"
-                                decoding="async"
-                            />
-                        </div>
-                    </div>
-                    <div class="relative aspect-[3/4] w-full overflow-hidden rounded-2xl border border-white/80 bg-white/80 shadow-xl shadow-slate-900/10">
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <img
-                                src="./img/sio.gif"
-                                alt=""
-                                class="max-h-full max-w-full object-contain"
-                                loading="lazy"
-                                decoding="async"
-                            />
-                        </div>
+            </div>
+            <div class="mx-auto grid w-full max-w-3xl grid-cols-1 gap-4 sm:grid-cols-2 sm:items-stretch">
+                <div class="relative aspect-[3/4] w-full overflow-hidden rounded-[1.5rem] border border-slate-200/70 bg-slate-100">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <img
+                            src="./img/childrens-day-poster.png"
+                            alt=""
+                            class="max-h-full max-w-full object-contain"
+                            loading="lazy"
+                            decoding="async"
+                        />
                     </div>
                 </div>
-                <div class="mx-auto mt-10 max-w-3xl rounded-2xl border border-slate-200/90 bg-white px-5 py-7 text-center shadow-lg shadow-slate-900/10 md:px-8 md:py-9">
-                    <p class="text-base font-bold text-pink-800 md:text-lg">어린이날 전까지 수령 가능</p>
-                    <p class="mt-4 text-base font-medium leading-relaxed text-slate-900 md:text-[1.05rem]">
-                        완성된 캐릭터의 헤어·복장을 유지한 채 아이 체형으로 변환하는 맞춤 작업입니다. 아래 가격은 참고용이며, 최종 범위는 문의 시 안내드립니다.
-                    </p>
-                    <ul class="mx-auto mt-6 flex max-w-md flex-col gap-3 text-left">
-                        <li class="flex flex-wrap items-center gap-2 rounded-2xl border border-emerald-300 bg-emerald-50/80 px-4 py-3.5 text-base text-slate-900 shadow-sm">
-                            <span class="font-bold text-emerald-900">가격</span>
-                            <span>기본형 <strong class="text-lg text-slate-950">10.0</strong></span>
-                        </li>
-                        <li class="flex flex-col gap-1.5 rounded-2xl border border-pink-300 bg-pink-50/80 px-4 py-3.5 text-base text-slate-900 shadow-sm">
-                            <span class="font-bold text-pink-900">추가금</span>
-                            <span>고급형 <strong class="text-lg text-slate-950">+5.0</strong> <span class="text-sm font-medium text-slate-700">(문의 필요)</span></span>
-                            <span>의상 추가 <strong class="text-lg text-slate-950">+0.5</strong></span>
-                        </li>
-                    </ul>
-                    <div class="mx-auto mt-6 max-w-md space-y-2.5 rounded-2xl border border-slate-300 bg-slate-50 px-4 py-4 text-left text-sm font-medium leading-relaxed text-slate-900">
-                        <p class="font-bold text-slate-950">※ 본 의뢰는 뚜따가 아닙니다. ※</p>
-                        <p>뚜따가 완료된 캐릭터와 헤어, 복장을 아이형으로 변환합니다.</p>
-                        <p>고급형은 유니티 패키지 및 착용 복장의 부스 기프트를 전달받습니다.</p>
+                <div class="relative aspect-[3/4] w-full overflow-hidden rounded-[1.5rem] border border-slate-200/70 bg-slate-100">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <img
+                            src="./img/sio.gif"
+                            alt=""
+                            class="max-h-full max-w-full object-contain"
+                            loading="lazy"
+                            decoding="async"
+                        />
                     </div>
-                    <p class="mt-6 text-sm font-medium text-slate-800">하단 문의 양식에서 원하시는 API와 함께 남겨 주시면 됩니다.</p>
+                </div>
+            </div>
+            <div class="mx-auto mt-10 max-w-3xl space-y-6">
+                <p class="text-center text-sm font-bold text-indigo-600 md:text-base">어린이날 전까지 수령 가능</p>
+                <p class="mx-auto max-w-2xl text-center text-sm leading-relaxed text-slate-500 md:text-base">
+                    완성된 캐릭터의 헤어·복장을 유지한 채 아이 체형으로 변환하는 맞춤 작업입니다. 아래 가격은 참고용이며, 최종 범위는 문의 시 안내드립니다.
+                </p>
+                <div class="mx-auto max-w-2xl rounded-[1.5rem] border border-indigo-200/90 bg-indigo-50/70 px-5 py-4 text-center shadow-sm shadow-indigo-950/5">
+                    <p class="text-base font-extrabold tracking-tight text-slate-900 md:text-lg">
+                        <span class="gradient-text">※ 본 이벤트·작업은 Warudo</span>만 지원합니다.
+                    </p>
+                </div>
+                <div class="mx-auto grid max-w-2xl gap-4 sm:grid-cols-2">
+                    <div class="soft-card rounded-[1.75rem] p-5 text-left">
+                        <p class="mb-2 text-xs font-bold uppercase tracking-[0.18em] text-indigo-500">가격</p>
+                        <p class="text-lg font-bold text-slate-900">기본형 <span class="text-2xl">10.0</span></p>
+                    </div>
+                    <div class="soft-card rounded-[1.75rem] p-5 text-left">
+                        <p class="mb-2 text-xs font-bold uppercase tracking-[0.18em] text-emerald-500">추가금</p>
+                        <p class="text-sm font-bold text-slate-900">고급형 <span class="text-lg">+5.0</span> <span class="text-xs font-normal text-slate-500">(문의 필요)</span></p>
+                        <p class="mt-1 text-sm font-bold text-slate-900">의상 추가 <span class="text-lg">+0.5</span></p>
+                    </div>
+                </div>
+                <div class="soft-card mx-auto max-w-2xl rounded-[1.75rem] p-5 text-left">
+                    <p class="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-slate-400">유의사항</p>
+                    <p class="text-sm font-bold text-slate-900">※ 본 의뢰는 뚜따가 아닙니다. ※</p>
+                    <p class="mt-2 text-sm leading-relaxed text-slate-500">뚜따가 완료된 캐릭터와 헤어, 복장을 아이형으로 변환합니다.</p>
+                    <p class="mt-2 text-sm leading-relaxed text-slate-500">고급형은 유니티 패키지 및 착용 복장의 부스 기프트를 전달받습니다.</p>
+                </div>
+                <p class="text-center text-sm text-slate-500">아래 양식을 작성한 뒤 복사하여 문의해 주세요.</p>
+            </div>
+
+            <div class="mx-auto mt-12 max-w-2xl border-t border-slate-200/90 pt-10" aria-labelledby="event-inquiry-heading">
+                <div class="rounded-2xl border border-rose-100/80 bg-gradient-to-br from-[#fceee8] via-[#f8e8e2] to-[#f5e4dc] px-5 py-4 shadow-sm shadow-rose-900/5">
+                    <h2 id="event-inquiry-heading" class="text-xl font-bold text-slate-800 md:text-2xl">문의 양식</h2>
+                    <p class="mt-1.5 text-sm text-slate-600">치지직 · SOOP 선택 후 복사해 주세요.</p>
+                </div>
+                <div class="mt-6 space-y-5">
+                <div>
+                    <label class="mb-2 block text-sm font-bold text-slate-800">방송 플랫폼 <span class="text-red-500">*</span></label>
+                    <div class="flex gap-3">
+                        <label class="flex flex-1 cursor-pointer items-center gap-2 rounded-2xl border-2 border-slate-200 bg-slate-50 p-3 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50">
+                            <input type="radio" name="eventPlatform" id="eventPlatformChzz" value="치지직" class="h-4 w-4 accent-indigo-600">
+                            <span class="text-sm font-bold text-slate-800">치지직</span>
+                        </label>
+                        <label class="flex flex-1 cursor-pointer items-center gap-2 rounded-2xl border-2 border-slate-200 bg-slate-50 p-3 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50">
+                            <input type="radio" name="eventPlatform" id="eventPlatformSoop" value="SOOP" class="h-4 w-4 accent-indigo-600">
+                            <span class="text-sm font-bold text-slate-800">SOOP</span>
+                        </label>
+                    </div>
+                </div>
+                <div>
+                    <label class="mb-2 block text-sm font-bold text-slate-800" for="eventNickname">방송 닉네임 <span class="text-red-500">*</span></label>
+                    <input type="text" id="eventNickname" placeholder="닉네임"
+                           class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition-all focus:border-indigo-500 focus:bg-white focus:ring-4 focus:ring-indigo-500/10">
+                </div>
+                <div>
+                    <label class="mb-2 block text-sm font-bold text-slate-800">Warudo Mod <span class="text-red-500">*</span></label>
+                    <div class="flex gap-3">
+                        <label class="flex flex-1 cursor-pointer items-center gap-2 rounded-2xl border-2 border-slate-200 bg-slate-50 p-3 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50">
+                            <input type="radio" name="eventWarudoMod" id="eventModPro" value="Pro" class="h-4 w-4 accent-indigo-600">
+                            <span class="text-sm font-bold text-slate-800">Pro</span>
+                        </label>
+                        <label class="flex flex-1 cursor-pointer items-center gap-2 rounded-2xl border-2 border-slate-200 bg-slate-50 p-3 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50">
+                            <input type="radio" name="eventWarudoMod" id="eventModStandard" value="일반" class="h-4 w-4 accent-indigo-600">
+                            <span class="text-sm font-bold text-slate-800">일반</span>
+                        </label>
+                    </div>
+                </div>
+                <div>
+                    <label class="mb-2 block text-sm font-bold text-slate-800" for="eventRequest">요청 내용 <span class="text-red-500">*</span></label>
+                    <textarea id="eventRequest" rows="4" placeholder="옵션(기본·고급 등), 캐릭터 상태, 추가로 할 말까지 한 번에 적어 주세요."
+                              class="w-full resize-none rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition-all focus:border-indigo-500 focus:bg-white focus:ring-4 focus:ring-indigo-500/10"></textarea>
+                </div>
+                <div>
+                    <label class="mb-2 block text-sm font-bold text-slate-800">유의사항</label>
+                    <div class="space-y-2 rounded-2xl border border-amber-200 bg-amber-50 p-4">
+                        <p class="text-xs leading-relaxed text-slate-600">
+                            <span class="font-bold text-amber-700">권리귀속</span> — 공유해드린 모든 작업물의 저작권 및 지적재산권은 제작자(Node68)에게 귀속됩니다. 타인에게 공유 및 재배포 시 저작권법 위반으로 법적 대응이 이루어질 수 있습니다.
+                        </p>
+                        <p class="text-xs leading-relaxed text-slate-600">
+                            <span class="font-bold text-amber-700">포트폴리오 활용</span> — 모든 작업물은 제작자의 포트폴리오 &amp; 홍보 등에 사용될 수 있습니다.
+                        </p>
+                        <p class="text-xs leading-relaxed text-slate-600">
+                            <span class="font-bold text-amber-700">신청 절차</span> — 주문 완료 후 일정을 조율하고, 작업이 시작됩니다.
+                        </p>
+                        <p class="text-xs leading-relaxed text-slate-600">
+                            <span class="font-bold text-amber-700">환불 규정</span> — 작업 시작 전: 전액 환불 가능합니다. / 작업 시작 후: 환불이 불가능합니다.
+                        </p>
+                    </div>
+                </div>
+                <label class="group flex cursor-pointer items-start gap-3 border-t border-slate-100 pt-4">
+                    <div class="relative flex items-center pt-0.5">
+                        <input type="checkbox" id="eventAgreeTerms" class="peer h-6 w-6 cursor-pointer appearance-none rounded-md border-2 border-slate-300 transition-all checked:border-indigo-600 checked:bg-indigo-600">
+                        <svg class="pointer-events-none absolute left-1 top-1 h-4 w-4 stroke-white opacity-0 transition-opacity peer-checked:opacity-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="4">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                    </div>
+                    <span class="text-sm font-medium text-slate-600 transition-colors group-hover:text-slate-900 pt-0.5">
+                        상기 <span class="font-bold text-indigo-600 underline">이용 순서, 유의사항</span>을 모두 확인하였으며 이에 동의합니다. <span class="font-bold text-red-500">(필수)</span>
+                    </span>
+                </label>
+                <button type="button" id="eventCopyBtn" class="flex w-full items-center justify-center gap-2 rounded-2xl bg-slate-900 py-4 text-sm font-bold text-white shadow-lg transition-all hover:bg-indigo-600 active:scale-[0.99]">
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
+                    복사하기
+                </button>
+                <p id="eventCopyMessage" class="text-center text-sm font-bold text-emerald-600 opacity-0 transition-opacity">복사되었습니다.</p>
+                <p id="eventErrorMessage" class="text-center text-sm font-bold text-red-600 opacity-0 transition-opacity">필수 항목을 확인해 주세요.</p>
                 </div>
             </div>
         </div>
@@ -988,6 +1074,125 @@
                     console.error('복사 실패:', err);
                 }
                 document.body.removeChild(tempTextArea);
+            });
+
+            const eventCopyBtn = document.getElementById('eventCopyBtn');
+            const eventCopyMessage = document.getElementById('eventCopyMessage');
+            const eventErrorMessage = document.getElementById('eventErrorMessage');
+
+            const resetEventErrors = () => {
+                eventErrorMessage.classList.add('opacity-0');
+                eventCopyMessage.classList.add('opacity-0');
+                document.querySelectorAll('input[name="eventPlatform"]').forEach((radio) => {
+                    radio.closest('label').classList.remove('border-red-500', 'bg-red-50');
+                });
+                document.getElementById('eventNickname').classList.remove('border-red-500', 'ring-4', 'ring-red-500/20');
+                document.getElementById('eventRequest').classList.remove('border-red-500', 'ring-4', 'ring-red-500/20');
+                document.querySelectorAll('input[name="eventWarudoMod"]').forEach((radio) => {
+                    radio.closest('label').classList.remove('border-red-500', 'bg-red-50');
+                });
+                document.getElementById('eventAgreeTerms').closest('label').classList.remove('ring-4', 'ring-red-500/20');
+            };
+
+            const eventCopyBtnDefaultHtml = eventCopyBtn.innerHTML;
+
+            eventCopyBtn.addEventListener('click', () => {
+                resetEventErrors();
+
+                const platform = document.querySelector('input[name="eventPlatform"]:checked')?.value;
+                const nickname = document.getElementById('eventNickname').value.trim();
+                const warudoMod = document.querySelector('input[name="eventWarudoMod"]:checked')?.value;
+                const requestBody = document.getElementById('eventRequest').value.trim();
+                const agreeTerms = document.getElementById('eventAgreeTerms').checked;
+
+                let errorField = null;
+                let errorText = '';
+
+                if (!platform) {
+                    errorText = '방송 플랫폼을 선택해 주세요.';
+                    const platformLabels = document.querySelectorAll('input[name="eventPlatform"]');
+                    platformLabels.forEach((radio) => {
+                        radio.closest('label').classList.add('border-red-500', 'bg-red-50');
+                    });
+                    errorField = platformLabels[0].closest('label');
+                } else if (!nickname) {
+                    errorText = '방송 닉네임을 입력해 주세요.';
+                    const el = document.getElementById('eventNickname');
+                    el.classList.add('border-red-500', 'ring-4', 'ring-red-500/20');
+                    errorField = el;
+                } else if (!warudoMod) {
+                    errorText = 'Warudo Mod 버전을 선택해 주세요.';
+                    const modLabels = document.querySelectorAll('input[name="eventWarudoMod"]');
+                    modLabels.forEach((radio) => {
+                        radio.closest('label').classList.add('border-red-500', 'bg-red-50');
+                    });
+                    errorField = modLabels[0].closest('label');
+                } else if (!requestBody) {
+                    errorText = '요청 내용을 입력해 주세요.';
+                    const el = document.getElementById('eventRequest');
+                    el.classList.add('border-red-500', 'ring-4', 'ring-red-500/20');
+                    errorField = el;
+                } else if (!agreeTerms) {
+                    errorText = '이용 순서 확인에 체크해 주세요.';
+                    const agreeLabel = document.getElementById('eventAgreeTerms').closest('label');
+                    agreeLabel.classList.add('ring-4', 'ring-red-500/20');
+                    errorField = agreeLabel;
+                }
+
+                if (errorField) {
+                    eventErrorMessage.textContent = errorText;
+                    eventErrorMessage.classList.remove('opacity-0');
+                    eventErrorMessage.classList.add('opacity-100');
+                    scrollToField(errorField);
+                    return;
+                }
+
+                const finalMessage = `[어린이날 이벤트 · 어린이 아바타 문의]\n\n1. 방송 플랫폼: ${platform}\n2. 방송 닉네임: ${nickname}\n3. Warudo Mod: ${warudoMod}\n\n4. 요청 내용:\n${requestBody}\n\n[이용 순서, 유의사항 확인 완료: 동의함]\n위와 같이 문의 드립니다.`;
+
+                const tempTextArea = document.createElement('textarea');
+                tempTextArea.value = finalMessage;
+                document.body.appendChild(tempTextArea);
+                tempTextArea.select();
+                try {
+                    document.execCommand('copy');
+                    eventErrorMessage.classList.add('opacity-0');
+                    eventCopyMessage.classList.replace('opacity-0', 'opacity-100');
+                    eventCopyBtn.textContent = '복사 완료!';
+                    eventCopyBtn.classList.replace('bg-slate-900', 'bg-emerald-600');
+
+                    setTimeout(() => {
+                        eventCopyMessage.classList.replace('opacity-100', 'opacity-0');
+                        eventCopyBtn.innerHTML = eventCopyBtnDefaultHtml;
+                        eventCopyBtn.classList.replace('bg-emerald-600', 'bg-slate-900');
+                    }, 2500);
+                } catch (err) {
+                    console.error('복사 실패:', err);
+                }
+                document.body.removeChild(tempTextArea);
+            });
+
+            document.querySelectorAll('input[name="eventPlatform"]').forEach((radio) => {
+                radio.addEventListener('change', () => {
+                    document.querySelectorAll('input[name="eventPlatform"]').forEach((r) => {
+                        r.closest('label').classList.remove('border-red-500', 'bg-red-50');
+                    });
+                });
+            });
+            document.getElementById('eventNickname').addEventListener('input', () => {
+                document.getElementById('eventNickname').classList.remove('border-red-500', 'ring-4', 'ring-red-500/20');
+            });
+            document.getElementById('eventRequest').addEventListener('input', () => {
+                document.getElementById('eventRequest').classList.remove('border-red-500', 'ring-4', 'ring-red-500/20');
+            });
+            document.querySelectorAll('input[name="eventWarudoMod"]').forEach((radio) => {
+                radio.addEventListener('change', () => {
+                    document.querySelectorAll('input[name="eventWarudoMod"]').forEach((r) => {
+                        r.closest('label').classList.remove('border-red-500', 'bg-red-50');
+                    });
+                });
+            });
+            document.getElementById('eventAgreeTerms').addEventListener('change', () => {
+                document.getElementById('eventAgreeTerms').closest('label').classList.remove('ring-4', 'ring-red-500/20');
             });
 
             // 입력 필드 변경 시 에러 스타일 자동 제거
