@@ -153,6 +153,19 @@
     })();
     </script>
 
+    <!-- artmug 등 특정 임베드에서만 표시: iframe src에 ?embed=artmug (또는 ?from=artmug) 필수 -->
+    <div id="artmug-only-notice" class="hidden fixed top-4 left-1/2 z-[100] -translate-x-1/2 px-5 py-2.5 rounded-full bg-violet-600/95 text-white text-sm font-medium shadow-lg shadow-violet-900/30 pointer-events-none" role="status">
+        artmug
+    </div>
+    <script>
+    (function () {
+        var el = document.getElementById('artmug-only-notice');
+        if (!el) return;
+        var q = new URLSearchParams(window.location.search);
+        if (q.get('embed') === 'artmug' || q.get('from') === 'artmug') el.classList.remove('hidden');
+    })();
+    </script>
+
     <!-- Hero Section -->
     <header class="px-6 pt-8 md:pt-12 pb-16">
         <div class="max-w-6xl mx-auto hero-bg rounded-[2.75rem] shadow-2xl shadow-indigo-950/20 relative overflow-hidden">
