@@ -1,0 +1,29 @@
+---
+description: index.html 임베드(artmug) vs GitHub Pages 직접 접속에서만 보이는 UI 조건
+globs: index.html
+alwaysApply: false
+---
+
+# 페이지 컨텍스트: iframe vs 직접 접속
+
+이 프로젝트의 `index.html`은 **artmug.kr 등에 iframe으로 넣은 경우**와 **https://nodeboxlab-eng.github.io/node/ 직접 접속** 두 맥락이 있다.
+
+**어린이날 이벤트** 전체는 `#childrens-day-root`로 감싸져 있으며, 스크립트로 **artmug iframe**(쿼리 `embed`/`from` 또는 referrer `artmug.kr`)일 때만 `hidden`을 해제한다. 직접 접속 시에는 숨김.
+
+## artmug(임베드)에서만 보이게
+
+- **직접 주소로 열면 숨김**: 스크립트에서 `window.self === window.top`이면 해당 UI는 표시하지 않는다.
+- **iframe일 때만** 다음으로 판별한다.
+  - URL 쿼리: `embed=artmug` 또는 `from=artmug` (iframe `src`에 붙이는 방식이 가장 확실함).
+  - 보조: `document.referrer`에 `artmug.kr` — Referrer 정책 때문에 없을 수 있음.
+
+## GitHub Pages 직접 접속에서만 보이게
+
+- `window.self === window.top`일 때만 표시한다.
+- iframe 안에서는 표시하지 않는다.
+
+## 에이전트 작업 시
+
+- “artmug에서만 / 사이트 직접에서만” 요구가 나오면 위 두 패턴 중 하나를 쓰고, **같은 요소에 두 조건을 섞어 모순되게 만들지 않는다**.
+- 부모 도메인을 cross-origin에서 직접 읽는 방식은 피하고, **쿼리 파라미터**를 우선한다.
+- 사용자가 어떤 내용을 **숨기거나 제거·되돌려 달라**고 하면, 배너에 한정하지 않고 **요청 범위의 작업 전체**(마크업·스타일·스크립트·연결된 로직 등)를 함께 정리한다.
