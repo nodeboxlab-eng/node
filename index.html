@@ -139,8 +139,9 @@
         <div class="ambient-orb w-96 h-96 bg-cyan-200 bottom-0 left-1/3"></div>
     </div>
 
+    <div class="fixed top-4 left-1/2 z-[100] flex -translate-x-1/2 flex-col items-center gap-2 pointer-events-none" aria-live="polite">
     <!-- 직접 주소창 접속 시에만 표시 (아이프레임에서는 숨김) -->
-    <div id="direct-only-test" class="hidden fixed top-4 left-1/2 z-[100] -translate-x-1/2 px-5 py-2.5 rounded-full bg-emerald-600/95 text-white text-sm font-medium shadow-lg shadow-emerald-900/30 pointer-events-none" role="status">
+    <div id="direct-only-test" class="hidden px-5 py-2.5 rounded-full bg-emerald-600/95 text-white text-sm font-medium shadow-lg shadow-emerald-900/30" role="status">
         test
     </div>
     <script>
@@ -153,18 +154,33 @@
     })();
     </script>
 
-    <!-- artmug 등 특정 임베드에서만 표시: iframe src에 ?embed=artmug (또는 ?from=artmug) 필수 -->
-    <div id="artmug-only-notice" class="hidden fixed top-4 left-1/2 z-[100] -translate-x-1/2 px-5 py-2.5 rounded-full bg-violet-600/95 text-white text-sm font-medium shadow-lg shadow-violet-900/30 pointer-events-none" role="status">
+    <!-- artmug: GitHub Pages 직접 접속(top)에서는 숨김 · iframe + embed/referrer일 때만 표시 -->
+    <div id="artmug-only-notice" class="hidden px-5 py-2.5 rounded-full bg-violet-600/95 text-white text-sm font-medium shadow-lg shadow-violet-900/30" role="status">
         artmug
     </div>
     <script>
     (function () {
         var el = document.getElementById('artmug-only-notice');
         if (!el) return;
+        var isTop = false;
+        try {
+            isTop = window.self === window.top;
+        } catch (e) {
+            return;
+        }
+        if (isTop) return;
         var q = new URLSearchParams(window.location.search);
-        if (q.get('embed') === 'artmug' || q.get('from') === 'artmug') el.classList.remove('hidden');
+        if (q.get('embed') === 'artmug' || q.get('from') === 'artmug') {
+            el.classList.remove('hidden');
+            return;
+        }
+        try {
+            var ref = document.referrer || '';
+            if (ref.indexOf('artmug.kr') !== -1) el.classList.remove('hidden');
+        } catch (e) { /* ignore */ }
     })();
     </script>
+    </div>
 
     <!-- Hero Section -->
     <header class="px-6 pt-8 md:pt-12 pb-16">
