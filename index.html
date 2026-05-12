@@ -11,9 +11,9 @@
             font-family: 'Noto Sans KR', sans-serif;
             word-break: keep-all;
             background:
-                radial-gradient(circle at top left, rgba(99, 102, 241, 0.14), transparent 28%),
-                radial-gradient(circle at 85% 15%, rgba(168, 85, 247, 0.12), transparent 24%),
-                linear-gradient(180deg, #f8faff 0%, #eef2ff 45%, #f8fafc 100%);
+                radial-gradient(circle at top left, rgba(99, 102, 241, 0.055), transparent 30%),
+                radial-gradient(circle at 88% 8%, rgba(148, 163, 184, 0.09), transparent 28%),
+                linear-gradient(180deg, #f8fafc 0%, #f1f5f9 52%, #f8fafc 100%);
             min-height: 100vh;
             -webkit-user-select: none;
             -moz-user-select: none;
@@ -108,11 +108,17 @@
             border-radius: 2rem;
             pointer-events: none;
         }
+        @media (max-width: 1023px) {
+            .hero-outline {
+                inset: 0.5rem;
+                border-radius: 1.25rem;
+            }
+        }
         .ambient-orb {
             position: absolute;
             border-radius: 9999px;
-            filter: blur(80px);
-            opacity: 0.5;
+            filter: blur(88px);
+            opacity: 0.2;
             pointer-events: none;
         }
         .no-api-count-input .api-count-input {
@@ -129,103 +135,216 @@
             appearance: textfield;
             -moz-appearance: textfield;
         }
+
+        .portfolio-section {
+            position: relative;
+            isolation: isolate;
+            padding-block: 1.25rem 0.25rem;
+        }
+        @media (min-width: 768px) {
+            .portfolio-section {
+                padding-block: 1.75rem 0.5rem;
+            }
+        }
+        .portfolio-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            margin: 0 -0.5rem;
+            border-radius: 1.75rem;
+            background:
+                radial-gradient(ellipse 85% 70% at 8% 15%, rgba(99, 102, 241, 0.2), transparent 52%),
+                radial-gradient(ellipse 75% 55% at 92% 25%, rgba(168, 85, 247, 0.16), transparent 48%),
+                radial-gradient(ellipse 65% 45% at 70% 95%, rgba(236, 72, 153, 0.1), transparent 42%),
+                linear-gradient(155deg, #eef2ff 0%, #f5f3ff 32%, #faf5ff 58%, #f8fafc 100%);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.75);
+            pointer-events: none;
+            z-index: -1;
+        }
+        @media (min-width: 768px) {
+            .portfolio-section::before {
+                margin: 0 -1rem;
+                border-radius: 2.25rem;
+            }
+        }
+        .portfolio-section > * {
+            position: relative;
+            z-index: 0;
+        }
+        .portfolio-disclosure {
+            border: 1px solid rgba(165, 180, 252, 0.55);
+            background: rgba(255, 255, 255, 0.78);
+            box-shadow:
+                0 4px 6px -1px rgba(99, 102, 241, 0.07),
+                0 22px 48px -14px rgba(79, 70, 229, 0.14),
+                inset 0 1px 0 rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(14px);
+        }
+        .portfolio-disclosure > summary,
+        .portfolio-disclosure > .portfolio-disclosure-body {
+            position: relative;
+            z-index: 1;
+        }
+        .portfolio-disclosure-body {
+            border-top: 1px solid rgba(199, 210, 254, 0.55);
+            background: linear-gradient(
+                180deg,
+                rgba(238, 242, 255, 0.72) 0%,
+                rgba(250, 245, 255, 0.45) 38%,
+                rgba(248, 250, 252, 0.92) 100%
+            );
+        }
+        .portfolio-strip {
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+        }
+        .portfolio-person-group {
+            margin-bottom: 1.35rem;
+        }
+        @media (min-width: 768px) {
+            .portfolio-person-group {
+                margin-bottom: 1.75rem;
+            }
+        }
+        .portfolio-person-group:last-child {
+            margin-bottom: 0;
+        }
+        .portfolio-person-heading {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8125rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: rgb(15 23 42);
+            margin-bottom: 0.65rem;
+            padding-bottom: 0.35rem;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.35);
+        }
+        @media (min-width: 768px) {
+            .portfolio-person-heading {
+                font-size: 0.9375rem;
+                margin-bottom: 0.85rem;
+            }
+        }
+        .portfolio-person-heading::before {
+            content: '';
+            width: 0.35rem;
+            height: 0.35rem;
+            border-radius: 9999px;
+            background: rgb(99 102 241);
+            flex-shrink: 0;
+        }
+        .portfolio-disclosure summary::-webkit-details-marker {
+            display: none;
+        }
+        .portfolio-disclosure > summary {
+            list-style: none;
+        }
+        .portfolio-disclosure[open] .portfolio-chevron {
+            transform: rotate(180deg);
+        }
+        .portfolio-tile:focus-visible {
+            outline: 2px solid rgb(99 102 241);
+            outline-offset: 3px;
+        }
     </style>
 </head>
 <body class="text-slate-900">
 
     <div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
-        <div class="ambient-orb w-72 h-72 bg-indigo-300 top-10 -left-10"></div>
-        <div class="ambient-orb w-80 h-80 bg-fuchsia-300 top-32 right-0"></div>
-        <div class="ambient-orb w-96 h-96 bg-cyan-200 bottom-0 left-1/3"></div>
+        <div class="ambient-orb w-72 h-72 bg-indigo-200 top-10 -left-10"></div>
+        <div class="ambient-orb w-80 h-80 bg-slate-300 top-32 right-0"></div>
+        <div class="ambient-orb w-96 h-96 bg-slate-200 bottom-0 left-1/3"></div>
     </div>
 
     <!-- Hero Section -->
-    <header class="px-6 pt-8 md:pt-12 pb-16">
-        <div class="max-w-6xl mx-auto hero-bg rounded-[2.75rem] shadow-2xl shadow-indigo-950/20 relative overflow-hidden">
+    <header class="px-4 pt-5 pb-8 md:px-6 md:pt-12 md:pb-16">
+        <div class="max-w-6xl mx-auto hero-bg rounded-2xl md:rounded-[2.75rem] shadow-2xl shadow-indigo-950/20 relative overflow-hidden">
             <div class="hero-outline"></div>
-            <div class="grid lg:grid-cols-[1.2fr_0.8fr] gap-10 px-7 py-10 md:px-12 md:py-14 relative z-10">
+            <div class="grid lg:grid-cols-[1.2fr_0.8fr] gap-6 lg:gap-10 px-4 py-6 sm:px-7 sm:py-8 md:px-12 md:py-14 relative z-10">
                 <div class="text-white">
-                    <span class="inline-flex items-center gap-2 py-2 px-4 rounded-full bg-white/10 border border-white/15 text-[11px] md:text-xs font-bold mb-6 tracking-[0.2em] uppercase">
+                    <span class="inline-flex items-center gap-2 py-1.5 px-3 md:py-2 md:px-4 rounded-full bg-white/10 border border-white/15 text-[10px] md:text-xs font-bold mb-3 md:mb-6 tracking-[0.2em] uppercase">
                         <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
                         Warudo Custom API
                     </span>
-                    <h1 class="text-4xl md:text-6xl font-extrabold mb-5 tracking-tight leading-[1.05]">
+                    <h1 class="text-3xl sm:text-4xl md:text-6xl font-extrabold mb-3 md:mb-5 tracking-tight leading-[1.05]">
                         필요한 기능만<br>
                         <span class="gradient-text">개별로 선택하는</span><br>
                         Warudo API
                     </h1>
-                    <p class="text-sm md:text-lg text-slate-300 max-w-xl leading-relaxed mb-8">
-                        SOOP, 치지직 환경에 맞춰 세팅을 도와드립니다.<br>
+                    <p class="text-xs sm:text-sm md:text-lg text-slate-300 max-w-xl leading-relaxed mb-4 md:mb-8">
+                        SOOP, 치지직 환경에 맞춰 세팅을 도와드립니다.<br class="hidden sm:inline">
                         <span class="text-slate-400">(Warudo Pro / 일반 가능)</span>
                     </p>
-                    <div class="inline-flex items-start gap-3 rounded-[1.75rem] bg-gradient-to-r from-amber-300/20 via-white/16 to-emerald-300/20 border border-white/15 px-5 py-4 mb-8 shadow-xl shadow-slate-950/10 backdrop-blur-md">
-                        <span class="inline-flex items-center justify-center w-10 h-10 rounded-2xl bg-white text-slate-900 text-lg font-black shrink-0">!</span>
-                        <p class="text-sm md:text-base leading-relaxed text-white">
-                            <span class="block font-extrabold text-base md:text-lg text-white">별도의 에셋을 구매하실 필요 없습니다</span>
-                            <span class="block text-slate-200 mt-1">자체제작한 particle과 prop을 제공해드립니다</span>
+                    <div class="inline-flex items-start gap-2 sm:gap-3 rounded-[1.25rem] sm:rounded-[1.75rem] bg-gradient-to-r from-amber-300/20 via-white/16 to-emerald-300/20 border border-white/15 px-3 py-3 sm:px-5 sm:py-4 mb-4 md:mb-8 shadow-xl shadow-slate-950/10 backdrop-blur-md w-full max-w-full">
+                        <span class="inline-flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-white text-slate-900 text-base sm:text-lg font-black shrink-0">!</span>
+                        <p class="text-xs sm:text-sm md:text-base leading-relaxed text-white min-w-0">
+                            <span class="block font-extrabold text-sm sm:text-base md:text-lg text-white">별도의 에셋을 구매하실 필요 없습니다</span>
+                            <span class="block text-slate-200 mt-0.5 sm:mt-1 text-[11px] sm:text-sm md:text-base">자체제작한 particle과 prop을 제공해드립니다</span>
                         </p>
                     </div>
-                    <div class="flex flex-wrap gap-3 mb-8">
-                        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white text-slate-900 text-xs md:text-sm font-bold shadow-lg shadow-slate-950/10">
+                    <div class="flex flex-wrap gap-2 sm:gap-3 mb-4 md:mb-8">
+                        <span class="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-white text-slate-900 text-[11px] sm:text-xs md:text-sm font-bold shadow-lg shadow-slate-950/10">
                             빠른마감
                         </span>
-                        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-400/15 border border-indigo-300/20 text-indigo-100 text-xs md:text-sm font-bold">
+                        <span class="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-indigo-400/15 border border-indigo-300/20 text-indigo-100 text-[11px] sm:text-xs md:text-sm font-bold">
                             자체제작
                         </span>
-                        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-400/15 border border-emerald-300/20 text-emerald-100 text-xs md:text-sm font-bold">
+                        <span class="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-emerald-400/15 border border-emerald-300/20 text-emerald-100 text-[11px] sm:text-xs md:text-sm font-bold">
                             견적 문의
                         </span>
                     </div>
-                    <div class="grid sm:grid-cols-2 gap-3">
-                        <div class="glass-panel rounded-[1.5rem] px-5 py-4">
-                            <p class="text-[11px] uppercase tracking-[0.18em] text-slate-400 mb-2">지원 환경</p>
-                            <p class="text-lg font-bold text-white">SOOP / 치지직</p>
+                    <div class="grid grid-cols-2 gap-2 sm:gap-3">
+                        <div class="glass-panel rounded-xl sm:rounded-[1.5rem] px-3 py-3 sm:px-5 sm:py-4">
+                            <p class="text-[10px] sm:text-[11px] uppercase tracking-[0.18em] text-slate-400 mb-1 sm:mb-2">지원 환경</p>
+                            <p class="text-sm sm:text-lg font-bold text-white">SOOP / 치지직</p>
                         </div>
-                        <div class="glass-panel rounded-[1.5rem] px-5 py-4">
-                            <p class="text-[11px] uppercase tracking-[0.18em] text-slate-400 mb-2">Warudo</p>
-                            <p class="text-lg font-bold text-white">Pro / 일반</p>
+                        <div class="glass-panel rounded-xl sm:rounded-[1.5rem] px-3 py-3 sm:px-5 sm:py-4">
+                            <p class="text-[10px] sm:text-[11px] uppercase tracking-[0.18em] text-slate-400 mb-1 sm:mb-2">Warudo</p>
+                            <p class="text-sm sm:text-lg font-bold text-white">Pro / 일반</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="space-y-4">
-                    <div class="glass-panel rounded-[2rem] p-6 md:p-7">
-                        <p class="text-xs tracking-[0.2em] uppercase text-indigo-200 mb-3">Order Guide</p>
-                        <h2 class="text-2xl font-bold text-white mb-4">원하는 구성만 담아<br>맞춤 문의로 진행</h2>
-                        <div class="space-y-3">
-                            <div class="flex items-start gap-3 rounded-2xl bg-white/6 border border-white/8 px-4 py-3">
-                                <span class="w-8 h-8 rounded-xl bg-white/10 flex items-center justify-center text-sm font-bold text-white shrink-0">01</span>
-                                <div>
-                                    <p class="text-sm font-bold text-white">API 선택</p>
-                                    <p class="text-xs text-slate-300 mt-1">필요한 기능만 골라서 수량 조건을 입력합니다.</p>
+                <div class="space-y-3 md:space-y-4">
+                    <div class="glass-panel rounded-[1.35rem] md:rounded-[2rem] p-4 sm:p-5 md:p-7">
+                        <p class="text-[10px] sm:text-xs tracking-[0.2em] uppercase text-indigo-200 mb-1.5 sm:mb-3">Order Guide</p>
+                        <h2 class="text-lg sm:text-xl md:text-2xl font-bold text-white mb-2 sm:mb-3 md:mb-4 leading-snug">원하는 구성만 담아<br>맞춤 문의로 진행</h2>
+                        <div class="space-y-2 sm:space-y-3">
+                            <div class="flex items-start gap-2 sm:gap-3 rounded-xl sm:rounded-2xl bg-white/6 border border-white/8 px-3 py-2 sm:px-4 sm:py-3">
+                                <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-white/10 flex items-center justify-center text-xs sm:text-sm font-bold text-white shrink-0">01</span>
+                                <div class="min-w-0">
+                                    <p class="text-xs sm:text-sm font-bold text-white">API 선택</p>
+                                    <p class="text-[11px] sm:text-xs text-slate-300 mt-0.5 sm:mt-1 leading-relaxed hidden sm:block">필요한 기능만 골라서 수량 조건을 입력합니다.</p>
                                 </div>
                             </div>
-                            <div class="flex items-start gap-3 rounded-2xl bg-white/6 border border-white/8 px-4 py-3">
-                                <span class="w-8 h-8 rounded-xl bg-white/10 flex items-center justify-center text-sm font-bold text-white shrink-0">02</span>
-                                <div>
-                                    <p class="text-sm font-bold text-white">가격 안내</p>
-                                    <p class="text-xs text-slate-300 mt-1">선택하신 항목 기준으로 작업 범위와 비용을 안내드립니다.</p>
+                            <div class="flex items-start gap-2 sm:gap-3 rounded-xl sm:rounded-2xl bg-white/6 border border-white/8 px-3 py-2 sm:px-4 sm:py-3">
+                                <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-white/10 flex items-center justify-center text-xs sm:text-sm font-bold text-white shrink-0">02</span>
+                                <div class="min-w-0">
+                                    <p class="text-xs sm:text-sm font-bold text-white">가격 안내</p>
+                                    <p class="text-[11px] sm:text-xs text-slate-300 mt-0.5 sm:mt-1 leading-relaxed hidden sm:block">선택하신 항목 기준으로 작업 범위와 비용을 안내드립니다.</p>
                                 </div>
                             </div>
-                            <div class="flex items-start gap-3 rounded-2xl bg-white/6 border border-white/8 px-4 py-3">
-                                <span class="w-8 h-8 rounded-xl bg-white/10 flex items-center justify-center text-sm font-bold text-white shrink-0">03</span>
-                                <div>
-                                    <p class="text-sm font-bold text-white">제작 및 세팅</p>
-                                    <p class="text-xs text-slate-300 mt-1">작업 후 실제 방송 환경에 맞게 세팅까지 마무리합니다.</p>
+                            <div class="flex items-start gap-2 sm:gap-3 rounded-xl sm:rounded-2xl bg-white/6 border border-white/8 px-3 py-2 sm:px-4 sm:py-3">
+                                <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-white/10 flex items-center justify-center text-xs sm:text-sm font-bold text-white shrink-0">03</span>
+                                <div class="min-w-0">
+                                    <p class="text-xs sm:text-sm font-bold text-white">제작 및 세팅</p>
+                                    <p class="text-[11px] sm:text-xs text-slate-300 mt-0.5 sm:mt-1 leading-relaxed hidden sm:block">작업 후 실제 방송 환경에 맞게 세팅까지 마무리합니다.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="grid sm:grid-cols-2 gap-4">
-                        <div class="soft-card rounded-[1.75rem] p-5">
-                            <p class="text-xs font-bold tracking-[0.18em] uppercase text-indigo-500 mb-2">Pricing</p>
-                            <p class="text-lg font-bold text-slate-900 mb-1">빠른마감가능</p>
-                            <p class="text-sm text-slate-500 leading-relaxed">빠른마감은 신청 전 문의 부탁드립니다.</p>
+                    <div class="grid grid-cols-2 gap-2 sm:gap-3 md:gap-4">
+                        <div class="soft-card rounded-xl sm:rounded-[1.75rem] p-3 sm:p-4 md:p-5">
+                            <p class="text-[10px] sm:text-xs font-bold tracking-[0.18em] uppercase text-indigo-500 mb-1 sm:mb-2">Pricing</p>
+                            <p class="text-sm sm:text-base md:text-lg font-bold text-slate-900 mb-0.5 sm:mb-1">빠른마감가능</p>
+                            <p class="text-[11px] sm:text-sm text-slate-500 leading-snug sm:leading-relaxed">빠른마감은 신청 전 문의 부탁드립니다.</p>
                         </div>
-                        <div class="soft-card rounded-[1.75rem] p-5">
-                            <p class="text-xs font-bold tracking-[0.18em] uppercase text-emerald-500 mb-2">Support</p>
-                            <p class="text-lg font-bold text-slate-900 mb-1">설치 지원 포함</p>
-                            <p class="text-sm text-slate-500 leading-relaxed">도입부터 적용까지 진행해 처음 사용하셔도 부담이 적습니다.</p>
+                        <div class="soft-card rounded-xl sm:rounded-[1.75rem] p-3 sm:p-4 md:p-5">
+                            <p class="text-[10px] sm:text-xs font-bold tracking-[0.18em] uppercase text-emerald-500 mb-1 sm:mb-2">Support</p>
+                            <p class="text-sm sm:text-base md:text-lg font-bold text-slate-900 mb-0.5 sm:mb-1">설치 지원 포함</p>
+                            <p class="text-[11px] sm:text-sm text-slate-500 leading-snug sm:leading-relaxed"><span class="md:hidden">도입부터 적용까지 함께 진행합니다.</span><span class="hidden md:inline">도입부터 적용까지 진행해 처음 사용하셔도 부담이 적습니다.</span></p>
                         </div>
                     </div>
                 </div>
@@ -233,7 +352,7 @@
         </div>
     </header>
 
-    <!-- 어린이날 이벤트: artmug iframe 등에서만 표시 (직접 접속 시 숨김) -->
+    <!-- 어린이날 섹션 비활성화 (복구: 아래 블록 주석만 제거)
     <div id="childrens-day-root" class="hidden">
     <section class="max-w-6xl mx-auto px-6 pb-14" aria-labelledby="childrens-day-title">
         <div class="section-shell rounded-[2.75rem] p-8 md:p-10">
@@ -308,82 +427,82 @@
                 <p class="text-center text-sm text-slate-500">아래 양식을 작성한 뒤 복사하여 문의해 주세요.</p>
             </div>
 
-            <div class="mx-auto mt-12 max-w-2xl border-t border-slate-200/90 pt-10" aria-labelledby="event-inquiry-heading">
-                <div class="rounded-2xl border border-rose-100/80 bg-gradient-to-br from-[#fceee8] via-[#f8e8e2] to-[#f5e4dc] px-5 py-4 shadow-sm shadow-rose-900/5">
-                    <h2 id="event-inquiry-heading" class="text-xl font-bold text-slate-800 md:text-2xl">문의 양식</h2>
-                    <p class="mt-1.5 text-sm text-slate-600">치지직 · SOOP 선택 후 복사해 주세요.</p>
+            <div class="mx-auto mt-8 max-w-2xl border-t border-slate-200/90 pt-6 sm:mt-12 sm:pt-10" aria-labelledby="event-inquiry-heading">
+                <div class="rounded-xl border border-rose-100/80 bg-gradient-to-br from-[#fceee8] via-[#f8e8e2] to-[#f5e4dc] px-4 py-3 shadow-sm shadow-rose-900/5 sm:rounded-2xl sm:px-5 sm:py-4">
+                    <h2 id="event-inquiry-heading" class="text-lg font-bold text-slate-800 sm:text-xl md:text-2xl leading-snug">문의 양식</h2>
+                    <p class="mt-1 text-xs text-slate-600 sm:mt-1.5 sm:text-sm leading-snug">치지직 · SOOP 선택 후 복사해 주세요.</p>
                 </div>
-                <div class="mt-6 space-y-5">
+                <div class="mt-4 space-y-4 sm:mt-6 sm:space-y-5">
                 <div>
-                    <label class="mb-2 block text-sm font-bold text-slate-800">방송 플랫폼 <span class="text-red-500">*</span></label>
-                    <div class="flex gap-3">
-                        <label class="flex flex-1 cursor-pointer items-center gap-2 rounded-2xl border-2 border-slate-200 bg-slate-50 p-3 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50">
-                            <input type="radio" name="eventPlatform" id="eventPlatformChzz" value="치지직" class="h-4 w-4 accent-indigo-600">
+                    <label class="mb-1.5 block text-xs font-bold text-slate-800 sm:mb-2 sm:text-sm">방송 플랫폼 <span class="text-red-500">*</span></label>
+                    <div class="flex gap-2 sm:gap-3">
+                        <label class="flex min-h-[3rem] flex-1 cursor-pointer items-center justify-center gap-2 rounded-xl border-2 border-slate-200 bg-slate-50 p-2.5 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 sm:rounded-2xl sm:p-3">
+                            <input type="radio" name="eventPlatform" id="eventPlatformChzz" value="치지직" class="h-4 w-4 shrink-0 accent-indigo-600">
                             <span class="text-sm font-bold text-slate-800">치지직</span>
                         </label>
-                        <label class="flex flex-1 cursor-pointer items-center gap-2 rounded-2xl border-2 border-slate-200 bg-slate-50 p-3 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50">
-                            <input type="radio" name="eventPlatform" id="eventPlatformSoop" value="SOOP" class="h-4 w-4 accent-indigo-600">
+                        <label class="flex min-h-[3rem] flex-1 cursor-pointer items-center justify-center gap-2 rounded-xl border-2 border-slate-200 bg-slate-50 p-2.5 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 sm:rounded-2xl sm:p-3">
+                            <input type="radio" name="eventPlatform" id="eventPlatformSoop" value="SOOP" class="h-4 w-4 shrink-0 accent-indigo-600">
                             <span class="text-sm font-bold text-slate-800">SOOP</span>
                         </label>
                     </div>
                 </div>
                 <div>
-                    <label class="mb-2 block text-sm font-bold text-slate-800" for="eventNickname">방송 닉네임 <span class="text-red-500">*</span></label>
+                    <label class="mb-1.5 block text-xs font-bold text-slate-800 sm:mb-2 sm:text-sm" for="eventNickname">방송 닉네임 <span class="text-red-500">*</span></label>
                     <input type="text" id="eventNickname" placeholder="닉네임"
-                           class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition-all focus:border-indigo-500 focus:bg-white focus:ring-4 focus:ring-indigo-500/10">
+                           class="w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-sm outline-none transition-all focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-500/10 sm:rounded-2xl sm:px-4 sm:py-3 sm:focus:ring-4">
                 </div>
                 <div>
-                    <label class="mb-2 block text-sm font-bold text-slate-800">Warudo Mod <span class="text-red-500">*</span></label>
-                    <div class="flex gap-3">
-                        <label class="flex flex-1 cursor-pointer items-center gap-2 rounded-2xl border-2 border-slate-200 bg-slate-50 p-3 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50">
-                            <input type="radio" name="eventWarudoMod" id="eventModPro" value="Pro" class="h-4 w-4 accent-indigo-600">
+                    <label class="mb-1.5 block text-xs font-bold text-slate-800 sm:mb-2 sm:text-sm">Warudo Mod <span class="text-red-500">*</span></label>
+                    <div class="flex gap-2 sm:gap-3">
+                        <label class="flex min-h-[3rem] flex-1 cursor-pointer items-center justify-center gap-2 rounded-xl border-2 border-slate-200 bg-slate-50 p-2.5 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 sm:rounded-2xl sm:p-3">
+                            <input type="radio" name="eventWarudoMod" id="eventModPro" value="Pro" class="h-4 w-4 shrink-0 accent-indigo-600">
                             <span class="text-sm font-bold text-slate-800">Pro</span>
                         </label>
-                        <label class="flex flex-1 cursor-pointer items-center gap-2 rounded-2xl border-2 border-slate-200 bg-slate-50 p-3 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50">
-                            <input type="radio" name="eventWarudoMod" id="eventModStandard" value="일반" class="h-4 w-4 accent-indigo-600">
+                        <label class="flex min-h-[3rem] flex-1 cursor-pointer items-center justify-center gap-2 rounded-xl border-2 border-slate-200 bg-slate-50 p-2.5 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 sm:rounded-2xl sm:p-3">
+                            <input type="radio" name="eventWarudoMod" id="eventModStandard" value="일반" class="h-4 w-4 shrink-0 accent-indigo-600">
                             <span class="text-sm font-bold text-slate-800">일반</span>
                         </label>
                     </div>
                 </div>
                 <div>
-                    <label class="mb-2 block text-sm font-bold text-slate-800" for="eventRequest">요청 내용 <span class="text-red-500">*</span></label>
+                    <label class="mb-1.5 block text-xs font-bold text-slate-800 sm:mb-2 sm:text-sm" for="eventRequest">요청 내용 <span class="text-red-500">*</span></label>
                     <textarea id="eventRequest" rows="4" placeholder="추가로 전달하고 싶은 내용을 자유롭게 작성해 주세요."
-                              class="w-full resize-none rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition-all focus:border-indigo-500 focus:bg-white focus:ring-4 focus:ring-indigo-500/10"></textarea>
+                              class="w-full resize-none rounded-xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-sm outline-none transition-all focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-500/10 sm:rounded-2xl sm:px-4 sm:py-3 sm:focus:ring-4"></textarea>
                 </div>
                 <div>
-                    <label class="mb-2 block text-sm font-bold text-slate-800">유의사항</label>
-                    <div class="space-y-2 rounded-2xl border border-amber-200 bg-amber-50 p-4">
-                        <p class="text-xs leading-relaxed text-slate-600">
+                    <label class="mb-1.5 block text-xs font-bold text-slate-800 sm:mb-2 sm:text-sm">유의사항</label>
+                    <div class="space-y-1.5 rounded-xl border border-amber-200 bg-amber-50 p-3 sm:space-y-2 sm:rounded-2xl sm:p-4">
+                        <p class="text-[11px] leading-snug text-slate-600 sm:text-xs sm:leading-relaxed">
                             <span class="font-bold text-amber-700">권리귀속</span> — 공유해드린 모든 작업물의 저작권 및 지적재산권은 제작자(Node68)에게 귀속됩니다. 타인에게 공유 및 재배포 시 저작권법 위반으로 법적 대응이 이루어질 수 있습니다.
                         </p>
-                        <p class="text-xs leading-relaxed text-slate-600">
+                        <p class="text-[11px] leading-snug text-slate-600 sm:text-xs sm:leading-relaxed">
                             <span class="font-bold text-amber-700">포트폴리오 활용</span> — 모든 작업물은 제작자의 포트폴리오 &amp; 홍보 등에 사용될 수 있습니다.
                         </p>
-                        <p class="text-xs leading-relaxed text-slate-600">
+                        <p class="text-[11px] leading-snug text-slate-600 sm:text-xs sm:leading-relaxed">
                             <span class="font-bold text-amber-700">신청 절차</span> — 주문 완료 후 일정을 조율하고, 작업이 시작됩니다.
                         </p>
-                        <p class="text-xs leading-relaxed text-slate-600">
+                        <p class="text-[11px] leading-snug text-slate-600 sm:text-xs sm:leading-relaxed">
                             <span class="font-bold text-amber-700">환불 규정</span> — 작업 시작 전: 전액 환불 가능합니다. / 작업 시작 후: 환불이 불가능합니다.
                         </p>
                     </div>
                 </div>
-                <label class="group flex cursor-pointer items-start gap-3 border-t border-slate-100 pt-4">
-                    <div class="relative flex items-center pt-0.5">
-                        <input type="checkbox" id="eventAgreeTerms" class="peer h-6 w-6 cursor-pointer appearance-none rounded-md border-2 border-slate-300 transition-all checked:border-indigo-600 checked:bg-indigo-600">
-                        <svg class="pointer-events-none absolute left-1 top-1 h-4 w-4 stroke-white opacity-0 transition-opacity peer-checked:opacity-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="4">
+                <label class="group flex cursor-pointer items-start gap-2.5 border-t border-slate-100 pt-3 sm:gap-3 sm:pt-4">
+                    <div class="relative flex shrink-0 items-center pt-0.5">
+                        <input type="checkbox" id="eventAgreeTerms" class="peer h-5 w-5 min-h-[1.25rem] min-w-[1.25rem] cursor-pointer appearance-none rounded-md border-2 border-slate-300 transition-all checked:border-indigo-600 checked:bg-indigo-600 sm:h-6 sm:w-6 sm:min-h-[1.5rem] sm:min-w-[1.5rem]">
+                        <svg class="pointer-events-none absolute left-0.5 top-[0.35rem] h-3.5 w-3.5 stroke-white opacity-0 transition-opacity peer-checked:opacity-100 sm:left-1 sm:top-1 sm:h-4 sm:w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="4">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                         </svg>
                     </div>
-                    <span class="text-sm font-medium text-slate-600 transition-colors group-hover:text-slate-900 pt-0.5">
+                    <span class="text-xs font-medium text-slate-600 transition-colors group-hover:text-slate-900 sm:pt-0.5 sm:text-sm leading-snug">
                         상기 <span class="font-bold text-indigo-600 underline">이용 순서, 유의사항</span>을 모두 확인하였으며 이에 동의합니다. <span class="font-bold text-red-500">(필수)</span>
                     </span>
                 </label>
-                <button type="button" id="eventCopyBtn" class="flex w-full items-center justify-center gap-2 rounded-2xl bg-slate-900 py-4 text-sm font-bold text-white shadow-lg transition-all hover:bg-indigo-600 active:scale-[0.99]">
-                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
-                    복사하기
+                <button type="button" id="eventCopyBtn" class="flex min-h-[3.25rem] w-full items-center justify-center gap-2 rounded-xl bg-slate-900 px-3 py-3.5 text-sm font-bold text-white shadow-lg transition-all hover:bg-indigo-600 active:scale-[0.99] sm:rounded-2xl sm:py-4 sm:text-base">
+                    <svg class="h-5 w-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
+                    <span class="text-center leading-tight">복사하기</span>
                 </button>
-                <p id="eventCopyMessage" class="text-center text-sm font-bold text-emerald-600 opacity-0 transition-opacity">복사되었습니다.</p>
-                <p id="eventErrorMessage" class="text-center text-sm font-bold text-red-600 opacity-0 transition-opacity">필수 항목을 확인해 주세요.</p>
+                <p id="eventCopyMessage" class="text-center text-xs font-bold text-emerald-600 opacity-0 transition-opacity sm:text-sm">복사되었습니다.</p>
+                <p id="eventErrorMessage" class="text-center text-xs font-bold text-red-600 opacity-0 transition-opacity sm:text-sm">필수 항목을 확인해 주세요.</p>
                 </div>
             </div>
         </div>
@@ -410,39 +529,53 @@
         if (isArtmugEmbed()) root.classList.remove('hidden');
     })();
     </script>
+    -->
 
     <!-- Product Grid -->
-    <section class="max-w-6xl mx-auto px-6 pb-24">
+    <section class="max-w-6xl mx-auto px-6 pb-8 md:pb-10">
         <div class="text-center mb-12">
             <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 border border-slate-200 text-indigo-600 text-xs font-bold shadow-sm mb-5">
                 Selectable APIs
             </span>
             <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">원하는 기능만 골라 담는 API 라인업</h2>
             <p class="max-w-2xl mx-auto text-sm md:text-base text-slate-500 leading-relaxed">
-               필요한 연출만 선택해서 맞춤 구성으로 문의할 수 있습니다.
+               필요한 연출만 선택해서 맞춤 구성으로 문의할 수 있습니다.<br>
+               <span class="mt-2 inline-block font-semibold text-indigo-600">카드의 썸네일을 누르면 크게 볼 수 있습니다.</span>
             </p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Item 1: 하나 던지기 -->
+            <!-- Item 01: 천사 모션 -->
             <div class="card-hover product-card transition-all duration-300">
                 <div class="image-container rounded-[1.5rem] mb-5 group relative border border-slate-200/70">
                     <span class="absolute top-3 left-3 z-10 inline-flex items-center justify-center min-w-11 h-11 px-3 rounded-2xl bg-slate-950/75 text-white text-sm font-black tracking-wider shadow-lg">01</span>
-                    <img src="./img/한개던지기.webp" alt="Single Throw" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/400x300?text=Single+Throw'">
+                    <img src="./img/날개.webp" alt="천사 모션" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/400x300?text=Angel+Motion'">
                 </div>
-                <div class="flex items-start justify-between gap-4 mb-3">
-                    <h3 class="text-xl font-bold text-slate-900">하나 던지기</h3>
-                    <span class="text-[10px] font-bold text-indigo-600 bg-indigo-50 px-3 py-1.5 rounded-full border border-indigo-100 shrink-0">후원리액션</span>
-                </div>
+                <h3 class="text-xl font-bold text-slate-900 mb-3">천사 모션</h3>
                 <div class="flex flex-wrap gap-1.5 mb-3">
-                    <span class="font-bold text-amber-700 bg-amber-50 px-2.5 py-1 rounded-full text-[10px] border border-amber-100">원하는 prop 설정 가능</span>
+                    <span class="font-bold text-rose-700 bg-rose-50 px-2.5 py-1 rounded-full text-[10px] border border-rose-100">날개 Prop 제공</span>
+                    <span class="font-bold text-indigo-700 bg-indigo-50 px-2.5 py-1 rounded-full text-[10px] border border-indigo-100">자체제작 Particle 포함</span>
+                    <span class="font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full text-[10px] border border-emerald-100">Sound 포함</span>
                 </div>
-                <p class="text-slate-500 text-sm leading-relaxed mb-4">캐릭터의 얼굴에 prop 이 날아갑니다.</p>
+                <p class="text-slate-500 text-sm leading-relaxed mb-4">천사 날개 펼침·펄럭임 등 날개 움직임을 연출합니다. 날개 Prop 제공합니다.</p>
             </div>
 
-            <!-- Item 2: ZZZ & 졸기 -->
+            <!-- Item 02: 꼬마변신 (세로 긴 원본 — contain으로 전신 노출) -->
+            <div class="card-hover product-card transition-all duration-300">
+                <div class="image-container !bg-slate-950 rounded-[1.5rem] mb-5 group relative border border-slate-200/70">
+                    <span class="absolute top-3 left-3 z-10 inline-flex items-center justify-center min-w-11 h-11 px-3 rounded-2xl bg-slate-950/75 text-white text-sm font-black tracking-wider shadow-lg">02</span>
+                    <img src="./img/sio.gif" alt="꼬마변신" class="w-full h-full object-contain object-center" onerror="this.src='https://via.placeholder.com/400x300?text=Chibi+Transform'">
+                </div>
+                <h3 class="text-xl font-bold text-slate-900 mb-3">꼬마변신</h3>
+                <div class="flex flex-wrap gap-1.5 mb-3">
+                    <span class="font-bold text-indigo-700 bg-indigo-50 px-2.5 py-1 rounded-full text-[10px] border border-indigo-100">자체제작 Particle 포함</span>
+                </div>
+                <p class="text-slate-500 text-sm leading-relaxed mb-4">캐릭터를 꼬마 체형·분위기로 바꿔 주는 변신 연출입니다.</p>
+            </div>
+
+            <!-- Item 03: ZZZ & 졸기 -->
             <div class="card-hover product-card transition-all duration-300">
                 <div class="image-container rounded-[1.5rem] mb-5 group relative border border-slate-200/70">
-                    <span class="absolute top-3 left-3 z-10 inline-flex items-center justify-center min-w-11 h-11 px-3 rounded-2xl bg-slate-950/75 text-white text-sm font-black tracking-wider shadow-lg">02</span>
+                    <span class="absolute top-3 left-3 z-10 inline-flex items-center justify-center min-w-11 h-11 px-3 rounded-2xl bg-slate-950/75 text-white text-sm font-black tracking-wider shadow-lg">03</span>
                     <img src="./img/자리비움.webp" alt="AFK Animation" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/400x300?text=AFK+Animation'">
                 </div>
                 <div class="flex items-start justify-between gap-4 mb-3">
@@ -455,10 +588,10 @@
                 <p class="text-slate-500 text-sm leading-relaxed mb-4">자리 비움 시 자동으로 작동하는 수면 모션</p>
             </div>
 
-            <!-- Item 3: 동전 쏟아지기 -->
+            <!-- Item 04: 동전 쏟아지기 -->
             <div class="card-hover product-card transition-all duration-300">
                 <div class="image-container rounded-[1.5rem] mb-5 group relative border border-slate-200/70">
-                    <span class="absolute top-3 left-3 z-10 inline-flex items-center justify-center min-w-11 h-11 px-3 rounded-2xl bg-slate-950/75 text-white text-sm font-black tracking-wider shadow-lg">03</span>
+                    <span class="absolute top-3 left-3 z-10 inline-flex items-center justify-center min-w-11 h-11 px-3 rounded-2xl bg-slate-950/75 text-white text-sm font-black tracking-wider shadow-lg">04</span>
                     <img src="./img/동전쏟아지기.webp" alt="Coin Shower" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/400x300?text=Coin+Shower'">
                 </div>
                 <div class="flex items-start justify-between gap-4 mb-3">
@@ -472,10 +605,10 @@
                 <p class="text-slate-500 text-sm leading-relaxed mb-4">동전이 하늘 위에서 쏟아지는 연출</p>
             </div>
 
-            <!-- Item 4: 물음표 채팅 인터랙션 -->
+            <!-- Item 05: 물음표 채팅 인터랙션 -->
             <div class="card-hover product-card transition-all duration-300">
                 <div class="image-container rounded-[1.5rem] mb-5 group relative border border-slate-200/70">
-                    <span class="absolute top-3 left-3 z-10 inline-flex items-center justify-center min-w-11 h-11 px-3 rounded-2xl bg-slate-950/75 text-white text-sm font-black tracking-wider shadow-lg">04</span>
+                    <span class="absolute top-3 left-3 z-10 inline-flex items-center justify-center min-w-11 h-11 px-3 rounded-2xl bg-slate-950/75 text-white text-sm font-black tracking-wider shadow-lg">05</span>
                     <img src="./img/물음표핑.webp" alt="Question Mark" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/400x300?text=Question+Mark'">
                 </div>
                 <div class="flex items-start justify-between gap-4 mb-3">
@@ -488,10 +621,10 @@
                 <p class="text-slate-500 text-sm leading-relaxed mb-4">시청자의 '?' 채팅에 반응해 화면에 물음표를 띄우는 실시간 채팅 인터랙션입니다.</p>
             </div>
 
-            <!-- Item 5: 하트 쏟아지기 Type 1 -->
+            <!-- Item 06: 하트 쏟아지기 Type 1 -->
             <div class="card-hover product-card transition-all duration-300">
                 <div class="image-container rounded-[1.5rem] mb-5 group relative border border-slate-200/70">
-                    <span class="absolute top-3 left-3 z-10 inline-flex items-center justify-center min-w-11 h-11 px-3 rounded-2xl bg-slate-950/75 text-white text-sm font-black tracking-wider shadow-lg">05</span>
+                    <span class="absolute top-3 left-3 z-10 inline-flex items-center justify-center min-w-11 h-11 px-3 rounded-2xl bg-slate-950/75 text-white text-sm font-black tracking-wider shadow-lg">06</span>
                     <img src="./img/하트쏟아지기.webp" alt="Heart Shower Type 1" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/400x300?text=Heart+Type+1'">
                 </div>
                 <div class="flex items-start justify-between gap-4 mb-3">
@@ -505,10 +638,10 @@
                 <p class="text-slate-500 text-sm leading-relaxed mb-4">빨주노초파남보 색상 프롭과 함께 위에서 떨어지는 하트 연출을 구현합니다.</p>
             </div>
 
-            <!-- Item 6: 하트 쏟아지기 Type 2 -->
+            <!-- Item 07: 하트 쏟아지기 Type 2 -->
             <div class="card-hover product-card transition-all duration-300">
                 <div class="image-container rounded-[1.5rem] mb-5 group relative border border-slate-200/70">
-                    <span class="absolute top-3 left-3 z-10 inline-flex items-center justify-center min-w-11 h-11 px-3 rounded-2xl bg-slate-950/75 text-white text-sm font-black tracking-wider shadow-lg">06</span>
+                    <span class="absolute top-3 left-3 z-10 inline-flex items-center justify-center min-w-11 h-11 px-3 rounded-2xl bg-slate-950/75 text-white text-sm font-black tracking-wider shadow-lg">07</span>
                     <img src="./img/하트발사.webp" alt="Heart Shower Type 2" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/400x300?text=Heart+Type+2'">
                 </div>
                 <div class="flex items-start justify-between gap-4 mb-3">
@@ -522,10 +655,10 @@
                 <p class="text-slate-500 text-sm leading-relaxed mb-4">같은 하트 계열이지만 정면 발사형 연출로 더 즉각적인 반응을 보여주는 타입입니다.</p>
             </div>
 
-            <!-- Item 7: Prop 랜덤 붙이기 -->
+            <!-- Item 08: Prop 랜덤 붙이기 -->
             <div class="card-hover product-card transition-all duration-300">
                 <div class="image-container rounded-[1.5rem] mb-5 group relative border border-slate-200/70">
-                    <span class="absolute top-3 left-3 z-10 inline-flex items-center justify-center min-w-11 h-11 px-3 rounded-2xl bg-slate-950/75 text-white text-sm font-black tracking-wider shadow-lg">07</span>
+                    <span class="absolute top-3 left-3 z-10 inline-flex items-center justify-center min-w-11 h-11 px-3 rounded-2xl bg-slate-950/75 text-white text-sm font-black tracking-wider shadow-lg">08</span>
                     <img src="./img/치즈붙히기.webp" alt="Cheese Stick" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/400x300?text=Cheese+Stick'">
                 </div>
                 <div class="flex items-start justify-between gap-4 mb-3">
@@ -538,48 +671,39 @@
                 <p class="text-slate-500 text-sm leading-relaxed mb-4">캐릭터의 몸에 랜덤으로 prop 을 붙여 예측 불가능한 리액션을 연출할 수 있습니다.</p>
             </div>
 
-            <!-- Item 8: 비누방울 -->
+            <!-- Item 09: 비누방울 -->
             <div class="card-hover product-card transition-all duration-300">
                 <div class="image-container rounded-[1.5rem] mb-5 group relative border border-slate-200/70">
-                    <span class="absolute top-3 left-3 z-10 inline-flex items-center justify-center min-w-11 h-11 px-3 rounded-2xl bg-slate-950/75 text-white text-sm font-black tracking-wider shadow-lg">08</span>
+                    <span class="absolute top-3 left-3 z-10 inline-flex items-center justify-center min-w-11 h-11 px-3 rounded-2xl bg-slate-950/75 text-white text-sm font-black tracking-wider shadow-lg">09</span>
                     <img src="./img/비누방울.webp" alt="Bubble Effect" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/400x300?text=Bubble+Effect'">
                 </div>
-                <div class="flex items-start justify-between gap-4 mb-3">
-                    <h3 class="text-xl font-bold text-slate-900">비누방울</h3>
-                    <span class="text-[10px] font-bold text-indigo-600 bg-indigo-50 px-3 py-1.5 rounded-full border border-indigo-100 shrink-0">Animation</span>
-                </div>
+                <h3 class="text-xl font-bold text-slate-900 mb-3">비누방울</h3>
                 <div class="flex flex-wrap gap-1.5 mb-3">
                     <span class="font-bold text-indigo-700 bg-indigo-50 px-2.5 py-1 rounded-full text-[10px] border border-indigo-100">자체제작 Particle 포함</span>
                 </div>
                 <p class="text-slate-500 text-sm leading-relaxed mb-4">화면 위로 비누방울이 퍼지며 분위기를 부드럽게 살려주는 연출입니다.</p>
             </div>
 
-            <!-- Item 9: 윙크 -->
+            <!-- Item 10: 윙크 -->
             <div class="card-hover product-card transition-all duration-300">
                 <div class="image-container rounded-[1.5rem] mb-5 group relative border border-slate-200/70">
-                    <span class="absolute top-3 left-3 z-10 inline-flex items-center justify-center min-w-11 h-11 px-3 rounded-2xl bg-slate-950/75 text-white text-sm font-black tracking-wider shadow-lg">09</span>
+                    <span class="absolute top-3 left-3 z-10 inline-flex items-center justify-center min-w-11 h-11 px-3 rounded-2xl bg-slate-950/75 text-white text-sm font-black tracking-wider shadow-lg">10</span>
                     <img src="./img/윙크.webp" alt="Wink Reaction" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/400x300?text=Wink+Reaction'">
                 </div>
-                <div class="flex items-start justify-between gap-4 mb-3">
-                    <h3 class="text-xl font-bold text-slate-900">윙크</h3>
-                    <span class="text-[10px] font-bold text-indigo-600 bg-indigo-50 px-3 py-1.5 rounded-full border border-indigo-100 shrink-0">Animation</span>
-                </div>
+                <h3 class="text-xl font-bold text-slate-900 mb-3">윙크</h3>
                 <div class="flex flex-wrap gap-1.5 mb-3">
                     <span class="font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full text-[10px] border border-emerald-100">자체 제작 Particle 포함</span>
                 </div>
                 <p class="text-slate-500 text-sm leading-relaxed mb-4">한쪽눈을 감으면 파티클이 나오는 애니메이션입니다.</p>
             </div>
 
-            <!-- Item 10: 입김 -->
+            <!-- Item 11: 입김 -->
             <div class="card-hover product-card transition-all duration-300">
                 <div class="image-container rounded-[1.5rem] mb-5 group relative border border-slate-200/70">
-                    <span class="absolute top-3 left-3 z-10 inline-flex items-center justify-center min-w-11 h-11 px-3 rounded-2xl bg-slate-950/75 text-white text-sm font-black tracking-wider shadow-lg">10</span>
+                    <span class="absolute top-3 left-3 z-10 inline-flex items-center justify-center min-w-11 h-11 px-3 rounded-2xl bg-slate-950/75 text-white text-sm font-black tracking-wider shadow-lg">11</span>
                     <img src="./img/입김.webp" alt="Breath Effect" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/400x300?text=Breath+Effect'">
                 </div>
-                <div class="flex items-start justify-between gap-4 mb-3">
-                    <h3 class="text-xl font-bold text-slate-900">입김</h3>
-                    <span class="text-[10px] font-bold text-indigo-600 bg-indigo-50 px-3 py-1.5 rounded-full border border-indigo-100 shrink-0">Animation</span>
-                </div>
+                <h3 class="text-xl font-bold text-slate-900 mb-3">입김</h3>
                 <div class="flex flex-wrap gap-1.5 mb-3">
                     <span class="font-bold text-indigo-700 bg-indigo-50 px-2.5 py-1 rounded-full text-[10px] border border-indigo-100">자체제작 Particle 포함</span>
                 </div>
@@ -588,230 +712,332 @@
         </div>
     </section>
 
-    <!-- Order Process -->
-    <section class="max-w-4xl mx-auto px-6 pb-24">
-        <div class="section-shell rounded-[2.5rem] p-8 md:p-10">
-            <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8">
-                <div>
-                    <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-600 text-xs font-bold mb-4">
-                        Order Flow
+    <!-- Portfolio (접기/펼치기 — 라인업 바로 아래) -->
+    <section class="portfolio-section max-w-6xl mx-auto px-4 pb-10 md:px-6 md:pb-16" aria-labelledby="portfolio-heading">
+        <details id="portfolio-panel" class="portfolio-disclosure relative overflow-hidden rounded-2xl md:rounded-[2.5rem]">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-3 md:gap-6 px-4 py-5 sm:px-6 sm:py-6 md:px-10 md:py-8 select-none hover:bg-indigo-50/55 transition-colors">
+                <div class="min-w-0 flex-1 text-left">
+                    <span class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.12em] text-slate-600 mb-2 md:mb-3">
+                        <span class="h-1.5 w-1.5 rounded-full bg-indigo-500"></span>
+                        Portfolio
                     </span>
-                    <h2 class="text-2xl md:text-3xl font-bold text-slate-900">문의부터 작업 완료까지</h2>
+                    <h2 id="portfolio-heading" class="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight text-slate-900 leading-snug">
+                        포트폴리오
+                    </h2>
+                </div>
+                <div class="flex shrink-0 flex-col items-center gap-1 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 md:gap-1.5 md:px-4 md:py-3">
+                    <span class="portfolio-chevron inline-flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700 shadow-sm transition-transform duration-300 md:h-14 md:w-14" aria-hidden="true">
+                        <svg class="h-5 w-5 md:h-6 md:w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+                    </span>
+                    <span class="text-[10px] font-bold text-slate-600 hidden sm:block">펼치기 · 접기</span>
+                </div>
+            </summary>
+            <div class="portfolio-disclosure-body px-4 pb-5 pt-3 sm:px-6 md:px-10 md:pb-8 md:pt-5">
+                <p class="mb-3 md:mb-4 text-center text-xs font-semibold text-indigo-600 md:text-sm">카드의 썸네일을 누르면 크게 볼 수 있습니다.</p>
+                <p class="mb-2 text-center text-[10px] font-bold text-slate-800 md:hidden">← 옆으로 밀어 전체 보기 →</p>
+                <div class="portfolio-people space-y-0">
+                    <div class="portfolio-person-group">
+                        <h3 class="portfolio-person-heading">한시아님</h3>
+                        <div class="portfolio-strip flex flex-nowrap gap-3 overflow-x-auto snap-x snap-mandatory px-1 pb-2 md:grid md:grid-cols-3 md:gap-4 md:overflow-visible md:px-0 md:pb-0">
+                    <button type="button" class="portfolio-tile shrink-0 snap-center w-[min(86vw,18rem)] max-w-[18rem] md:max-w-none md:w-auto md:min-w-0 rounded-2xl border border-slate-200/90 bg-white/90 p-2.5 text-left shadow-sm transition-all hover:border-indigo-300 hover:shadow-md md:p-3">
+                        <div class="image-container overflow-hidden rounded-xl border border-slate-200/70 !aspect-[4/3]">
+                            <img src="./img/한시아님_어린이화Ph.png" alt="한시아님 꼬마변신 Ph" class="h-full w-full object-cover" loading="lazy" decoding="async" onerror="this.src='https://via.placeholder.com/400x300?text=Chibi'">
+                        </div>
+                        <p class="portfolio-tile-title mt-2 line-clamp-2 text-xs font-bold text-slate-900 md:text-sm">한시아님 · 꼬마변신</p>
+                    </button>
+                    <button type="button" class="portfolio-tile shrink-0 snap-center w-[min(86vw,18rem)] max-w-[18rem] md:max-w-none md:w-auto md:min-w-0 rounded-2xl border border-slate-200/90 bg-white/90 p-2.5 text-left shadow-sm transition-all hover:border-indigo-300 hover:shadow-md md:p-3">
+                        <div class="image-container overflow-hidden rounded-xl border border-slate-200/70 !aspect-[4/3] !bg-slate-950">
+                            <img src="./img/한시아님_어린이화.webp" alt="한시아님 꼬마변신" class="h-full w-full object-contain object-center" loading="lazy" decoding="async" onerror="this.src='https://via.placeholder.com/400x300?text=Child'">
+                        </div>
+                        <p class="portfolio-tile-title mt-2 line-clamp-2 text-xs font-bold text-slate-900 md:text-sm">한시아님 · 꼬마변신</p>
+                    </button>
+                    <button type="button" class="portfolio-tile shrink-0 snap-center w-[min(86vw,18rem)] max-w-[18rem] md:max-w-none md:w-auto md:min-w-0 rounded-2xl border border-slate-200/90 bg-white/90 p-2.5 text-left shadow-sm transition-all hover:border-indigo-300 hover:shadow-md md:p-3">
+                        <div class="image-container overflow-hidden rounded-xl border border-slate-200/70 !aspect-[4/3]">
+                            <img src="./img/한시아님_입김%20(2).webp" alt="한시아님 입김" class="h-full w-full object-cover" loading="lazy" decoding="async" onerror="this.src='https://via.placeholder.com/400x300?text=Breath'">
+                        </div>
+                        <p class="portfolio-tile-title mt-2 line-clamp-2 text-xs font-bold text-slate-900 md:text-sm">한시아님 · 입김</p>
+                    </button>
+                    <button type="button" class="portfolio-tile shrink-0 snap-center w-[min(86vw,18rem)] max-w-[18rem] md:max-w-none md:w-auto md:min-w-0 rounded-2xl border border-slate-200/90 bg-white/90 p-2.5 text-left shadow-sm transition-all hover:border-indigo-300 hover:shadow-md md:p-3">
+                        <div class="image-container overflow-hidden rounded-xl border border-slate-200/70 !aspect-[4/3]">
+                            <img src="./img/한시아님_하트.webp" alt="한시아님 하트" class="h-full w-full object-cover" loading="lazy" decoding="async" onerror="this.src='https://via.placeholder.com/400x300?text=Heart2'">
+                        </div>
+                        <p class="portfolio-tile-title mt-2 line-clamp-2 text-xs font-bold text-slate-900 md:text-sm">한시아님 · 하트</p>
+                    </button>
+                        </div>
+                    </div>
+                    <div class="portfolio-person-group">
+                        <h3 class="portfolio-person-heading">단테님</h3>
+                        <div class="portfolio-strip flex flex-nowrap gap-3 overflow-x-auto snap-x snap-mandatory px-1 pb-2 md:grid md:grid-cols-2 md:gap-4 md:overflow-visible md:px-0 md:pb-0">
+                    <button type="button" class="portfolio-tile shrink-0 snap-center w-[min(86vw,18rem)] max-w-[18rem] md:max-w-none md:w-auto md:min-w-0 rounded-2xl border border-slate-200/90 bg-white/90 p-2.5 text-left shadow-sm transition-all hover:border-indigo-300 hover:shadow-md md:p-3">
+                        <div class="image-container overflow-hidden rounded-xl border border-slate-200/70 !aspect-[4/3]">
+                            <img src="./img/단테님_졸기.webp" alt="단테님 졸기" class="h-full w-full object-cover" loading="lazy" decoding="async" onerror="this.src='https://via.placeholder.com/400x300?text=Sleep'">
+                        </div>
+                        <p class="portfolio-tile-title mt-2 line-clamp-2 text-xs font-bold text-slate-900 md:text-sm">단테님 · 졸기</p>
+                    </button>
+                    <button type="button" class="portfolio-tile shrink-0 snap-center w-[min(86vw,18rem)] max-w-[18rem] md:max-w-none md:w-auto md:min-w-0 rounded-2xl border border-slate-200/90 bg-white/90 p-2.5 text-left shadow-sm transition-all hover:border-indigo-300 hover:shadow-md md:p-3">
+                        <div class="image-container overflow-hidden rounded-xl border border-slate-200/70 !aspect-[4/3]">
+                            <img src="./img/단테님_하트.webp" alt="단테님 하트" class="h-full w-full object-cover" loading="lazy" decoding="async" onerror="this.src='https://via.placeholder.com/400x300?text=Heart'">
+                        </div>
+                        <p class="portfolio-tile-title mt-2 line-clamp-2 text-xs font-bold text-slate-900 md:text-sm">단테님 · 하트</p>
+                    </button>
+                        </div>
+                    </div>
+                    <div class="portfolio-person-group">
+                        <h3 class="portfolio-person-heading">김뚜야님</h3>
+                        <div class="portfolio-strip flex flex-nowrap gap-3 overflow-x-auto snap-x snap-mandatory px-1 pb-2 md:grid md:grid-cols-3 md:gap-4 md:overflow-visible md:px-0 md:pb-0">
+                    <button type="button" class="portfolio-tile shrink-0 snap-center w-[min(86vw,18rem)] max-w-[18rem] md:max-w-none md:w-auto md:min-w-0 rounded-2xl border border-slate-200/90 bg-white/90 p-2.5 text-left shadow-sm transition-all hover:border-indigo-300 hover:shadow-md md:p-3">
+                        <div class="image-container overflow-hidden rounded-xl border border-slate-200/70 !aspect-[4/3]">
+                            <img src="./img/김뚜야님_동전쏟아지기.webp" alt="김뚜야님 동전 쏟아지기" class="h-full w-full object-cover" loading="lazy" decoding="async" onerror="this.src='https://via.placeholder.com/400x300?text=Coins'">
+                        </div>
+                        <p class="portfolio-tile-title mt-2 line-clamp-2 text-xs font-bold text-slate-900 md:text-sm">김뚜야님 · 동전 쏟아지기</p>
+                    </button>
+                    <button type="button" class="portfolio-tile shrink-0 snap-center w-[min(86vw,18rem)] max-w-[18rem] md:max-w-none md:w-auto md:min-w-0 rounded-2xl border border-slate-200/90 bg-white/90 p-2.5 text-left shadow-sm transition-all hover:border-indigo-300 hover:shadow-md md:p-3">
+                        <div class="image-container overflow-hidden rounded-xl border border-slate-200/70 !aspect-[4/3]">
+                            <img src="./img/김뚜야님_하트.webp" alt="김뚜야님 하트" class="h-full w-full object-cover" loading="lazy" decoding="async" onerror="this.src='https://via.placeholder.com/400x300?text=Heart'">
+                        </div>
+                        <p class="portfolio-tile-title mt-2 line-clamp-2 text-xs font-bold text-slate-900 md:text-sm">김뚜야님 · 하트</p>
+                    </button>
+                    <button type="button" class="portfolio-tile shrink-0 snap-center w-[min(86vw,18rem)] max-w-[18rem] md:max-w-none md:w-auto md:min-w-0 rounded-2xl border border-slate-200/90 bg-white/90 p-2.5 text-left shadow-sm transition-all hover:border-indigo-300 hover:shadow-md md:p-3">
+                        <div class="image-container overflow-hidden rounded-xl border border-slate-200/70 !aspect-[4/3]">
+                            <img src="./img/김뚜야님_한개던지기.webp" alt="김뚜야님 한 개 던지기" class="h-full w-full object-cover" loading="lazy" decoding="async" onerror="this.src='https://via.placeholder.com/400x300?text=Throw'">
+                        </div>
+                        <p class="portfolio-tile-title mt-2 line-clamp-2 text-xs font-bold text-slate-900 md:text-sm">김뚜야님 · 한 개 던지기</p>
+                    </button>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 relative">
-                <div class="text-center group soft-card rounded-[1.75rem] p-4">
-                    <div class="w-12 h-12 bg-white rounded-2xl shadow-sm border border-slate-200 flex items-center justify-center mx-auto mb-3">
-                        <span class="text-indigo-600 font-bold">01</span>
-                    </div>
-                    <p class="text-sm font-bold text-slate-800">문의하기</p>
+        </details>
+    </section>
+
+    <!-- Order Process -->
+    <section class="max-w-4xl mx-auto px-4 pb-12 md:px-6 md:pb-24">
+        <div class="section-shell rounded-2xl md:rounded-[2.5rem] p-4 sm:p-6 md:p-10">
+            <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-2 sm:gap-4 mb-4 md:mb-8">
+                <div>
+                    <span class="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-600 text-[11px] md:text-xs font-bold mb-2 md:mb-4">
+                        Order Flow
+                    </span>
+                    <h2 class="text-lg sm:text-xl md:text-3xl font-bold text-slate-900 leading-snug">문의부터 작업 완료까지</h2>
                 </div>
-                <div class="text-center group soft-card rounded-[1.75rem] p-4">
-                    <div class="w-12 h-12 bg-white rounded-2xl shadow-sm border border-slate-200 flex items-center justify-center mx-auto mb-3">
-                        <span class="text-indigo-600 font-bold">02</span>
+            </div>
+            <div class="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-3 md:gap-4 relative">
+                <div class="text-center group soft-card rounded-xl md:rounded-[1.75rem] p-2 sm:p-3 md:p-4">
+                    <div class="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-white rounded-lg sm:rounded-xl md:rounded-2xl shadow-sm border border-slate-200 flex items-center justify-center mx-auto mb-1.5 sm:mb-2 md:mb-3">
+                        <span class="text-indigo-600 font-bold text-xs sm:text-sm md:text-base">01</span>
                     </div>
-                    <p class="text-sm font-bold text-slate-800">일정안내</p>
+                    <p class="text-[11px] sm:text-xs md:text-sm font-bold text-slate-800 leading-tight">문의하기</p>
                 </div>
-                <div class="text-center group soft-card rounded-[1.75rem] p-4">
-                    <div class="w-12 h-12 bg-white rounded-2xl shadow-sm border border-slate-200 flex items-center justify-center mx-auto mb-3">
-                        <span class="text-indigo-600 font-bold">03</span>
+                <div class="text-center group soft-card rounded-xl md:rounded-[1.75rem] p-2 sm:p-3 md:p-4">
+                    <div class="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-white rounded-lg sm:rounded-xl md:rounded-2xl shadow-sm border border-slate-200 flex items-center justify-center mx-auto mb-1.5 sm:mb-2 md:mb-3">
+                        <span class="text-indigo-600 font-bold text-xs sm:text-sm md:text-base">02</span>
                     </div>
-                    <p class="text-sm font-bold text-slate-800">항목 선택</p>
+                    <p class="text-[11px] sm:text-xs md:text-sm font-bold text-slate-800 leading-tight">일정안내</p>
                 </div>
-                <div class="text-center group soft-card rounded-[1.75rem] p-4">
-                    <div class="w-12 h-12 bg-white rounded-2xl shadow-sm border border-slate-200 flex items-center justify-center mx-auto mb-3">
-                        <span class="text-indigo-600 font-bold">04</span>
+                <div class="text-center group soft-card rounded-xl md:rounded-[1.75rem] p-2 sm:p-3 md:p-4">
+                    <div class="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-white rounded-lg sm:rounded-xl md:rounded-2xl shadow-sm border border-slate-200 flex items-center justify-center mx-auto mb-1.5 sm:mb-2 md:mb-3">
+                        <span class="text-indigo-600 font-bold text-xs sm:text-sm md:text-base">03</span>
                     </div>
-                    <p class="text-sm font-bold text-slate-800">입금</p>
+                    <p class="text-[11px] sm:text-xs md:text-sm font-bold text-slate-800 leading-tight">항목 선택</p>
                 </div>
-                <div class="text-center group soft-card rounded-[1.75rem] p-4">
-                    <div class="w-12 h-12 bg-white rounded-2xl shadow-sm border border-slate-200 flex items-center justify-center mx-auto mb-3">
-                        <span class="text-indigo-600 font-bold">05</span>
+                <div class="text-center group soft-card rounded-xl md:rounded-[1.75rem] p-2 sm:p-3 md:p-4">
+                    <div class="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-white rounded-lg sm:rounded-xl md:rounded-2xl shadow-sm border border-slate-200 flex items-center justify-center mx-auto mb-1.5 sm:mb-2 md:mb-3">
+                        <span class="text-indigo-600 font-bold text-xs sm:text-sm md:text-base">04</span>
                     </div>
-                    <p class="text-sm font-bold text-slate-800">작업</p>
+                    <p class="text-[11px] sm:text-xs md:text-sm font-bold text-slate-800 leading-tight">입금</p>
                 </div>
-                <div class="text-center group soft-card rounded-[1.75rem] p-4 bg-gradient-to-br from-indigo-600 to-violet-600 border-indigo-500/30">
-                    <div class="w-12 h-12 bg-white/10 rounded-2xl shadow-md border border-white/10 flex items-center justify-center mx-auto mb-3">
-                        <span class="text-white font-bold">06</span>
+                <div class="text-center group soft-card rounded-xl md:rounded-[1.75rem] p-2 sm:p-3 md:p-4">
+                    <div class="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-white rounded-lg sm:rounded-xl md:rounded-2xl shadow-sm border border-slate-200 flex items-center justify-center mx-auto mb-1.5 sm:mb-2 md:mb-3">
+                        <span class="text-indigo-600 font-bold text-xs sm:text-sm md:text-base">05</span>
                     </div>
-                    <p class="text-sm font-bold text-white">완료</p>
+                    <p class="text-[11px] sm:text-xs md:text-sm font-bold text-slate-800 leading-tight">작업</p>
+                </div>
+                <div class="text-center group soft-card rounded-xl md:rounded-[1.75rem] p-2 sm:p-3 md:p-4 bg-gradient-to-br from-indigo-600 to-violet-600 border-indigo-500/30">
+                    <div class="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-white/10 rounded-lg sm:rounded-xl md:rounded-2xl shadow-md border border-white/10 flex items-center justify-center mx-auto mb-1.5 sm:mb-2 md:mb-3">
+                        <span class="text-white font-bold text-xs sm:text-sm md:text-base">06</span>
+                    </div>
+                    <p class="text-[11px] sm:text-xs md:text-sm font-bold text-white leading-tight">완료</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Additional Info Section -->
-    <section class="max-w-4xl mx-auto px-6 pb-24">
-        <div class="section-shell rounded-[2.5rem] p-8 md:p-10">
-            <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8">
+    <section class="max-w-4xl mx-auto px-4 pb-12 md:px-6 md:pb-24">
+        <div class="section-shell rounded-2xl md:rounded-[2.5rem] p-4 sm:p-6 md:p-10">
+            <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-2 sm:gap-4 mb-4 md:mb-8">
                 <div>
-                    <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-600 text-xs font-bold mb-4">
+                    <span class="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-600 text-[11px] md:text-xs font-bold mb-2 md:mb-4">
                         Information
                     </span>
-                    <h2 class="text-2xl md:text-3xl font-bold text-slate-900">문의 전 확인해 주세요</h2>
+                    <h2 class="text-lg sm:text-xl md:text-3xl font-bold text-slate-900 leading-snug">문의 전 확인해 주세요</h2>
                 </div>
            
             </div>
-            <div class="grid md:grid-cols-3 gap-4">
-                <div class="soft-card rounded-[1.75rem] p-6">
-                    <p class="text-xs font-bold tracking-[0.18em] uppercase text-indigo-500 mb-3">FAST TRACK</p>
-                    <p class="text-lg font-bold text-slate-900 mb-2">작업 시작은 문의 후 안내</p>
-                    <p class="text-sm text-slate-500 leading-relaxed">선택하신 API 세팅작업은 문의 후 진행됩니다.</p>
+            <div class="grid md:grid-cols-3 gap-2.5 sm:gap-3 md:gap-4">
+                <div class="soft-card rounded-xl md:rounded-[1.75rem] p-4 md:p-6">
+                    <p class="text-[10px] md:text-xs font-bold tracking-[0.15em] md:tracking-[0.18em] uppercase text-indigo-500 mb-1.5 md:mb-3">FAST TRACK</p>
+                    <p class="text-base md:text-lg font-bold text-slate-900 mb-1 md:mb-2 leading-snug">작업 시작은 문의 후 안내</p>
+                    <p class="text-xs md:text-sm text-slate-500 leading-snug md:leading-relaxed">선택하신 API 세팅작업은 문의 후 진행됩니다.</p>
                 </div>
-                <div class="soft-card rounded-[1.75rem] p-6">
-                    <p class="text-xs font-bold tracking-[0.18em] uppercase text-violet-500 mb-3">Timeline</p>
-                    <p class="text-lg font-bold text-slate-900 mb-2">작업 기간 최대 일주일</p>
-                    <p class="text-sm text-slate-500 leading-relaxed">주문량과 난이도에 따라 기간이 달라질 수 있으며, 일정은 사전 안내드립니다.</p>
+                <div class="soft-card rounded-xl md:rounded-[1.75rem] p-4 md:p-6">
+                    <p class="text-[10px] md:text-xs font-bold tracking-[0.15em] md:tracking-[0.18em] uppercase text-violet-500 mb-1.5 md:mb-3">Timeline</p>
+                    <p class="text-base md:text-lg font-bold text-slate-900 mb-1 md:mb-2 leading-snug">작업 기간 최대 일주일</p>
+                    <p class="text-xs md:text-sm text-slate-500 leading-snug md:leading-relaxed">주문량과 난이도에 따라 기간이 달라질 수 있으며, 일정은 사전 안내드립니다.</p>
                 </div>
-                <div class="soft-card rounded-[1.75rem] p-6">
-                    <p class="text-xs font-bold tracking-[0.18em] uppercase text-emerald-500 mb-3">Setup</p>
-                    <p class="text-lg font-bold text-slate-900 mb-2">설치 및 세팅 지원</p>
-                    <p class="text-sm text-slate-500 leading-relaxed">파일만 전달하는 방식이 아니라 실제 적용까지 함께 진행합니다.</p>
+                <div class="soft-card rounded-xl md:rounded-[1.75rem] p-4 md:p-6">
+                    <p class="text-[10px] md:text-xs font-bold tracking-[0.15em] md:tracking-[0.18em] uppercase text-emerald-500 mb-1.5 md:mb-3">Setup</p>
+                    <p class="text-base md:text-lg font-bold text-slate-900 mb-1 md:mb-2 leading-snug">설치 및 세팅 지원</p>
+                    <p class="text-xs md:text-sm text-slate-500 leading-snug md:leading-relaxed">파일만 전달하는 방식이 아니라 실제 적용까지 함께 진행합니다.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Inquiry Form Section -->
-    <section class="max-w-4xl mx-auto px-6 pb-24">
-        <div class="overflow-hidden rounded-[2.75rem] border border-white/70 shadow-[0_32px_80px_rgba(15,23,42,0.12)] bg-white/85 backdrop-blur-xl">
-            <div class="hero-bg px-8 py-8 md:px-14 md:py-10 relative overflow-hidden">
+    <section class="max-w-4xl mx-auto px-4 pb-12 md:px-6 md:pb-24">
+        <div class="overflow-hidden rounded-2xl md:rounded-[2.75rem] border border-white/70 shadow-[0_32px_80px_rgba(15,23,42,0.12)] bg-white/85 backdrop-blur-xl">
+            <div class="hero-bg px-4 py-6 sm:px-8 sm:py-8 md:px-14 md:py-10 relative overflow-hidden">
                 <div class="hero-outline"></div>
                 <div class="relative z-10">
-                    <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/15 text-white text-xs font-bold mb-5">
+                    <span class="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-white/10 border border-white/15 text-white text-[11px] md:text-xs font-bold mb-3 md:mb-5">
                         Contact Form
                     </span>
-                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-3">문의 양식</h2>
-                    <p class="text-slate-300 max-w-2xl leading-relaxed">플랫폼, 버전, 원하는 API 조건선택 후 작성한 양식 복사하기 버튼을 누르시면 내용이 복사됩니다.</p>
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 md:mb-3 leading-tight">문의 양식</h2>
+                    <p class="text-slate-300 max-w-2xl text-sm md:text-base leading-relaxed">플랫폼, 버전, 원하는 API 조건선택 후 작성한 양식 복사하기 버튼을 누르시면 내용이 복사됩니다.</p>
                 </div>
             </div>
-            <div class="p-8 md:p-14">
-            <div class="text-center mb-12">
-            </div> 
+            <div class="p-4 sm:p-6 md:p-14">
 
-            <div class="space-y-10">
+            <div class="space-y-6 md:space-y-10">
                 <!-- Basic Info -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8">
                     <div>
-                        <label class="block text-sm font-bold text-slate-800 mb-3">
+                        <label class="block text-sm font-bold text-slate-800 mb-2 md:mb-3">
                             1. 방송 플랫폼 <span class="text-red-500 font-bold">* (필수)</span>
                         </label>
-                        <div class="flex gap-4">
-                            <label class="flex-1 flex items-center gap-3 p-4 bg-slate-50 border-2 border-slate-200 rounded-2xl cursor-pointer has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 transition-all">
-                                <input type="radio" name="platform" id="platformChzz" value="치지직" class="accent-indigo-600 w-4 h-4">
-                                <span class="font-bold text-slate-800">치지직</span>
+                        <div class="flex gap-2 sm:gap-3 md:gap-4">
+                            <label class="flex-1 flex items-center justify-center gap-2 sm:gap-3 p-3 sm:p-4 bg-slate-50 border-2 border-slate-200 rounded-xl sm:rounded-2xl cursor-pointer has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 transition-all min-h-[3rem]">
+                                <input type="radio" name="platform" id="platformChzz" value="치지직" class="accent-indigo-600 w-4 h-4 shrink-0">
+                                <span class="font-bold text-slate-800 text-sm sm:text-base">치지직</span>
                             </label>
-                            <label class="flex-1 flex items-center gap-3 p-4 bg-slate-50 border-2 border-slate-200 rounded-2xl cursor-pointer has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 transition-all">
-                                <input type="radio" name="platform" id="platformSoop" value="SOOP" class="accent-indigo-600 w-4 h-4">
-                                <span class="font-bold text-slate-800">SOOP</span>
+                            <label class="flex-1 flex items-center justify-center gap-2 sm:gap-3 p-3 sm:p-4 bg-slate-50 border-2 border-slate-200 rounded-xl sm:rounded-2xl cursor-pointer has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 transition-all min-h-[3rem]">
+                                <input type="radio" name="platform" id="platformSoop" value="SOOP" class="accent-indigo-600 w-4 h-4 shrink-0">
+                                <span class="font-bold text-slate-800 text-sm sm:text-base">SOOP</span>
                             </label>
                         </div>
                     </div>
                     <div>
-                        <label class="block text-sm font-bold text-slate-800 mb-3">
+                        <label class="block text-sm font-bold text-slate-800 mb-2 md:mb-3">
                             2. 방송 닉네임 <span class="text-red-500 font-bold">* (필수)</span>
                         </label>
                         <input type="text" id="nickname" placeholder="활동 중이신 닉네임을 입력하세요" 
-                               class="w-full px-5 py-4 rounded-2xl bg-slate-50 border border-slate-200 outline-none focus:bg-white focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 transition-all">
+                               class="w-full px-4 py-3 sm:px-5 sm:py-4 rounded-xl sm:rounded-2xl bg-slate-50 border border-slate-200 outline-none focus:bg-white focus:border-indigo-500 focus:ring-2 sm:focus:ring-4 focus:ring-indigo-500/10 transition-all text-sm sm:text-base">
                     </div>
                 </div>
 
                 <!-- Warudo Mod Version -->
                 <div>
-                    <label class="block text-sm font-bold text-slate-800 mb-3">
+                    <label class="block text-sm font-bold text-slate-800 mb-2 md:mb-3">
                         3. Warudo Mod 버전 <span class="text-red-500 font-bold">* (필수)</span>
                     </label>
-                    <div class="flex gap-4 md:w-1/2">
-                        <label class="flex-1 flex items-center gap-3 p-4 bg-slate-50 border-2 border-slate-200 rounded-2xl cursor-pointer has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 transition-all">
-                            <input type="radio" name="warudoMod" id="modPro" value="Pro" class="accent-indigo-600 w-4 h-4">
-                            <span class="font-bold text-slate-800">Pro</span>
+                    <div class="flex gap-2 sm:gap-3 md:gap-4 md:max-w-md">
+                        <label class="flex-1 flex items-center justify-center gap-2 sm:gap-3 p-3 sm:p-4 bg-slate-50 border-2 border-slate-200 rounded-xl sm:rounded-2xl cursor-pointer has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 transition-all min-h-[3rem]">
+                            <input type="radio" name="warudoMod" id="modPro" value="Pro" class="accent-indigo-600 w-4 h-4 shrink-0">
+                            <span class="font-bold text-slate-800 text-sm sm:text-base">Pro</span>
                         </label>
-                        <label class="flex-1 flex items-center gap-3 p-4 bg-slate-50 border-2 border-slate-200 rounded-2xl cursor-pointer has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 transition-all">
-                            <input type="radio" name="warudoMod" id="modStandard" value="일반" class="accent-indigo-600 w-4 h-4">
-                            <span class="font-bold text-slate-800">일반</span>
+                        <label class="flex-1 flex items-center justify-center gap-2 sm:gap-3 p-3 sm:p-4 bg-slate-50 border-2 border-slate-200 rounded-xl sm:rounded-2xl cursor-pointer has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 transition-all min-h-[3rem]">
+                            <input type="radio" name="warudoMod" id="modStandard" value="일반" class="accent-indigo-600 w-4 h-4 shrink-0">
+                            <span class="font-bold text-slate-800 text-sm sm:text-base">일반</span>
                         </label>
                     </div>
                 </div>
 
                 <!-- API Selection -->
                 <div>
-                    <label class="block text-sm font-bold text-slate-800 mb-5">4. 원하시는 API 선택<span class="text-red-500 font-bold"> * (필수)</span></label>
-                    <p class="text-sm text-slate-500 leading-relaxed mb-5">원하시는 API를 체크해 주신 후 발동될 개수를 입력해주세요<br>
-                      예시) 별풍선 10개가 들어오면 치즈가 날아옵니다.</p>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div class="api-option flex items-center gap-3 p-4 bg-slate-50 rounded-2xl border-2 border-slate-200 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 transition-all">
-                            <label class="flex items-center gap-4 flex-1 cursor-pointer min-w-0">
-                                <img src="./img/한개던지기.webp" class="w-12 h-12 object-cover rounded-lg shadow-sm" onerror="this.src='https://via.placeholder.com/48?text=TH'">
-                                <span class="text-sm font-medium text-slate-600 flex-1 min-w-0"><span class="inline-flex items-center justify-center w-8 h-8 rounded-xl bg-slate-900 text-white text-xs font-black mr-2 align-middle">01</span>하나 던지기</span>
-                                <input type="checkbox" name="apiItems" value="01. 하나 던지기" class="api-checkbox h-5 w-5 accent-indigo-600 shrink-0">
+                    <label class="block text-sm font-bold text-slate-800 mb-2 md:mb-4">4. 원하시는 API 선택<span class="text-red-500 font-bold"> * (필수)</span></label>
+                    <p class="text-xs sm:text-sm text-slate-500 leading-relaxed mb-3 md:mb-5">원하시는 API를 체크한 뒤 발동될 개수를 입력해 주세요. 예) 별풍선 10개가 들어오면 치즈가 날아옵니다.</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 md:gap-4">
+                        <div class="api-option flex flex-wrap items-center gap-2 p-3 sm:flex-nowrap sm:items-center sm:gap-3 sm:p-4 bg-slate-50 rounded-xl sm:rounded-2xl border-2 border-slate-200 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 transition-all">
+                            <label class="flex items-center gap-2 sm:gap-3 flex-1 cursor-pointer min-w-0">
+                                <img src="./img/날개.webp" class="w-10 h-10 sm:w-12 sm:h-12 object-cover rounded-md sm:rounded-lg shadow-sm shrink-0" onerror="this.src='https://via.placeholder.com/48?text=WG'">
+                                <span class="text-xs sm:text-sm font-medium text-slate-600 flex-1 min-w-0 leading-snug"><span class="inline-flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-slate-900 text-white text-[10px] sm:text-xs font-black mr-1.5 sm:mr-2 align-middle shrink-0">01</span>천사 모션</span>
+                                <input type="checkbox" name="apiItems" value="01. 천사 모션" class="api-checkbox h-5 w-5 accent-indigo-600 shrink-0">
                             </label>
-                            <input type="number" min="1" placeholder="개수" class="api-count-input w-20 px-3 py-2 text-sm text-center bg-white rounded-xl border border-slate-300 focus:border-indigo-500 outline-none font-bold disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed" disabled>
+                            <input type="number" min="1" placeholder="개수" class="api-count-input w-[4.25rem] sm:w-20 min-h-[2.75rem] sm:min-h-0 px-2 sm:px-3 py-2 text-xs sm:text-sm text-center bg-white rounded-lg sm:rounded-xl border border-slate-300 focus:border-indigo-500 outline-none font-bold disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed shrink-0" disabled>
                         </div>
-                        <div class="api-option no-api-count-input flex items-center gap-3 p-4 bg-slate-50 rounded-2xl border-2 border-slate-200 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 transition-all">
-                            <label class="flex items-center gap-4 flex-1 cursor-pointer min-w-0">
-                                <img src="./img/자리비움.webp" class="w-12 h-12 object-cover rounded-lg shadow-sm" onerror="this.src='https://via.placeholder.com/48?text=AFK'">
-                                <span class="text-sm font-medium text-slate-600 flex-1 min-w-0"><span class="inline-flex items-center justify-center w-8 h-8 rounded-xl bg-slate-900 text-white text-xs font-black mr-2 align-middle">02</span>ZZZ 애니메이션 & 졸기</span>
-                                <input type="checkbox" name="apiItems" value="02. ZZZ 애니메이션 & 졸기" class="api-checkbox h-5 w-5 accent-indigo-600 shrink-0">
-                            </label>
-                        </div>
-                        <div class="api-option flex items-center gap-3 p-4 bg-slate-50 rounded-2xl border-2 border-slate-200 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 transition-all">
-                            <label class="flex items-center gap-4 flex-1 cursor-pointer min-w-0">
-                                <img src="./img/동전쏟아지기.webp" class="w-12 h-12 object-cover rounded-lg shadow-sm" onerror="this.src='https://via.placeholder.com/48?text=CN'">
-                                <span class="text-sm font-medium text-slate-600 flex-1 min-w-0"><span class="inline-flex items-center justify-center w-8 h-8 rounded-xl bg-slate-900 text-white text-xs font-black mr-2 align-middle">03</span>동전 쏟아지기</span>
-                                <input type="checkbox" name="apiItems" value="03. 동전 쏟아지기" class="api-checkbox h-5 w-5 accent-indigo-600 shrink-0">
-                            </label>
-                            <input type="number" min="1" placeholder="개수" class="api-count-input w-20 px-3 py-2 text-sm text-center bg-white rounded-xl border border-slate-300 focus:border-indigo-500 outline-none font-bold disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed" disabled>
-                        </div>
-                        <div class="api-option no-api-count-input flex items-center gap-3 p-4 bg-slate-50 rounded-2xl border-2 border-slate-200 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 transition-all">
-                            <label class="flex items-center gap-4 flex-1 cursor-pointer min-w-0">
-                                <img src="./img/물음표핑.webp" class="w-12 h-12 object-cover rounded-lg shadow-sm" onerror="this.src='https://via.placeholder.com/48?text=QM'">
-                                <span class="text-sm font-medium text-slate-600 flex-1 min-w-0"><span class="inline-flex items-center justify-center w-8 h-8 rounded-xl bg-slate-900 text-white text-xs font-black mr-2 align-middle">04</span>물음표 채팅 인터랙션</span>
-                                <input type="checkbox" name="apiItems" value="04. 물음표 채팅 인터랙션" class="api-checkbox h-5 w-5 accent-indigo-600 shrink-0">
+                        <div class="api-option no-api-count-input flex flex-wrap items-center gap-2 p-3 sm:flex-nowrap sm:items-center sm:gap-3 sm:p-4 bg-slate-50 rounded-xl sm:rounded-2xl border-2 border-slate-200 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 transition-all">
+                            <label class="flex items-center gap-2 sm:gap-3 flex-1 cursor-pointer min-w-0">
+                                <img src="./img/sio.gif" alt="" class="w-10 h-10 sm:w-12 sm:h-12 object-contain bg-black rounded-md sm:rounded-lg shadow-sm shrink-0" onerror="this.src='https://via.placeholder.com/48?text=SIO'">
+                                <span class="text-xs sm:text-sm font-medium text-slate-600 flex-1 min-w-0 leading-snug"><span class="inline-flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-slate-900 text-white text-[10px] sm:text-xs font-black mr-1.5 sm:mr-2 align-middle shrink-0">02</span>꼬마변신</span>
+                                <input type="checkbox" name="apiItems" value="02. 꼬마변신" class="api-checkbox h-5 w-5 accent-indigo-600 shrink-0">
                             </label>
                         </div>
-                        <div class="api-option flex items-center gap-3 p-4 bg-slate-50 rounded-2xl border-2 border-slate-200 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 transition-all">
-                            <label class="flex items-center gap-4 flex-1 cursor-pointer min-w-0">
-                                <img src="./img/하트쏟아지기.webp" class="w-12 h-12 object-cover rounded-lg shadow-sm" onerror="this.src='https://via.placeholder.com/48?text=H1'">
-                                <span class="text-sm font-medium text-slate-600 flex-1 min-w-0"><span class="inline-flex items-center justify-center w-8 h-8 rounded-xl bg-slate-900 text-white text-xs font-black mr-2 align-middle">05</span>하트 쏟아지기 Type 1</span>
-                                <input type="checkbox" name="apiItems" value="05. 하트 쏟아지기 Type 1" class="api-checkbox h-5 w-5 accent-indigo-600 shrink-0">
-                            </label>
-                            <input type="number" min="1" placeholder="개수" class="api-count-input w-20 px-3 py-2 text-sm text-center bg-white rounded-xl border border-slate-300 focus:border-indigo-500 outline-none font-bold disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed" disabled>
-                        </div>
-                        <div class="api-option flex items-center gap-3 p-4 bg-slate-50 rounded-2xl border-2 border-slate-200 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 transition-all">
-                            <label class="flex items-center gap-4 flex-1 cursor-pointer min-w-0">
-                                <img src="./img/하트발사.webp" class="w-12 h-12 object-cover rounded-lg shadow-sm" onerror="this.src='https://via.placeholder.com/48?text=H2'">
-                                <span class="text-sm font-medium text-slate-600 flex-1 min-w-0"><span class="inline-flex items-center justify-center w-8 h-8 rounded-xl bg-slate-900 text-white text-xs font-black mr-2 align-middle">06</span>하트 쏟아지기 Type 2</span>
-                                <input type="checkbox" name="apiItems" value="06. 하트 쏟아지기 Type 2" class="api-checkbox h-5 w-5 accent-indigo-600 shrink-0">
-                            </label>
-                            <input type="number" min="1" placeholder="개수" class="api-count-input w-20 px-3 py-2 text-sm text-center bg-white rounded-xl border border-slate-300 focus:border-indigo-500 outline-none font-bold disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed" disabled>
-                        </div>
-                        <div class="api-option flex items-center gap-3 p-4 bg-slate-50 rounded-2xl border-2 border-slate-200 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 transition-all">
-                            <label class="flex items-center gap-4 flex-1 cursor-pointer min-w-0">
-                                <img src="./img/치즈붙히기.webp" class="w-12 h-12 object-cover rounded-lg shadow-sm" onerror="this.src='https://via.placeholder.com/48?text=CH'">
-                                <span class="text-sm font-medium text-slate-600 flex-1 min-w-0"><span class="inline-flex items-center justify-center w-8 h-8 rounded-xl bg-slate-900 text-white text-xs font-black mr-2 align-middle">07</span>Prop 랜덤 붙이기</span>
-                                <input type="checkbox" name="apiItems" value="07. Prop 랜덤 붙이기" class="api-checkbox h-5 w-5 accent-indigo-600 shrink-0">
-                            </label>
-                            <input type="number" min="1" placeholder="개수" class="api-count-input w-20 px-3 py-2 text-sm text-center bg-white rounded-xl border border-slate-300 focus:border-indigo-500 outline-none font-bold disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed" disabled>
-                        </div>
-                        <div class="api-option no-api-count-input flex items-center gap-3 p-4 bg-slate-50 rounded-2xl border-2 border-slate-200 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 transition-all">
-                            <label class="flex items-center gap-4 flex-1 cursor-pointer min-w-0">
-                                <img src="./img/비누방울.webp" class="w-12 h-12 object-cover rounded-lg shadow-sm" onerror="this.src='https://via.placeholder.com/48?text=BB'">
-                                <span class="text-sm font-medium text-slate-600 flex-1 min-w-0"><span class="inline-flex items-center justify-center w-8 h-8 rounded-xl bg-slate-900 text-white text-xs font-black mr-2 align-middle">08</span>비누방울</span>
-                                <input type="checkbox" name="apiItems" value="08. 비누방울" class="api-checkbox h-5 w-5 accent-indigo-600 shrink-0">
+                        <div class="api-option no-api-count-input flex flex-wrap items-center gap-2 p-3 sm:flex-nowrap sm:items-center sm:gap-3 sm:p-4 bg-slate-50 rounded-xl sm:rounded-2xl border-2 border-slate-200 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 transition-all">
+                            <label class="flex items-center gap-2 sm:gap-3 flex-1 cursor-pointer min-w-0">
+                                <img src="./img/자리비움.webp" class="w-10 h-10 sm:w-12 sm:h-12 object-cover rounded-md sm:rounded-lg shadow-sm shrink-0" onerror="this.src='https://via.placeholder.com/48?text=AFK'">
+                                <span class="text-xs sm:text-sm font-medium text-slate-600 flex-1 min-w-0 leading-snug"><span class="inline-flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-slate-900 text-white text-[10px] sm:text-xs font-black mr-1.5 sm:mr-2 align-middle shrink-0">03</span>ZZZ 애니메이션 & 졸기</span>
+                                <input type="checkbox" name="apiItems" value="03. ZZZ 애니메이션 & 졸기" class="api-checkbox h-5 w-5 accent-indigo-600 shrink-0">
                             </label>
                         </div>
-                        <div class="api-option no-api-count-input flex items-center gap-3 p-4 bg-slate-50 rounded-2xl border-2 border-slate-200 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 transition-all">
-                            <label class="flex items-center gap-4 flex-1 cursor-pointer min-w-0">
-                                <img src="./img/윙크.webp" class="w-12 h-12 object-cover rounded-lg shadow-sm" onerror="this.src='https://via.placeholder.com/48?text=WK'">
-                                <span class="text-sm font-medium text-slate-600 flex-1 min-w-0"><span class="inline-flex items-center justify-center w-8 h-8 rounded-xl bg-slate-900 text-white text-xs font-black mr-2 align-middle">09</span>윙크</span>
-                                <input type="checkbox" name="apiItems" value="09. 윙크" class="api-checkbox h-5 w-5 accent-indigo-600 shrink-0">
+                        <div class="api-option flex flex-wrap items-center gap-2 p-3 sm:flex-nowrap sm:items-center sm:gap-3 sm:p-4 bg-slate-50 rounded-xl sm:rounded-2xl border-2 border-slate-200 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 transition-all">
+                            <label class="flex items-center gap-2 sm:gap-3 flex-1 cursor-pointer min-w-0">
+                                <img src="./img/동전쏟아지기.webp" class="w-10 h-10 sm:w-12 sm:h-12 object-cover rounded-md sm:rounded-lg shadow-sm shrink-0" onerror="this.src='https://via.placeholder.com/48?text=CN'">
+                                <span class="text-xs sm:text-sm font-medium text-slate-600 flex-1 min-w-0 leading-snug"><span class="inline-flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-slate-900 text-white text-[10px] sm:text-xs font-black mr-1.5 sm:mr-2 align-middle shrink-0">04</span>동전 쏟아지기</span>
+                                <input type="checkbox" name="apiItems" value="04. 동전 쏟아지기" class="api-checkbox h-5 w-5 accent-indigo-600 shrink-0">
+                            </label>
+                            <input type="number" min="1" placeholder="개수" class="api-count-input w-[4.25rem] sm:w-20 min-h-[2.75rem] sm:min-h-0 px-2 sm:px-3 py-2 text-xs sm:text-sm text-center bg-white rounded-lg sm:rounded-xl border border-slate-300 focus:border-indigo-500 outline-none font-bold disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed shrink-0" disabled>
+                        </div>
+                        <div class="api-option no-api-count-input flex flex-wrap items-center gap-2 p-3 sm:flex-nowrap sm:items-center sm:gap-3 sm:p-4 bg-slate-50 rounded-xl sm:rounded-2xl border-2 border-slate-200 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 transition-all">
+                            <label class="flex items-center gap-2 sm:gap-3 flex-1 cursor-pointer min-w-0">
+                                <img src="./img/물음표핑.webp" class="w-10 h-10 sm:w-12 sm:h-12 object-cover rounded-md sm:rounded-lg shadow-sm shrink-0" onerror="this.src='https://via.placeholder.com/48?text=QM'">
+                                <span class="text-xs sm:text-sm font-medium text-slate-600 flex-1 min-w-0 leading-snug"><span class="inline-flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-slate-900 text-white text-[10px] sm:text-xs font-black mr-1.5 sm:mr-2 align-middle shrink-0">05</span>물음표 채팅 인터랙션</span>
+                                <input type="checkbox" name="apiItems" value="05. 물음표 채팅 인터랙션" class="api-checkbox h-5 w-5 accent-indigo-600 shrink-0">
                             </label>
                         </div>
-                        <div class="api-option no-api-count-input flex items-center gap-3 p-4 bg-slate-50 rounded-2xl border-2 border-slate-200 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 transition-all">
-                            <label class="flex items-center gap-4 flex-1 cursor-pointer min-w-0">
-                                <img src="./img/입김.webp" class="w-12 h-12 object-cover rounded-lg shadow-sm" onerror="this.src='https://via.placeholder.com/48?text=BR'">
-                                <span class="text-sm font-medium text-slate-600 flex-1 min-w-0"><span class="inline-flex items-center justify-center w-8 h-8 rounded-xl bg-slate-900 text-white text-xs font-black mr-2 align-middle">10</span>입김</span>
-                                <input type="checkbox" name="apiItems" value="10. 입김" class="api-checkbox h-5 w-5 accent-indigo-600 shrink-0">
+                        <div class="api-option flex flex-wrap items-center gap-2 p-3 sm:flex-nowrap sm:items-center sm:gap-3 sm:p-4 bg-slate-50 rounded-xl sm:rounded-2xl border-2 border-slate-200 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 transition-all">
+                            <label class="flex items-center gap-2 sm:gap-3 flex-1 cursor-pointer min-w-0">
+                                <img src="./img/하트쏟아지기.webp" class="w-10 h-10 sm:w-12 sm:h-12 object-cover rounded-md sm:rounded-lg shadow-sm shrink-0" onerror="this.src='https://via.placeholder.com/48?text=H1'">
+                                <span class="text-xs sm:text-sm font-medium text-slate-600 flex-1 min-w-0 leading-snug"><span class="inline-flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-slate-900 text-white text-[10px] sm:text-xs font-black mr-1.5 sm:mr-2 align-middle shrink-0">06</span>하트 쏟아지기 Type 1</span>
+                                <input type="checkbox" name="apiItems" value="06. 하트 쏟아지기 Type 1" class="api-checkbox h-5 w-5 accent-indigo-600 shrink-0">
+                            </label>
+                            <input type="number" min="1" placeholder="개수" class="api-count-input w-[4.25rem] sm:w-20 min-h-[2.75rem] sm:min-h-0 px-2 sm:px-3 py-2 text-xs sm:text-sm text-center bg-white rounded-lg sm:rounded-xl border border-slate-300 focus:border-indigo-500 outline-none font-bold disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed shrink-0" disabled>
+                        </div>
+                        <div class="api-option flex flex-wrap items-center gap-2 p-3 sm:flex-nowrap sm:items-center sm:gap-3 sm:p-4 bg-slate-50 rounded-xl sm:rounded-2xl border-2 border-slate-200 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 transition-all">
+                            <label class="flex items-center gap-2 sm:gap-3 flex-1 cursor-pointer min-w-0">
+                                <img src="./img/하트발사.webp" class="w-10 h-10 sm:w-12 sm:h-12 object-cover rounded-md sm:rounded-lg shadow-sm shrink-0" onerror="this.src='https://via.placeholder.com/48?text=H2'">
+                                <span class="text-xs sm:text-sm font-medium text-slate-600 flex-1 min-w-0 leading-snug"><span class="inline-flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-slate-900 text-white text-[10px] sm:text-xs font-black mr-1.5 sm:mr-2 align-middle shrink-0">07</span>하트 쏟아지기 Type 2</span>
+                                <input type="checkbox" name="apiItems" value="07. 하트 쏟아지기 Type 2" class="api-checkbox h-5 w-5 accent-indigo-600 shrink-0">
+                            </label>
+                            <input type="number" min="1" placeholder="개수" class="api-count-input w-[4.25rem] sm:w-20 min-h-[2.75rem] sm:min-h-0 px-2 sm:px-3 py-2 text-xs sm:text-sm text-center bg-white rounded-lg sm:rounded-xl border border-slate-300 focus:border-indigo-500 outline-none font-bold disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed shrink-0" disabled>
+                        </div>
+                        <div class="api-option flex flex-wrap items-center gap-2 p-3 sm:flex-nowrap sm:items-center sm:gap-3 sm:p-4 bg-slate-50 rounded-xl sm:rounded-2xl border-2 border-slate-200 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 transition-all">
+                            <label class="flex items-center gap-2 sm:gap-3 flex-1 cursor-pointer min-w-0">
+                                <img src="./img/치즈붙히기.webp" class="w-10 h-10 sm:w-12 sm:h-12 object-cover rounded-md sm:rounded-lg shadow-sm shrink-0" onerror="this.src='https://via.placeholder.com/48?text=CH'">
+                                <span class="text-xs sm:text-sm font-medium text-slate-600 flex-1 min-w-0 leading-snug"><span class="inline-flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-slate-900 text-white text-[10px] sm:text-xs font-black mr-1.5 sm:mr-2 align-middle shrink-0">08</span>Prop 랜덤 붙이기</span>
+                                <input type="checkbox" name="apiItems" value="08. Prop 랜덤 붙이기" class="api-checkbox h-5 w-5 accent-indigo-600 shrink-0">
+                            </label>
+                            <input type="number" min="1" placeholder="개수" class="api-count-input w-[4.25rem] sm:w-20 min-h-[2.75rem] sm:min-h-0 px-2 sm:px-3 py-2 text-xs sm:text-sm text-center bg-white rounded-lg sm:rounded-xl border border-slate-300 focus:border-indigo-500 outline-none font-bold disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed shrink-0" disabled>
+                        </div>
+                        <div class="api-option no-api-count-input flex flex-wrap items-center gap-2 p-3 sm:flex-nowrap sm:items-center sm:gap-3 sm:p-4 bg-slate-50 rounded-xl sm:rounded-2xl border-2 border-slate-200 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 transition-all">
+                            <label class="flex items-center gap-2 sm:gap-3 flex-1 cursor-pointer min-w-0">
+                                <img src="./img/비누방울.webp" class="w-10 h-10 sm:w-12 sm:h-12 object-cover rounded-md sm:rounded-lg shadow-sm shrink-0" onerror="this.src='https://via.placeholder.com/48?text=BB'">
+                                <span class="text-xs sm:text-sm font-medium text-slate-600 flex-1 min-w-0 leading-snug"><span class="inline-flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-slate-900 text-white text-[10px] sm:text-xs font-black mr-1.5 sm:mr-2 align-middle shrink-0">09</span>비누방울</span>
+                                <input type="checkbox" name="apiItems" value="09. 비누방울" class="api-checkbox h-5 w-5 accent-indigo-600 shrink-0">
+                            </label>
+                        </div>
+                        <div class="api-option no-api-count-input flex flex-wrap items-center gap-2 p-3 sm:flex-nowrap sm:items-center sm:gap-3 sm:p-4 bg-slate-50 rounded-xl sm:rounded-2xl border-2 border-slate-200 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 transition-all">
+                            <label class="flex items-center gap-2 sm:gap-3 flex-1 cursor-pointer min-w-0">
+                                <img src="./img/윙크.webp" class="w-10 h-10 sm:w-12 sm:h-12 object-cover rounded-md sm:rounded-lg shadow-sm shrink-0" onerror="this.src='https://via.placeholder.com/48?text=WK'">
+                                <span class="text-xs sm:text-sm font-medium text-slate-600 flex-1 min-w-0 leading-snug"><span class="inline-flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-slate-900 text-white text-[10px] sm:text-xs font-black mr-1.5 sm:mr-2 align-middle shrink-0">10</span>윙크</span>
+                                <input type="checkbox" name="apiItems" value="10. 윙크" class="api-checkbox h-5 w-5 accent-indigo-600 shrink-0">
+                            </label>
+                        </div>
+                        <div class="api-option no-api-count-input flex flex-wrap items-center gap-2 p-3 sm:flex-nowrap sm:items-center sm:gap-3 sm:p-4 bg-slate-50 rounded-xl sm:rounded-2xl border-2 border-slate-200 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 transition-all">
+                            <label class="flex items-center gap-2 sm:gap-3 flex-1 cursor-pointer min-w-0">
+                                <img src="./img/입김.webp" class="w-10 h-10 sm:w-12 sm:h-12 object-cover rounded-md sm:rounded-lg shadow-sm shrink-0" onerror="this.src='https://via.placeholder.com/48?text=BR'">
+                                <span class="text-xs sm:text-sm font-medium text-slate-600 flex-1 min-w-0 leading-snug"><span class="inline-flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-slate-900 text-white text-[10px] sm:text-xs font-black mr-1.5 sm:mr-2 align-middle shrink-0">11</span>입김</span>
+                                <input type="checkbox" name="apiItems" value="11. 입김" class="api-checkbox h-5 w-5 accent-indigo-600 shrink-0">
                             </label>
                         </div>
                     </div>
@@ -819,58 +1045,78 @@
 
                 <!-- Extra Note -->
                 <div>
-                    <label class="block text-sm font-bold text-slate-800 mb-3">5. 기타 문의사항</label>
+                    <label class="block text-sm font-bold text-slate-800 mb-2 md:mb-3">5. 기타 문의사항</label>
                     <textarea id="extraNote" rows="4" placeholder="추가로 전달하고 싶은 내용을 자유롭게 작성해 주세요."
-                              class="w-full px-5 py-4 rounded-2xl bg-slate-50 border border-slate-200 outline-none focus:bg-white focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 transition-all resize-none text-sm"></textarea>
+                              class="w-full px-4 py-3 sm:px-5 sm:py-4 rounded-xl sm:rounded-2xl bg-slate-50 border border-slate-200 outline-none focus:bg-white focus:border-indigo-500 focus:ring-2 sm:focus:ring-4 focus:ring-indigo-500/10 transition-all resize-none text-sm"></textarea>
                 </div>
 
                 <!-- Important Notes -->
                 <div>
-                    <label class="block text-sm font-bold text-slate-800 mb-3">6. 유의사항</label>
-                    <div class="bg-amber-50 border border-amber-200 rounded-2xl p-4 space-y-2">
-                        <p class="text-xs text-slate-600 leading-relaxed">
+                    <label class="block text-sm font-bold text-slate-800 mb-2 md:mb-3">6. 유의사항</label>
+                    <div class="bg-amber-50 border border-amber-200 rounded-xl sm:rounded-2xl p-3 sm:p-4 space-y-1.5 sm:space-y-2">
+                        <p class="text-[11px] sm:text-xs text-slate-600 leading-snug sm:leading-relaxed">
                             <span class="font-bold text-amber-700">권리귀속</span> — 공유해드린 모든 작업물의 저작권 및 지적재산권은 제작자(Node68)에게 귀속됩니다. 타인에게 공유 및 재배포 시 저작권법 위반으로 법적 대응이 이루어질 수 있습니다.
                         </p>
-                        <p class="text-xs text-slate-600 leading-relaxed">
+                        <p class="text-[11px] sm:text-xs text-slate-600 leading-snug sm:leading-relaxed">
                             <span class="font-bold text-amber-700">포트폴리오 활용</span> — 모든 작업물은 제작자의 포트폴리오 &amp; 홍보 등에 사용될 수 있습니다.
                         </p>
-                        <p class="text-xs text-slate-600 leading-relaxed">
+                        <p class="text-[11px] sm:text-xs text-slate-600 leading-snug sm:leading-relaxed">
                             <span class="font-bold text-amber-700">신청 절차</span> — 주문 완료 후 일정을 조율하고, 작업이 시작됩니다.
                         </p>
-                        <p class="text-xs text-slate-600 leading-relaxed">
+                        <p class="text-[11px] sm:text-xs text-slate-600 leading-snug sm:leading-relaxed">
                             <span class="font-bold text-amber-700">환불 규정</span> — 작업 시작 전: 전액 환불 가능합니다. / 작업 시작 후: 환불이 불가능합니다.
                         </p>
                     </div>
                 </div>
 
                 <!-- Essential Checkbox -->
-                <div class="pt-4 border-t border-slate-100">
-                    <label class="flex items-start gap-3 cursor-pointer group">
-                        <div class="relative flex items-center">
-                            <input type="checkbox" id="agreeTerms" class="peer h-6 w-6 cursor-pointer appearance-none rounded-md border-2 border-slate-300 transition-all checked:border-indigo-600 checked:bg-indigo-600">
-                            <svg class="pointer-events-none absolute left-1 top-1 h-4 w-4 stroke-white opacity-0 transition-opacity peer-checked:opacity-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="4">
+                <div class="pt-3 md:pt-4 border-t border-slate-100">
+                    <label class="flex items-start gap-2.5 sm:gap-3 cursor-pointer group">
+                        <div class="relative flex items-center shrink-0 pt-0.5">
+                            <input type="checkbox" id="agreeTerms" class="peer h-5 w-5 sm:h-6 sm:w-6 min-w-[1.25rem] min-h-[1.25rem] sm:min-w-[1.5rem] sm:min-h-[1.5rem] cursor-pointer appearance-none rounded-md border-2 border-slate-300 transition-all checked:border-indigo-600 checked:bg-indigo-600">
+                            <svg class="pointer-events-none absolute left-0.5 top-[0.35rem] sm:left-1 sm:top-1 h-3.5 w-3.5 sm:h-4 sm:w-4 stroke-white opacity-0 transition-opacity peer-checked:opacity-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="4">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                             </svg>
                         </div>
-                        <span class="text-sm text-slate-600 font-medium group-hover:text-slate-900 transition-colors pt-0.5">
+                        <span class="text-xs sm:text-sm text-slate-600 font-medium group-hover:text-slate-900 transition-colors leading-snug">
                             상기 <span class="text-indigo-600 font-bold underline">이용 순서, 유의사항</span>을 모두 확인하였으며 이에 동의합니다. <span class="text-red-500 font-bold">(필수)</span>
                         </span>
                     </label>
                 </div>
 
                 <!-- Copy Button -->
-                <div class="pt-2">
-                    <button id="copyBtn" class="w-full bg-slate-900 text-white font-bold py-5 rounded-2xl hover:bg-indigo-600 transition-all transform active:scale-[0.98] flex items-center justify-center gap-3 shadow-xl">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
-                        작성한 양식 복사하기
+                <div class="pt-1 md:pt-2">
+                    <button id="copyBtn" type="button" class="w-full bg-slate-900 text-white text-sm sm:text-base font-bold py-4 sm:py-5 rounded-xl sm:rounded-2xl hover:bg-indigo-600 transition-all transform active:scale-[0.98] flex items-center justify-center gap-2 sm:gap-3 shadow-xl min-h-[3.25rem]">
+                        <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
+                        <span class="text-center leading-tight">작성한 양식 복사하기</span>
                     </button>
-                    <p id="copyMessage" class="text-center text-sm font-bold text-emerald-600 mt-4 opacity-0 transition-opacity">클립보드에 복사되었습니다!</p>
-                    <p id="errorMessage" class="text-center text-sm font-bold text-red-600 mt-4 opacity-0 transition-opacity">필수 항목을 모두 입력해 주세요.</p>
+                    <p id="copyMessage" class="text-center text-xs sm:text-sm font-bold text-emerald-600 mt-3 sm:mt-4 opacity-0 transition-opacity">클립보드에 복사되었습니다!</p>
+                    <p id="errorMessage" class="text-center text-xs sm:text-sm font-bold text-red-600 mt-3 sm:mt-4 opacity-0 transition-opacity">필수 항목을 모두 입력해 주세요.</p>
                 </div>
             </div>
             </div>
         </div>
     </section>
+
+    <!-- iframe 등으로 삽입됐을 때 하단 스크롤 유도 (직접 접속 시 숨김) -->
+    <div id="iframe-scroll-hint" class="hidden max-w-4xl mx-auto px-4 pb-10 pt-4 md:pb-14" aria-hidden="true">
+        <div class="flex flex-col items-center justify-center gap-2 rounded-2xl border border-slate-200/90 bg-white/70 py-5 text-center shadow-sm backdrop-blur-sm">
+            <svg class="h-5 w-5 text-indigo-400 motion-safe:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+            <p class="text-sm font-semibold tracking-tight text-slate-600">스크롤 계속</p>
+            <p class="text-xs text-slate-400">프레임 안에서 아래로 더 내려 주세요</p>
+        </div>
+    </div>
+    <script>
+    (function () {
+        var el = document.getElementById('iframe-scroll-hint');
+        if (!el) return;
+        try {
+            if (window.self !== window.top) el.classList.remove('hidden');
+        } catch (e) { /* ignore */ }
+    })();
+    </script>
 
     <!-- Validation Modal -->
     <div id="validationModal" class="fixed inset-0 z-50 flex items-center justify-center hidden">
@@ -958,6 +1204,15 @@
                 card.addEventListener('click', () => {
                     const image = card.querySelector('.image-container img');
                     const title = card.querySelector('h3')?.textContent?.trim() || '';
+                    if (!image) return;
+                    openImageLightbox(image.src, image.alt, title);
+                });
+            });
+
+            document.querySelectorAll('.portfolio-tile').forEach(tile => {
+                tile.addEventListener('click', () => {
+                    const image = tile.querySelector('.image-container img');
+                    const title = tile.querySelector('.portfolio-tile-title')?.textContent?.trim() || '';
                     if (!image) return;
                     openImageLightbox(image.src, image.alt, title);
                 });
@@ -1098,7 +1353,7 @@
                     
                     setTimeout(() => {
                         copyMessage.classList.replace('opacity-100', 'opacity-0');
-                        copyBtn.innerHTML = `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg> 작성한 양식 복사하기`;
+                        copyBtn.innerHTML = `<svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg><span class="text-center leading-tight">작성한 양식 복사하기</span>`;
                         copyBtn.classList.replace('bg-emerald-600', 'bg-slate-900');
                     }, 2500);
                 } catch (err) {
@@ -1111,6 +1366,7 @@
             const eventCopyMessage = document.getElementById('eventCopyMessage');
             const eventErrorMessage = document.getElementById('eventErrorMessage');
 
+            if (eventCopyBtn && eventCopyMessage && eventErrorMessage) {
             const resetEventErrors = () => {
                 eventErrorMessage.classList.add('opacity-0');
                 eventCopyMessage.classList.add('opacity-0');
@@ -1225,6 +1481,8 @@
             document.getElementById('eventAgreeTerms').addEventListener('change', () => {
                 document.getElementById('eventAgreeTerms').closest('label').classList.remove('ring-4', 'ring-red-500/20');
             });
+
+            }
 
             // 입력 필드 변경 시 에러 스타일 자동 제거
             document.getElementById('nickname').addEventListener('input', () => {
