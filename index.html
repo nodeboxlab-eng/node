@@ -312,6 +312,39 @@
                     0 16px 44px rgba(79, 70, 229, 0.12);
             }
         }
+        @media (max-width: 639px) {
+            /* 모바일: 카드 안에서 유튜브 가로폭 극대화 (body 안전영역은 전역 패딩으로 이미 처리) */
+            section#portfolio.portfolio-section {
+                padding-left: 0;
+                padding-right: 0;
+            }
+            .portfolio-entry {
+                overflow: visible;
+                padding-left: 0;
+                padding-right: 0;
+            }
+            .portfolio-entry-header {
+                padding-left: 0.875rem;
+                padding-right: 0.875rem;
+            }
+            .portfolio-entry-works {
+                padding-left: 0.875rem;
+                padding-right: 0.875rem;
+            }
+            .portfolio-youtube-wrap {
+                border-radius: 0.65rem;
+            }
+        }
+
+        /* 포트폴리오 영상 프레임: 카드 테두리와 2px 간격 */
+        .portfolio-youtube-wrap {
+            margin-left: 2px;
+            margin-right: 2px;
+            width: calc(100% - 4px);
+            max-width: calc(100% - 4px);
+            box-sizing: border-box;
+        }
+
         .portfolio-entry::before {
             content: '';
             position: absolute;
@@ -1169,7 +1202,7 @@
     </section>
 
     <!-- Portfolio (접기/펼치기 — 라인업 바로 아래) -->
-    <section id="portfolio" class="portfolio-section max-w-7xl mx-auto px-4 md:px-8 scroll-mt-10" aria-labelledby="portfolio-heading">
+    <section id="portfolio" class="portfolio-section max-w-7xl mx-auto sm:px-4 md:px-8 scroll-mt-10" aria-labelledby="portfolio-heading">
         <div class="portfolio-shell">
         <div id="portfolio-panel" class="portfolio-disclosure portfolio-framed relative overflow-hidden">
             <div class="portfolio-summary flex cursor-pointer list-none flex-col gap-6 md:gap-7 px-5 py-8 sm:px-8 md:px-12 md:py-11 select-none" tabindex="0" role="button" aria-expanded="false" aria-controls="portfolio-disclosure-body">
@@ -1183,7 +1216,7 @@
                     </h2>
 
                 </div>
-                <div id="portfolio-disclosure-body" class="portfolio-disclosure-body px-4 pb-5 pt-3 sm:px-6 md:px-10 md:pb-8 md:pt-5">
+                <div id="portfolio-disclosure-body" class="portfolio-disclosure-body px-0 pb-5 pt-3 sm:px-6 md:px-10 md:pb-8 md:pt-5">
                 <div class="portfolio-people max-w-5xl mx-auto">
                     <section class="portfolio-entry" aria-label="미코님 포트폴리오">
                         <header class="portfolio-entry-header">
@@ -1196,7 +1229,7 @@
                                 <li>천사모션</li>
                             </ul>
                         </div>
-                        <div class="aspect-video w-full overflow-hidden rounded-2xl border border-slate-200/90 bg-black shadow-md">
+                        <div class="portfolio-youtube-wrap aspect-video overflow-hidden rounded-2xl border border-slate-200/90 bg-black shadow-md">
                             <iframe class="h-full w-full" src="https://www.youtube.com/embed/IwR1xS3P9_k" title="미코님 포트폴리오 영상 (YouTube)" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </div>
                     </section>
@@ -1210,7 +1243,7 @@
                                 <li>하트 쏟아지기 Type 2</li>
                             </ul>
                         </div>
-                        <div class="aspect-video w-full overflow-hidden rounded-2xl border border-slate-200/90 bg-black shadow-md">
+                        <div class="portfolio-youtube-wrap aspect-video overflow-hidden rounded-2xl border border-slate-200/90 bg-black shadow-md">
                             <iframe class="h-full w-full" src="https://www.youtube.com/embed/C6w1ZJNSLCk" title="모몽님 포트폴리오 영상 (YouTube)" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </div>
                     </section>
@@ -1224,7 +1257,7 @@
                                 <li>꼬마변신</li>
                             </ul>
                         </div>
-                        <div class="aspect-video w-full overflow-hidden rounded-2xl border border-slate-200/90 bg-black shadow-md">
+                        <div class="portfolio-youtube-wrap aspect-video overflow-hidden rounded-2xl border border-slate-200/90 bg-black shadow-md">
                             <iframe class="h-full w-full" src="https://www.youtube.com/embed/CUGODJNgVDE" title="류헤나님 포트폴리오 영상 (YouTube)" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </div>
                     </section>
@@ -1241,7 +1274,7 @@
                                 <li>꼬마변신</li>
                             </ul>
                         </div>
-                        <div class="aspect-video w-full overflow-hidden rounded-2xl border border-slate-200/90 bg-black shadow-md">
+                        <div class="portfolio-youtube-wrap aspect-video overflow-hidden rounded-2xl border border-slate-200/90 bg-black shadow-md">
                             <iframe class="h-full w-full" src="https://www.youtube.com/embed/wK5Kj3YtzTA" title="한시아님 포트폴리오 영상 (YouTube)" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </div>
                     </section>
@@ -1255,7 +1288,7 @@
                                 <li>꼬마변신</li>
                             </ul>
                         </div>
-                        <div class="aspect-video w-full overflow-hidden rounded-2xl border border-slate-200/90 bg-black shadow-md">
+                        <div class="portfolio-youtube-wrap aspect-video overflow-hidden rounded-2xl border border-slate-200/90 bg-black shadow-md">
                             <iframe class="h-full w-full" src="https://www.youtube.com/embed/2fsVJzgB78o" title="김담담님 포트폴리오 영상 (YouTube)" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </div>
                     </section>
@@ -1269,7 +1302,7 @@
                                 <li>꼬마변신</li>
                             </ul>
                         </div>
-                        <div class="aspect-video w-full overflow-hidden rounded-2xl border border-slate-200/90 bg-black shadow-md">
+                        <div class="portfolio-youtube-wrap aspect-video overflow-hidden rounded-2xl border border-slate-200/90 bg-black shadow-md">
                             <iframe class="h-full w-full" src="https://www.youtube.com/embed/IoFthj38AwA" title="그묘님 포트폴리오 영상 (YouTube)" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </div>
                     </section>
@@ -1287,7 +1320,7 @@
                                 <li>동전 쏟아지기</li>
                             </ul>
                         </div>
-                        <div class="aspect-video w-full overflow-hidden rounded-2xl border border-slate-200/90 bg-black shadow-md">
+                        <div class="portfolio-youtube-wrap aspect-video overflow-hidden rounded-2xl border border-slate-200/90 bg-black shadow-md">
                             <iframe class="h-full w-full" src="https://www.youtube.com/embed/JM2f0soDyXU" title="김뚜야님 포트폴리오 영상 (YouTube)" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </div>
                     </section>
@@ -1301,7 +1334,7 @@
                                 <li>꼬마변신</li>
                             </ul>
                         </div>
-                        <div class="aspect-video w-full overflow-hidden rounded-2xl border border-slate-200/90 bg-black shadow-md">
+                        <div class="portfolio-youtube-wrap aspect-video overflow-hidden rounded-2xl border border-slate-200/90 bg-black shadow-md">
                             <iframe class="h-full w-full" src="https://www.youtube.com/embed/uxPlpkfmwIk" title="뮤히님 포트폴리오 영상 (YouTube)" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </div>
                     </section>
@@ -1315,7 +1348,7 @@
                                 <li>꼬마변신</li>
                             </ul>
                         </div>
-                        <div class="aspect-video w-full overflow-hidden rounded-2xl border border-slate-200/90 bg-black shadow-md">
+                        <div class="portfolio-youtube-wrap aspect-video overflow-hidden rounded-2xl border border-slate-200/90 bg-black shadow-md">
                             <iframe class="h-full w-full" src="https://www.youtube.com/embed/-s6t9DsQsYo" title="밍몬님 포트폴리오 영상 (YouTube)" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </div>
                     </section>
@@ -1331,7 +1364,7 @@
                                 <li>하트 쏟아지기 Type 1</li>
                             </ul>
                         </div>
-                        <div class="aspect-video w-full overflow-hidden rounded-2xl border border-slate-200/90 bg-black shadow-md">
+                        <div class="portfolio-youtube-wrap aspect-video overflow-hidden rounded-2xl border border-slate-200/90 bg-black shadow-md">
                             <iframe class="h-full w-full" src="https://www.youtube.com/embed/8k7B3JpnBwI" title="앙단테님 포트폴리오 영상 (YouTube)" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </div>
                     </section>
