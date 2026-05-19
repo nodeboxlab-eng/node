@@ -293,7 +293,7 @@
         .portfolio-entry {
             scroll-margin-top: 1rem;
             position: relative;
-            border-radius: 1.125rem;
+            border-radius: 0.4rem;
             border: 1px solid rgba(165, 180, 252, 0.7);
             background:
                 linear-gradient(145deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 255, 0.94) 100%);
@@ -305,7 +305,6 @@
         }
         @media (min-width: 768px) {
             .portfolio-entry {
-                border-radius: 1.5rem;
                 padding: 1.375rem 1.5rem 1.5rem;
                 box-shadow:
                     0 1px 0 rgba(255, 255, 255, 1) inset,
@@ -322,14 +321,6 @@
                 overflow: visible;
                 padding-left: 0;
                 padding-right: 0;
-            }
-            .portfolio-entry-header {
-                padding-left: 0.875rem;
-                padding-right: 0.875rem;
-            }
-            .portfolio-entry-works {
-                padding-left: 0.875rem;
-                padding-right: 0.875rem;
             }
             .portfolio-youtube-wrap {
                 border-radius: 0.65rem;
@@ -352,7 +343,7 @@
             top: 0;
             bottom: 0;
             width: 0.29rem;
-            border-radius: 1.125rem 0 0 1.125rem;
+            border-radius: 0.4rem 0 0 0.4rem;
             background: linear-gradient(
                 180deg,
                 rgb(99 102 241) 0%,
@@ -365,16 +356,18 @@
         @media (min-width: 768px) {
             .portfolio-entry::before {
                 width: 0.35rem;
-                border-radius: 1.5rem 0 0 1.5rem;
+                border-radius: 0.4rem 0 0 0.4rem;
             }
         }
         .portfolio-entry-header {
-            padding-left: 0.375rem;
+            padding-left: 1.125rem;
+            padding-right: 1.125rem;
             margin-bottom: 1rem;
         }
         @media (min-width: 768px) {
             .portfolio-entry-header {
-                padding-left: 0.55rem;
+                padding-left: 1.35rem;
+                padding-right: 1.35rem;
                 margin-bottom: 1.35rem;
             }
         }
@@ -406,13 +399,14 @@
             -webkit-text-fill-color: transparent;
         }
         .portfolio-entry-works {
-            padding-left: 0.375rem;
-            padding-right: 0.125rem;
+            padding-left: 1.125rem;
+            padding-right: 1.125rem;
             margin-bottom: 1rem;
         }
         @media (min-width: 768px) {
             .portfolio-entry-works {
-                padding-left: 0.55rem;
+                padding-left: 1.35rem;
+                padding-right: 1.35rem;
                 margin-bottom: 1.125rem;
             }
         }
@@ -434,7 +428,7 @@
         }
         .portfolio-work-list li {
             position: relative;
-            padding-left: 1rem;
+            padding-left: 0.7rem;
             font-size: 0.875rem;
             font-weight: 700;
             line-height: 1.45;
