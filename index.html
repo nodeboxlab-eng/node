@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#0f172a">
     <title>Warudo Custom API - Premium Assets</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -20,14 +21,24 @@
             -ms-user-select: none;
             user-select: none;
         }
-        .card-hover:hover {
-            transform: translateY(-8px);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        .card-hover {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        @media (hover: hover) and (pointer: fine) {
+            .card-hover:hover {
+                transform: translateY(-8px);
+            }
+        }
+        .card-hover:active {
+            transform: translateY(-3px);
         }
         .image-container {
             aspect-ratio: 4 / 3;
             overflow: hidden;
             background-color: #f3f4f6;
+        }
+        .product-card .image-container {
+            aspect-ratio: 1 / 1;
         }
         img {
             -webkit-user-drag: none;
@@ -89,17 +100,15 @@
             padding: 1rem;
             box-shadow: 0 20px 45px rgba(15, 23, 42, 0.08);
             backdrop-filter: blur(18px);
-            cursor: pointer;
         }
         .product-card .image-container img {
             transition: transform 0.45s ease, filter 0.45s ease;
         }
-        .product-card:hover .image-container img {
-            transform: scale(1.05);
-            filter: saturate(1.03);
-        }
-        .image-lightbox img {
-            box-shadow: 0 30px 80px rgba(15, 23, 42, 0.45);
+        @media (hover: hover) and (pointer: fine) {
+            .product-card:hover .image-container img {
+                transform: scale(1.05);
+                filter: saturate(1.03);
+            }
         }
         .hero-outline {
             position: absolute;
@@ -139,11 +148,13 @@
         .portfolio-section {
             position: relative;
             isolation: isolate;
-            padding-block: 1.25rem 0.25rem;
+            margin-block: 2.75rem 3.5rem;
+            padding-block: 2rem 2.75rem;
         }
         @media (min-width: 768px) {
             .portfolio-section {
-                padding-block: 1.75rem 0.5rem;
+                margin-block: 4rem 5rem;
+                padding-block: 2.75rem 3.5rem;
             }
         }
         .portfolio-section::before {
@@ -153,10 +164,10 @@
             margin: 0 -0.5rem;
             border-radius: 1.75rem;
             background:
-                radial-gradient(ellipse 85% 70% at 8% 15%, rgba(99, 102, 241, 0.2), transparent 52%),
-                radial-gradient(ellipse 75% 55% at 92% 25%, rgba(168, 85, 247, 0.16), transparent 48%),
-                radial-gradient(ellipse 65% 45% at 70% 95%, rgba(236, 72, 153, 0.1), transparent 42%),
-                linear-gradient(155deg, #eef2ff 0%, #f5f3ff 32%, #faf5ff 58%, #f8fafc 100%);
+                radial-gradient(ellipse 90% 75% at 10% 5%, rgba(99, 102, 241, 0.32), transparent 50%),
+                radial-gradient(ellipse 80% 60% at 95% 20%, rgba(168, 85, 247, 0.28), transparent 48%),
+                radial-gradient(ellipse 70% 50% at 65% 100%, rgba(236, 72, 153, 0.14), transparent 44%),
+                linear-gradient(155deg, #e0e7ff 0%, #ede9fe 28%, #fae8ff 55%, #f8fafc 100%);
             box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.75);
             pointer-events: none;
             z-index: -1;
@@ -171,17 +182,64 @@
             position: relative;
             z-index: 0;
         }
-        .portfolio-disclosure {
-            border: 1px solid rgba(165, 180, 252, 0.55);
-            background: rgba(255, 255, 255, 0.78);
+        .portfolio-shell {
+            border-radius: 1.65rem;
+            padding: 3px;
+            background: linear-gradient(136deg, #4f46e5 0%, #7c3aed 52%, #c026d3 100%);
             box-shadow:
-                0 4px 6px -1px rgba(99, 102, 241, 0.07),
-                0 22px 48px -14px rgba(79, 70, 229, 0.14),
-                inset 0 1px 0 rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(14px);
+                0 1px 0 rgba(255, 255, 255, 0.55) inset,
+                0 28px 72px rgba(76, 29, 149, 0.28),
+                0 0 0 1px rgba(255, 255, 255, 0.35);
+            max-width: 100%;
         }
-        .portfolio-disclosure > summary,
-        .portfolio-disclosure > .portfolio-disclosure-body {
+        @media (min-width: 768px) {
+            .portfolio-shell {
+                border-radius: 2.5rem;
+            }
+        }
+        .portfolio-disclosure.portfolio-framed {
+            border-radius: calc(1.65rem - 3px);
+            border: none;
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(14px);
+            box-shadow:
+                0 1px 0 rgba(255, 255, 255, 0.98) inset,
+                inset 0 0 90px rgba(238, 242, 255, 0.55);
+        }
+        @media (min-width: 768px) {
+            .portfolio-disclosure.portfolio-framed {
+                border-radius: calc(2.5rem - 3px);
+            }
+        }
+        .portfolio-summary {
+            outline: none;
+            background: linear-gradient(
+                100deg,
+                rgba(238, 242, 255, 0.98) 0%,
+                rgba(255, 255, 255, 1) 42%,
+                rgba(239, 246, 255, 1) 100%
+            );
+            transition:
+                background 0.28s ease,
+                transform 0.22s cubic-bezier(0.34, 1.35, 0.64, 1),
+                box-shadow 0.22s ease;
+        }
+        .portfolio-summary:hover {
+            background: linear-gradient(
+                100deg,
+                rgba(224, 231, 255, 0.92) 0%,
+                rgba(255, 255, 255, 1) 42%,
+                rgba(224, 231, 255, 0.96) 100%
+            );
+        }
+        .portfolio-shell {
+            transition: box-shadow 0.35s ease, transform 0.3s cubic-bezier(0.34, 1.35, 0.64, 1);
+        }
+        .portfolio-disclosure > .portfolio-summary {
+            position: relative;
+            z-index: 1;
+        }
+        #portfolio-panel .portfolio-disclosure-body {
             position: relative;
             z-index: 1;
         }
@@ -194,60 +252,488 @@
                 rgba(248, 250, 252, 0.92) 100%
             );
         }
-        .portfolio-strip {
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: thin;
-        }
-        .portfolio-person-group {
-            margin-bottom: 1.35rem;
+        /* 접힘: 첫 카드 등 본문이 DOM 그대로 위에서 잘림 (native <details>로는 불가) */
+        #portfolio-panel:not(.portfolio-panel--open) .portfolio-disclosure-body {
+            max-height: min(21.5rem, 47vh);
+            overflow: hidden;
+            position: relative;
         }
         @media (min-width: 768px) {
-            .portfolio-person-group {
-                margin-bottom: 1.75rem;
+            #portfolio-panel:not(.portfolio-panel--open) .portfolio-disclosure-body {
+                max-height: min(26rem, 52vh);
             }
         }
-        .portfolio-person-group:last-child {
-            margin-bottom: 0;
+        #portfolio-panel:not(.portfolio-panel--open) .portfolio-disclosure-body::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 5rem;
+            pointer-events: none;
+            z-index: 4;
+            background: linear-gradient(
+                180deg,
+                transparent,
+                rgba(247, 247, 253, 0.7) 48%,
+                rgba(239, 246, 255, 0.94) 86%,
+                rgb(239, 246, 255) 100%
+            );
+        }
+        .portfolio-people {
+            display: flex;
+            flex-direction: column;
+            gap: 1.375rem;
+        }
+        @media (min-width: 768px) {
+            .portfolio-people {
+                gap: 1.875rem;
+            }
+        }
+        .portfolio-entry {
+            scroll-margin-top: 1rem;
+            position: relative;
+            border-radius: 1.125rem;
+            border: 1px solid rgba(165, 180, 252, 0.7);
+            background:
+                linear-gradient(145deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 255, 0.94) 100%);
+            padding: 1rem 1rem 1.125rem;
+            box-shadow:
+                0 1px 0 rgba(255, 255, 255, 1) inset,
+                0 12px 36px rgba(79, 70, 229, 0.1);
+            overflow: hidden;
+        }
+        @media (min-width: 768px) {
+            .portfolio-entry {
+                border-radius: 1.5rem;
+                padding: 1.375rem 1.5rem 1.5rem;
+                box-shadow:
+                    0 1px 0 rgba(255, 255, 255, 1) inset,
+                    0 16px 44px rgba(79, 70, 229, 0.12);
+            }
+        }
+        .portfolio-entry::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 0.29rem;
+            border-radius: 1.125rem 0 0 1.125rem;
+            background: linear-gradient(
+                180deg,
+                rgb(99 102 241) 0%,
+                rgb(139 92 246) 45%,
+                rgb(168 85 247) 100%
+            );
+            opacity: 0.92;
+            pointer-events: none;
+        }
+        @media (min-width: 768px) {
+            .portfolio-entry::before {
+                width: 0.35rem;
+                border-radius: 1.5rem 0 0 1.5rem;
+            }
+        }
+        .portfolio-entry-header {
+            padding-left: 0.375rem;
+            margin-bottom: 1rem;
+        }
+        @media (min-width: 768px) {
+            .portfolio-entry-header {
+                padding-left: 0.55rem;
+                margin-bottom: 1.35rem;
+            }
         }
         .portfolio-person-heading {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.8125rem;
-            font-weight: 800;
-            letter-spacing: -0.02em;
+            margin: 0;
+            padding: 0;
+            border: none;
+            font-size: 1.25rem;
+            font-weight: 900;
+            letter-spacing: -0.035em;
+            line-height: 1.18;
             color: rgb(15 23 42);
-            margin-bottom: 0.65rem;
-            padding-bottom: 0.35rem;
-            border-bottom: 1px solid rgba(148, 163, 184, 0.35);
+            text-wrap: balance;
         }
         @media (min-width: 768px) {
             .portfolio-person-heading {
-                font-size: 0.9375rem;
-                margin-bottom: 0.85rem;
+                font-size: 2rem;
             }
         }
-        .portfolio-person-heading::before {
+        .portfolio-person-heading .portfolio-person-name {
+            background: linear-gradient(
+                115deg,
+                rgb(43 53 218) 0%,
+                rgb(99 102 241) 38%,
+                rgb(147 51 234) 100%
+            );
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .portfolio-entry-works {
+            padding-left: 0.375rem;
+            padding-right: 0.125rem;
+            margin-bottom: 1rem;
+        }
+        @media (min-width: 768px) {
+            .portfolio-entry-works {
+                padding-left: 0.55rem;
+                margin-bottom: 1.125rem;
+            }
+        }
+        .portfolio-entry-works .portfolio-works-label {
+            font-size: 0.6875rem;
+            font-weight: 900;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: rgb(100 116 139);
+            margin-bottom: 0.625rem;
+        }
+        .portfolio-work-list {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.375rem;
+        }
+        .portfolio-work-list li {
+            position: relative;
+            padding-left: 1rem;
+            font-size: 0.875rem;
+            font-weight: 700;
+            line-height: 1.45;
+            color: rgb(51 65 85);
+        }
+        @media (min-width: 768px) {
+            .portfolio-work-list li {
+                font-size: 0.9375rem;
+            }
+        }
+        .portfolio-work-list li::before {
             content: '';
-            width: 0.35rem;
-            height: 0.35rem;
+            position: absolute;
+            left: 0;
+            top: 0.55em;
+            width: 0.28rem;
+            height: 0.28rem;
             border-radius: 9999px;
             background: rgb(99 102 241);
-            flex-shrink: 0;
+            box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.25);
         }
-        .portfolio-disclosure summary::-webkit-details-marker {
-            display: none;
+
+        .portfolio-summary:focus-visible {
+            box-shadow:
+                inset 0 0 0 2px rgb(79 70 229),
+                inset 0 0 0 4px rgba(255, 255, 255, 0.85);
+            border-radius: 0;
         }
-        .portfolio-disclosure > summary {
-            list-style: none;
+        .portfolio-summary .portfolio-chevron {
+            transition: transform 0.5s cubic-bezier(0.34, 1.5, 0.64, 1);
         }
-        .portfolio-disclosure[open] .portfolio-chevron {
+        #portfolio-panel.portfolio-panel--open .portfolio-chevron {
             transform: rotate(180deg);
         }
-        .portfolio-tile:focus-visible {
-            outline: 2px solid rgb(99 102 241);
-            outline-offset: 3px;
+
+        @keyframes portfolio-click-hint-bounce {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            42% {
+                transform: translateY(6px);
+            }
+            56% {
+                transform: translateY(2px);
+            }
+            72% {
+                transform: translateY(4px);
+            }
         }
+        @keyframes portfolio-cta-ring-pulse {
+            0%,
+            100% {
+                box-shadow:
+                    0 4px 0 rgb(67 56 202 / 0.5),
+                    0 14px 36px rgb(76 29 149 / 0.52),
+                    0 0 0 5px rgb(165 180 253 / 0.45),
+                    inset 0 1px 0 rgb(255 255 255 / 0.35),
+                    0 0 0 0 rgba(255, 255, 255, 0.45);
+            }
+            55% {
+                box-shadow:
+                    0 4px 0 rgb(67 56 202 / 0.5),
+                    0 18px 44px rgb(76 29 149 / 0.55),
+                    0 0 0 7px rgb(192 132 252 / 0.42),
+                    inset 0 1px 0 rgb(255 255 255 / 0.35),
+                    0 0 0 18px rgba(255, 255, 255, 0);
+            }
+        }
+        .portfolio-more-label {
+            font-weight: 900;
+            letter-spacing: 0.06em;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+            white-space: nowrap;
+        }
+        @keyframes portfolio-more-label-soft {
+            0%,
+            100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.88;
+            }
+        }
+        .portfolio-more-btn {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            align-self: stretch;
+            width: 100%;
+            max-width: 100%;
+            min-height: 3.375rem;
+            padding: 0.85rem 1.35rem;
+            margin: 0;
+            border-radius: 9999px;
+            font-size: 1.0625rem;
+            line-height: 1.25;
+            color: #fff;
+            background: linear-gradient(118deg, #4338ca 0%, #6d28d9 42%, #c026d3 88%);
+            border: 2px solid rgba(253, 230, 138, 0.95);
+            box-shadow:
+                0 4px 0 rgb(67 56 202 / 0.5),
+                0 14px 36px rgb(76 29 149 / 0.52),
+                0 0 0 5px rgb(165 180 253 / 0.45),
+                inset 0 1px 0 rgb(255 255 255 / 0.35);
+            cursor: pointer;
+            user-select: none;
+            transition:
+                transform 0.22s cubic-bezier(0.34, 1.45, 0.64, 1),
+                box-shadow 0.22s ease,
+                filter 0.2s ease;
+        }
+        @media (min-width: 640px) {
+            .portfolio-more-btn {
+                min-height: 3.625rem;
+                padding: 1.05rem 1.85rem;
+                font-size: 1.1875rem;
+            }
+        }
+        .portfolio-more-btn:hover {
+            filter: brightness(1.055);
+        }
+        .portfolio-more-btn .portfolio-chevron {
+            flex-shrink: 0;
+            display: inline-flex;
+            width: 2.25rem;
+            height: 2.25rem;
+            align-items: center;
+            justify-content: center;
+            border-radius: 9999px;
+            background: rgb(255 255 255 / 0.2);
+            border: 1px solid rgb(255 255 255 / 0.35);
+            transition: transform 0.5s cubic-bezier(0.34, 1.5, 0.64, 1);
+        }
+        @media (min-width: 640px) {
+            .portfolio-more-btn .portfolio-chevron {
+                width: 2.5rem;
+                height: 2.5rem;
+            }
+        }
+        #portfolio-panel.portfolio-panel--open .portfolio-summary .portfolio-chevron,
+        #portfolio-panel.portfolio-panel--open .portfolio-more-btn {
+            animation: none;
+        }
+        #portfolio-panel:not(.portfolio-panel--open) .portfolio-more-label-open {
+            display: none !important;
+        }
+        #portfolio-panel.portfolio-panel--open .portfolio-more-label-closed {
+            display: none !important;
+            animation: none !important;
+        }
+        #portfolio-panel.portfolio-panel--open .portfolio-disclosure-body {
+            max-height: none;
+            overflow: visible;
+        }
+        #portfolio-panel.portfolio-panel--open .portfolio-disclosure-body::after {
+            display: none;
+        }
+        /* 클릭·탭 시 살짝 눌리는 피드백 */
+        .tap-press {
+            transition:
+                transform 0.18s cubic-bezier(0.34, 1.35, 0.64, 1),
+                box-shadow 0.2s ease,
+                filter 0.18s ease;
+        }
+        .tap-press:active {
+            transform: scale(0.96);
+            filter: brightness(0.95);
+        }
+
+        .choose-pill {
+            transition:
+                transform 0.2s cubic-bezier(0.34, 1.35, 0.64, 1),
+                border-color 0.2s ease,
+                background-color 0.2s ease,
+                box-shadow 0.22s ease;
+        }
+        .api-option {
+            transition:
+                transform 0.2s cubic-bezier(0.34, 1.35, 0.64, 1),
+                border-color 0.2s ease,
+                background-color 0.2s ease,
+                box-shadow 0.22s ease !important;
+        }
+
+        @media (prefers-reduced-motion: no-preference) {
+            .choose-pill:active,
+            .api-option:active {
+                transform: scale(0.96);
+            }
+            .portfolio-summary:active {
+                transform: scale(0.993);
+                box-shadow: inset 0 2px 12px rgba(79, 70, 229, 0.08);
+            }
+            .portfolio-shell:has(.portfolio-summary:active) {
+                transform: scale(0.998);
+                box-shadow:
+                    0 1px 0 rgba(255, 255, 255, 0.55) inset,
+                    0 22px 56px rgba(76, 29, 149, 0.22),
+                    0 0 0 1px rgba(255, 255, 255, 0.35);
+            }
+            .portfolio-more-btn:active {
+                transform: scale(0.96);
+                filter: brightness(0.98);
+                box-shadow:
+                    0 2px 0 rgb(67 56 202 / 0.45),
+                    0 10px 28px rgb(76 29 149 / 0.45),
+                    0 0 0 3px rgb(165 180 253 / 0.38),
+                    inset 0 1px 0 rgb(255 255 255 / 0.28);
+            }
+            #portfolio-panel:not(.portfolio-panel--open) .portfolio-summary .portfolio-chevron {
+                animation: portfolio-click-hint-bounce 1.65s ease-in-out infinite;
+            }
+            #portfolio-panel:not(.portfolio-panel--open) .portfolio-more-btn {
+                animation: portfolio-cta-ring-pulse 2.35s ease-out infinite;
+            }
+            #portfolio-panel:not(.portfolio-panel--open) .portfolio-more-label-closed {
+                animation: portfolio-more-label-soft 2s ease-in-out infinite;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .portfolio-shell,
+            .portfolio-summary,
+            .portfolio-summary .portfolio-chevron,
+            .tap-press,
+            .portfolio-more-btn,
+            .choose-pill,
+            .api-option {
+                transition-duration: 0.01ms !important;
+            }
+            .tap-press:active,
+            .portfolio-summary:active,
+            .choose-pill:active,
+            .api-option:active,
+            .portfolio-more-btn:active {
+                transform: none !important;
+                filter: none;
+            }
+            .portfolio-shell:has(.portfolio-summary:active) {
+                transform: none !important;
+            }
+            #portfolio-panel .portfolio-summary .portfolio-chevron,
+            #portfolio-panel .portfolio-more-btn,
+            .portfolio-more-label-closed,
+            .portfolio-more-label-open {
+                animation: none !important;
+            }
+        }
+        .hero-inquiry-cta,
+        .hero-portfolio-cta {
+            -webkit-tap-highlight-color: transparent;
+            transition:
+                transform 0.28s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.28s ease,
+                border-color 0.28s ease,
+                background-color 0.28s ease;
+        }
+        @media (hover: hover) and (pointer: fine) {
+            .hero-inquiry-cta:hover,
+            .hero-portfolio-cta:hover {
+                transform: translateY(-3px);
+            }
+        }
+        .hero-inquiry-cta:active,
+        .hero-portfolio-cta:active {
+            transform: scale(0.98);
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .hero-inquiry-cta,
+            .hero-portfolio-cta,
+            .hero-inquiry-cta:hover,
+            .hero-portfolio-cta:hover,
+            .hero-inquiry-cta:active,
+            .hero-portfolio-cta:active {
+                transition-duration: 0.01ms !important;
+                transform: none !important;
+                animation-duration: 0.01ms !important;
+            }
+        }
+        @media (max-width: 639px) {
+            html {
+                -webkit-text-size-adjust: 100%;
+            }
+            body {
+                -webkit-tap-highlight-color: rgb(99 102 241 / 0.12);
+                padding-left: env(safe-area-inset-left, 0px);
+                padding-right: env(safe-area-inset-right, 0px);
+            }
+            button,
+            [role='button'],
+            .portfolio-summary,
+            .portfolio-more-btn,
+            label.choose-pill,
+            .api-option,
+            a.hero-inquiry-cta,
+            a.hero-portfolio-cta {
+                touch-action: manipulation;
+            }
+            .product-card {
+                padding: 1.125rem;
+                border-radius: 1.35rem;
+            }
+            .product-card h3 {
+                font-size: 1.125rem !important;
+                line-height: 1.35;
+            }
+            .product-card p.text-slate-500 {
+                font-size: 0.9375rem;
+                line-height: 1.65;
+            }
+            .api-option {
+                min-height: 3.5rem;
+                align-items: center;
+            }
+            .api-option .api-checkbox {
+                width: 1.375rem;
+                height: 1.375rem;
+            }
+            input[type='text'],
+            input[type='number'],
+            input[type='email'],
+            input[type='tel'],
+            textarea,
+            select {
+                font-size: 1rem !important;
+            }
+        }
+
+
     </style>
 </head>
 <body class="text-slate-900">
@@ -259,94 +745,65 @@
     </div>
 
     <!-- Hero Section -->
-    <header class="px-4 pt-5 pb-8 md:px-6 md:pt-12 md:pb-16">
-        <div class="max-w-6xl mx-auto hero-bg rounded-2xl md:rounded-[2.75rem] shadow-2xl shadow-indigo-950/20 relative overflow-hidden">
+    <header class="max-[639px]:px-3 px-4 pt-[max(1.25rem,env(safe-area-inset-top))] pb-7 sm:px-4 md:px-6 md:pt-12 md:pb-14">
+        <div class="max-w-4xl mx-auto hero-bg rounded-[1.25rem] sm:rounded-2xl md:rounded-[2.75rem] shadow-2xl shadow-indigo-950/20 relative overflow-hidden">
             <div class="hero-outline"></div>
-            <div class="grid lg:grid-cols-[1.2fr_0.8fr] gap-6 lg:gap-10 px-4 py-6 sm:px-7 sm:py-8 md:px-12 md:py-14 relative z-10">
-                <div class="text-white">
-                    <span class="inline-flex items-center gap-2 py-1.5 px-3 md:py-2 md:px-4 rounded-full bg-white/10 border border-white/15 text-[10px] md:text-xs font-bold mb-3 md:mb-6 tracking-[0.2em] uppercase">
-                        <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-                        Warudo Custom API
-                    </span>
-                    <h1 class="text-3xl sm:text-4xl md:text-6xl font-extrabold mb-3 md:mb-5 tracking-tight leading-[1.05]">
-                        필요한 기능만<br>
-                        <span class="gradient-text">개별로 선택하는</span><br>
-                        Warudo API
-                    </h1>
-                    <p class="text-xs sm:text-sm md:text-lg text-slate-300 max-w-xl leading-relaxed mb-4 md:mb-8">
-                        SOOP, 치지직 환경에 맞춰 세팅을 도와드립니다.<br class="hidden sm:inline">
-                        <span class="text-slate-400">(Warudo Pro / 일반 가능)</span>
-                    </p>
-                    <div class="inline-flex items-start gap-2 sm:gap-3 rounded-[1.25rem] sm:rounded-[1.75rem] bg-gradient-to-r from-amber-300/20 via-white/16 to-emerald-300/20 border border-white/15 px-3 py-3 sm:px-5 sm:py-4 mb-4 md:mb-8 shadow-xl shadow-slate-950/10 backdrop-blur-md w-full max-w-full">
-                        <span class="inline-flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-white text-slate-900 text-base sm:text-lg font-black shrink-0">!</span>
-                        <p class="text-xs sm:text-sm md:text-base leading-relaxed text-white min-w-0">
-                            <span class="block font-extrabold text-sm sm:text-base md:text-lg text-white">별도의 에셋을 구매하실 필요 없습니다</span>
-                            <span class="block text-slate-200 mt-0.5 sm:mt-1 text-[11px] sm:text-sm md:text-base">자체제작한 particle과 prop을 제공해드립니다</span>
-                        </p>
-                    </div>
-                    <div class="flex flex-wrap gap-2 sm:gap-3 mb-4 md:mb-8">
-                        <span class="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-white text-slate-900 text-[11px] sm:text-xs md:text-sm font-bold shadow-lg shadow-slate-950/10">
-                            빠른마감
-                        </span>
-                        <span class="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-indigo-400/15 border border-indigo-300/20 text-indigo-100 text-[11px] sm:text-xs md:text-sm font-bold">
-                            자체제작
-                        </span>
-                        <span class="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-emerald-400/15 border border-emerald-300/20 text-emerald-100 text-[11px] sm:text-xs md:text-sm font-bold">
-                            견적 문의
-                        </span>
-                    </div>
-                    <div class="grid grid-cols-2 gap-2 sm:gap-3">
-                        <div class="glass-panel rounded-xl sm:rounded-[1.5rem] px-3 py-3 sm:px-5 sm:py-4">
-                            <p class="text-[10px] sm:text-[11px] uppercase tracking-[0.18em] text-slate-400 mb-1 sm:mb-2">지원 환경</p>
-                            <p class="text-sm sm:text-lg font-bold text-white">SOOP / 치지직</p>
+ㄹ            <div class="relative z-10 px-4 py-10 max-[639px]:py-11 sm:px-8 sm:py-12 md:px-12 md:py-14 text-center">
+                <span class="inline-flex items-center gap-2 py-2 px-3 md:py-2 md:px-4 rounded-full bg-white/10 border border-white/15 text-[11px] md:text-xs font-bold mb-5 md:mb-6 tracking-[0.14em] sm:tracking-[0.2em] uppercase text-white leading-normal">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 shrink-0" aria-hidden="true"></span>
+                    Warudo Custom API
+                </span>
+                <h1 class="text-[1.65rem] leading-[1.12] sm:text-4xl md:text-5xl font-extrabold mb-4 md:mb-5 tracking-tight text-white px-1">
+                    필요한 기능만<br>
+                    <span class="gradient-text">개별로 선택하는</span> Warudo API
+                </h1>
+                <p class="text-[15px] sm:text-base md:text-lg text-slate-200 max-w-2xl mx-auto leading-relaxed mb-5 sm:mb-6">
+                    SOOP · 치지직에 맞춰 세팅을 도와드립니다.&nbsp;<span class="text-slate-400">Warudo Pro / 일반 가능</span>
+                </p>
+                <p class="text-[13px] sm:text-sm text-slate-400 max-w-2xl mx-auto leading-[1.7] mb-0 px-1">
+                    자체 제작 Particle·Prop 제공으로 별도 에셋 구매 없이 시작할 수 있습니다. 빠른 마감은 사전 문의를 부탁드리며, 설치부터 적용까지 함께 진행합니다.
+                </p>
+                <div class="mt-6 sm:mt-8 max-w-xl mx-auto w-full px-0 sm:px-1 flex flex-col gap-3 sm:gap-3.5">
+                    <a href="#inquiry-form" class="hero-inquiry-cta group relative flex flex-row flex-nowrap items-center gap-3 overflow-hidden rounded-xl border border-white/20 bg-gradient-to-r from-white/[0.12] to-white/[0.06] px-4 py-3.5 shadow-[0_12px_32px_-8px_rgba(0,0,0,0.45)] backdrop-blur-[14px] transition-[border-color,box-shadow] duration-300 hover:border-white/35 hover:shadow-[0_18px_44px_-6px_rgba(99,102,241,0.22)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/85 focus-visible:ring-offset-[3px] focus-visible:ring-offset-slate-900 sm:gap-4 sm:rounded-2xl sm:px-5 sm:py-4" aria-label="Warudo Custom API 문의 양식 섹션으로 이동">
+                        <span class="pointer-events-none absolute inset-x-4 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent opacity-90" aria-hidden="true"></span>
+                        <div class="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-400/40 to-violet-600/35 text-emerald-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.14)] ring-1 ring-white/25 sm:h-11 sm:w-11 sm:rounded-2xl" aria-hidden="true">
+                            <svg class="h-[1.25rem] w-[1.25rem] sm:h-6 sm:w-6" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                            </svg>
                         </div>
-                        <div class="glass-panel rounded-xl sm:rounded-[1.5rem] px-3 py-3 sm:px-5 sm:py-4">
-                            <p class="text-[10px] sm:text-[11px] uppercase tracking-[0.18em] text-slate-400 mb-1 sm:mb-2">Warudo</p>
-                            <p class="text-sm sm:text-lg font-bold text-white">Pro / 일반</p>
+                        <div class="relative min-w-0 flex-1 py-0.5 text-left">
+                            <p class="text-[0.625rem] font-bold tracking-[0.15em] text-indigo-200/90 sm:text-[0.6875rem] sm:tracking-[0.18em]">문의 양식</p>
+                            <p class="mt-0.5 text-[0.8125rem] leading-snug text-slate-100 line-clamp-2 sm:text-[0.895rem] sm:line-clamp-none">
+                                <span class="font-semibold text-white">[문의 양식]</span><span class="text-slate-300">을 통하여 문의해 주세요.</span>
+                            </p>
                         </div>
-                    </div>
-                </div>
-
-                <div class="space-y-3 md:space-y-4">
-                    <div class="glass-panel rounded-[1.35rem] md:rounded-[2rem] p-4 sm:p-5 md:p-7">
-                        <p class="text-[10px] sm:text-xs tracking-[0.2em] uppercase text-indigo-200 mb-1.5 sm:mb-3">Order Guide</p>
-                        <h2 class="text-lg sm:text-xl md:text-2xl font-bold text-white mb-2 sm:mb-3 md:mb-4 leading-snug">원하는 구성만 담아<br>맞춤 문의로 진행</h2>
-                        <div class="space-y-2 sm:space-y-3">
-                            <div class="flex items-start gap-2 sm:gap-3 rounded-xl sm:rounded-2xl bg-white/6 border border-white/8 px-3 py-2 sm:px-4 sm:py-3">
-                                <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-white/10 flex items-center justify-center text-xs sm:text-sm font-bold text-white shrink-0">01</span>
-                                <div class="min-w-0">
-                                    <p class="text-xs sm:text-sm font-bold text-white">API 선택</p>
-                                    <p class="text-[11px] sm:text-xs text-slate-300 mt-0.5 sm:mt-1 leading-relaxed hidden sm:block">필요한 기능만 골라서 수량 조건을 입력합니다.</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-2 sm:gap-3 rounded-xl sm:rounded-2xl bg-white/6 border border-white/8 px-3 py-2 sm:px-4 sm:py-3">
-                                <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-white/10 flex items-center justify-center text-xs sm:text-sm font-bold text-white shrink-0">02</span>
-                                <div class="min-w-0">
-                                    <p class="text-xs sm:text-sm font-bold text-white">가격 안내</p>
-                                    <p class="text-[11px] sm:text-xs text-slate-300 mt-0.5 sm:mt-1 leading-relaxed hidden sm:block">선택하신 항목 기준으로 작업 범위와 비용을 안내드립니다.</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-2 sm:gap-3 rounded-xl sm:rounded-2xl bg-white/6 border border-white/8 px-3 py-2 sm:px-4 sm:py-3">
-                                <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-white/10 flex items-center justify-center text-xs sm:text-sm font-bold text-white shrink-0">03</span>
-                                <div class="min-w-0">
-                                    <p class="text-xs sm:text-sm font-bold text-white">제작 및 세팅</p>
-                                    <p class="text-[11px] sm:text-xs text-slate-300 mt-0.5 sm:mt-1 leading-relaxed hidden sm:block">작업 후 실제 방송 환경에 맞게 세팅까지 마무리합니다.</p>
-                                </div>
-                            </div>
+                        <div class="relative flex shrink-0 items-center gap-1 rounded-xl bg-emerald-500/[0.22] px-3 py-2 text-[0.8125rem] font-bold tracking-tight text-emerald-50 ring-1 ring-emerald-400/35 whitespace-nowrap transition-[background-color,box-shadow] duration-300 group-hover:bg-emerald-500/32 group-hover:ring-emerald-300/50 group-hover:shadow-[0_0_18px_-3px_rgba(52,211,153,0.4)] sm:gap-1.5 sm:px-3.5 sm:py-2.5 sm:text-[0.875rem]">
+                            <span>이동하기</span>
+                            <svg class="h-3.5 w-3.5 shrink-0 text-emerald-100/95 transition-transform duration-300 group-hover:translate-x-0.5 sm:h-4 sm:w-4" fill="none" stroke="currentColor" stroke-width="2.35" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13 5l7 7m0 0l-7 7m7-7H6"></path>
+                            </svg>
                         </div>
-                    </div>
-                    <div class="grid grid-cols-2 gap-2 sm:gap-3 md:gap-4">
-                        <div class="soft-card rounded-xl sm:rounded-[1.75rem] p-3 sm:p-4 md:p-5">
-                            <p class="text-[10px] sm:text-xs font-bold tracking-[0.18em] uppercase text-indigo-500 mb-1 sm:mb-2">Pricing</p>
-                            <p class="text-sm sm:text-base md:text-lg font-bold text-slate-900 mb-0.5 sm:mb-1">빠른마감가능</p>
-                            <p class="text-[11px] sm:text-sm text-slate-500 leading-snug sm:leading-relaxed">빠른마감은 신청 전 문의 부탁드립니다.</p>
+                    </a>
+                    <a href="#portfolio" class="hero-portfolio-cta group relative flex flex-row flex-nowrap items-center gap-3 overflow-hidden rounded-xl border border-white/20 bg-gradient-to-r from-white/[0.12] to-white/[0.06] px-4 py-3.5 shadow-[0_12px_32px_-8px_rgba(0,0,0,0.45)] backdrop-blur-[14px] transition-[border-color,box-shadow] duration-300 hover:border-violet-200/35 hover:shadow-[0_18px_44px_-6px_rgba(139,92,246,0.26)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/85 focus-visible:ring-offset-[3px] focus-visible:ring-offset-slate-900 sm:gap-4 sm:rounded-2xl sm:px-5 sm:py-4" aria-label="Node68 포트폴리오 섹션으로 이동">
+                        <span class="pointer-events-none absolute inset-x-4 top-0 h-px bg-gradient-to-r from-transparent via-white/35 to-transparent opacity-90" aria-hidden="true"></span>
+                        <div class="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-violet-400/40 to-purple-600/35 text-violet-100 shadow-[inset_0_1px_0_rgba(255,255,255,0.14)] ring-1 ring-white/20 sm:h-11 sm:w-11 sm:rounded-2xl" aria-hidden="true">
+                            <svg class="h-[1.25rem] w-[1.25rem] sm:h-[1.35rem] sm:w-[1.35rem]" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                <path d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z"></path>
+                            </svg>
                         </div>
-                        <div class="soft-card rounded-xl sm:rounded-[1.75rem] p-3 sm:p-4 md:p-5">
-                            <p class="text-[10px] sm:text-xs font-bold tracking-[0.18em] uppercase text-emerald-500 mb-1 sm:mb-2">Support</p>
-                            <p class="text-sm sm:text-base md:text-lg font-bold text-slate-900 mb-0.5 sm:mb-1">설치 지원 포함</p>
-                            <p class="text-[11px] sm:text-sm text-slate-500 leading-snug sm:leading-relaxed"><span class="md:hidden">도입부터 적용까지 함께 진행합니다.</span><span class="hidden md:inline">도입부터 적용까지 진행해 처음 사용하셔도 부담이 적습니다.</span></p>
+                        <div class="relative min-w-0 flex-1 py-0.5 text-left">
+                            <p class="text-[0.625rem] font-bold tracking-[0.15em] text-violet-200/90 sm:text-[0.6875rem] sm:tracking-[0.18em]">포트폴리오</p>
+                            <p class="mt-0.5 text-[0.8125rem] leading-snug text-slate-100 line-clamp-2 sm:text-[0.895rem] sm:line-clamp-none">
+                              <span class="font-semibold text-white">Node68 포트폴리오</span></span>
+                            </p>
                         </div>
-                    </div>
+                        <div class="relative flex shrink-0 items-center gap-1 rounded-xl bg-violet-500/[0.24] px-3 py-2 text-[0.8125rem] font-bold tracking-tight text-violet-50 ring-1 ring-violet-400/40 whitespace-nowrap transition-[background-color,box-shadow] duration-300 group-hover:bg-violet-500/[0.36] group-hover:ring-violet-300/55 group-hover:shadow-[0_0_18px_-3px_rgba(167,139,250,0.45)] sm:gap-1.5 sm:px-3.5 sm:py-2.5 sm:text-[0.875rem]">
+                            <span>이동하기</span>
+                            <svg class="h-3.5 w-3.5 shrink-0 text-violet-100/95 transition-transform duration-300 group-hover:translate-x-0.5 sm:h-4 sm:w-4" fill="none" stroke="currentColor" stroke-width="2.35" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13 5l7 7m0 0l-7 7m7-7H6"></path>
+                            </svg>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -436,11 +893,11 @@
                 <div>
                     <label class="mb-1.5 block text-xs font-bold text-slate-800 sm:mb-2 sm:text-sm">방송 플랫폼 <span class="text-red-500">*</span></label>
                     <div class="flex gap-2 sm:gap-3">
-                        <label class="flex min-h-[3rem] flex-1 cursor-pointer items-center justify-center gap-2 rounded-xl border-2 border-slate-200 bg-slate-50 p-2.5 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 sm:rounded-2xl sm:p-3">
+                        <label class="flex min-h-[3rem] flex-1 cursor-pointer items-center justify-center gap-2 rounded-xl border-2 border-slate-200 bg-slate-50 p-2.5 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 sm:rounded-2xl sm:p-3 choose-pill">
                             <input type="radio" name="eventPlatform" id="eventPlatformChzz" value="치지직" class="h-4 w-4 shrink-0 accent-indigo-600">
                             <span class="text-sm font-bold text-slate-800">치지직</span>
                         </label>
-                        <label class="flex min-h-[3rem] flex-1 cursor-pointer items-center justify-center gap-2 rounded-xl border-2 border-slate-200 bg-slate-50 p-2.5 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 sm:rounded-2xl sm:p-3">
+                        <label class="flex min-h-[3rem] flex-1 cursor-pointer items-center justify-center gap-2 rounded-xl border-2 border-slate-200 bg-slate-50 p-2.5 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 sm:rounded-2xl sm:p-3 choose-pill">
                             <input type="radio" name="eventPlatform" id="eventPlatformSoop" value="SOOP" class="h-4 w-4 shrink-0 accent-indigo-600">
                             <span class="text-sm font-bold text-slate-800">SOOP</span>
                         </label>
@@ -454,11 +911,11 @@
                 <div>
                     <label class="mb-1.5 block text-xs font-bold text-slate-800 sm:mb-2 sm:text-sm">Warudo Mod <span class="text-red-500">*</span></label>
                     <div class="flex gap-2 sm:gap-3">
-                        <label class="flex min-h-[3rem] flex-1 cursor-pointer items-center justify-center gap-2 rounded-xl border-2 border-slate-200 bg-slate-50 p-2.5 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 sm:rounded-2xl sm:p-3">
+                        <label class="flex min-h-[3rem] flex-1 cursor-pointer items-center justify-center gap-2 rounded-xl border-2 border-slate-200 bg-slate-50 p-2.5 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 sm:rounded-2xl sm:p-3 choose-pill">
                             <input type="radio" name="eventWarudoMod" id="eventModPro" value="Pro" class="h-4 w-4 shrink-0 accent-indigo-600">
                             <span class="text-sm font-bold text-slate-800">Pro</span>
                         </label>
-                        <label class="flex min-h-[3rem] flex-1 cursor-pointer items-center justify-center gap-2 rounded-xl border-2 border-slate-200 bg-slate-50 p-2.5 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 sm:rounded-2xl sm:p-3">
+                        <label class="flex min-h-[3rem] flex-1 cursor-pointer items-center justify-center gap-2 rounded-xl border-2 border-slate-200 bg-slate-50 p-2.5 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 sm:rounded-2xl sm:p-3 choose-pill">
                             <input type="radio" name="eventWarudoMod" id="eventModStandard" value="일반" class="h-4 w-4 shrink-0 accent-indigo-600">
                             <span class="text-sm font-bold text-slate-800">일반</span>
                         </label>
@@ -497,7 +954,7 @@
                         상기 <span class="font-bold text-indigo-600 underline">이용 순서, 유의사항</span>을 모두 확인하였으며 이에 동의합니다. <span class="font-bold text-red-500">(필수)</span>
                     </span>
                 </label>
-                <button type="button" id="eventCopyBtn" class="flex min-h-[3.25rem] w-full items-center justify-center gap-2 rounded-xl bg-slate-900 px-3 py-3.5 text-sm font-bold text-white shadow-lg transition-all hover:bg-indigo-600 active:scale-[0.99] sm:rounded-2xl sm:py-4 sm:text-base">
+                <button type="button" id="eventCopyBtn" class="tap-press flex min-h-[3.25rem] w-full items-center justify-center gap-2 rounded-xl bg-slate-900 px-3 py-3.5 text-sm font-bold text-white shadow-lg transition-all hover:bg-indigo-600 sm:rounded-2xl sm:py-4 sm:text-base">
                     <svg class="h-5 w-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
                     <span class="text-center leading-tight">복사하기</span>
                 </button>
@@ -532,25 +989,24 @@
     -->
 
     <!-- Product Grid -->
-    <section class="max-w-6xl mx-auto px-6 pb-8 md:pb-10">
-        <div class="text-center mb-12">
-            <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 border border-slate-200 text-indigo-600 text-xs font-bold shadow-sm mb-5">
+    <section class="max-w-7xl mx-auto px-4 pb-10 sm:px-6 md:pb-10">
+        <div class="text-center mb-8 sm:mb-12 px-1">
+            <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 border border-slate-200 text-indigo-600 text-xs font-bold shadow-sm mb-4 sm:mb-5">
                 Selectable APIs
             </span>
-            <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">원하는 기능만 골라 담는 API 라인업</h2>
-            <p class="max-w-2xl mx-auto text-sm md:text-base text-slate-500 leading-relaxed">
-               필요한 연출만 선택해서 맞춤 구성으로 문의할 수 있습니다.<br>
-               <span class="mt-2 inline-block font-semibold text-indigo-600">카드의 썸네일을 누르면 크게 볼 수 있습니다.</span>
+            <h2 class="text-2xl sm:text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-3 sm:mb-4 leading-snug px-2">원하는 기능만 골라 담는 API 라인업</h2>
+            <p class="max-w-2xl mx-auto text-[15px] sm:text-sm md:text-base text-slate-500 leading-relaxed">
+               필요한 연출만 선택해서 맞춤 구성으로 문의할 수 있습니다.
             </p>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Item 01: 천사 모션 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10 md:gap-x-12 md:gap-y-14">
+            <!-- Item 01: 천사모션 -->
             <div class="card-hover product-card transition-all duration-300">
                 <div class="image-container rounded-[1.5rem] mb-5 group relative border border-slate-200/70">
                     <span class="absolute top-3 left-3 z-10 inline-flex items-center justify-center min-w-11 h-11 px-3 rounded-2xl bg-slate-950/75 text-white text-sm font-black tracking-wider shadow-lg">01</span>
-                    <img src="./img/날개.webp" alt="천사 모션" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/400x300?text=Angel+Motion'">
+                    <img src="./img/날개.webp" alt="천사모션" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/400x300?text=Angel+Motion'">
                 </div>
-                <h3 class="text-xl font-bold text-slate-900 mb-3">천사 모션</h3>
+                <h3 class="text-xl font-bold text-slate-900 mb-3">천사모션</h3>
                 <div class="flex flex-wrap gap-1.5 mb-3">
                     <span class="font-bold text-rose-700 bg-rose-50 px-2.5 py-1 rounded-full text-[10px] border border-rose-100">날개 Prop 제공</span>
                     <span class="font-bold text-indigo-700 bg-indigo-50 px-2.5 py-1 rounded-full text-[10px] border border-indigo-100">자체제작 Particle 포함</span>
@@ -572,14 +1028,14 @@
                 <p class="text-slate-500 text-sm leading-relaxed mb-4">캐릭터를 꼬마 체형·분위기로 바꿔 주는 변신 연출입니다.</p>
             </div>
 
-            <!-- Item 03: ZZZ & 졸기 -->
+            <!-- Item 03: ZZZ 졸기 -->
             <div class="card-hover product-card transition-all duration-300">
                 <div class="image-container rounded-[1.5rem] mb-5 group relative border border-slate-200/70">
                     <span class="absolute top-3 left-3 z-10 inline-flex items-center justify-center min-w-11 h-11 px-3 rounded-2xl bg-slate-950/75 text-white text-sm font-black tracking-wider shadow-lg">03</span>
                     <img src="./img/자리비움.webp" alt="AFK Animation" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/400x300?text=AFK+Animation'">
                 </div>
                 <div class="flex items-start justify-between gap-4 mb-3">
-                    <h3 class="text-xl font-bold text-slate-900 exclude-from">ZZZ 애니메이션 & 졸기</h3>
+                    <h3 class="text-xl font-bold text-slate-900 exclude-from">ZZZ 졸기</h3>
                     <span class="text-[10px] font-bold text-indigo-600 bg-indigo-50 px-3 py-1.5 rounded-full border border-indigo-100 shrink-0">자리비움모션</span>
                 </div>
                 <div class="flex flex-wrap gap-1.5 mb-3">
@@ -605,14 +1061,14 @@
                 <p class="text-slate-500 text-sm leading-relaxed mb-4">동전이 하늘 위에서 쏟아지는 연출</p>
             </div>
 
-            <!-- Item 05: 물음표 채팅 인터랙션 -->
+            <!-- Item 05: 물음표 채팅 -->
             <div class="card-hover product-card transition-all duration-300">
                 <div class="image-container rounded-[1.5rem] mb-5 group relative border border-slate-200/70">
                     <span class="absolute top-3 left-3 z-10 inline-flex items-center justify-center min-w-11 h-11 px-3 rounded-2xl bg-slate-950/75 text-white text-sm font-black tracking-wider shadow-lg">05</span>
                     <img src="./img/물음표핑.webp" alt="Question Mark" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/400x300?text=Question+Mark'">
                 </div>
                 <div class="flex items-start justify-between gap-4 mb-3">
-                    <h3 class="text-xl font-bold text-slate-900">물음표 채팅 인터랙션</h3>
+                    <h3 class="text-xl font-bold text-slate-900">물음표 채팅</h3>
                     <span class="text-[10px] font-bold text-indigo-600 bg-indigo-50 px-3 py-1.5 rounded-full border border-indigo-100 shrink-0">채팅인터랙션</span>
                 </div>
                 <div class="flex flex-wrap gap-1.5 mb-3">
@@ -635,7 +1091,7 @@
                     <span class="font-bold text-indigo-700 bg-indigo-50 px-2.5 py-1 rounded-full text-[10px] border border-indigo-100">자체제작 Prop 포함</span>
                     <span class="font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full text-[10px] border border-emerald-100">Sound 포함</span>
                 </div>
-                <p class="text-slate-500 text-sm leading-relaxed mb-4">빨주노초파남보 색상 프롭과 함께 위에서 떨어지는 하트 연출을 구현합니다.</p>
+                <p class="text-slate-500 text-sm leading-relaxed mb-4">위에서 떨어지는 하트 연출과 자체 제작 프롭으로 후원 리액션을 구현합니다.</p>
             </div>
 
             <!-- Item 07: 하트 쏟아지기 Type 2 -->
@@ -713,105 +1169,188 @@
     </section>
 
     <!-- Portfolio (접기/펼치기 — 라인업 바로 아래) -->
-    <section class="portfolio-section max-w-6xl mx-auto px-4 pb-10 md:px-6 md:pb-16" aria-labelledby="portfolio-heading">
-        <details id="portfolio-panel" class="portfolio-disclosure relative overflow-hidden rounded-2xl md:rounded-[2.5rem]">
-            <summary class="flex cursor-pointer list-none items-center justify-between gap-3 md:gap-6 px-4 py-5 sm:px-6 sm:py-6 md:px-10 md:py-8 select-none hover:bg-indigo-50/55 transition-colors">
-                <div class="min-w-0 flex-1 text-left">
-                    <span class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.12em] text-slate-600 mb-2 md:mb-3">
-                        <span class="h-1.5 w-1.5 rounded-full bg-indigo-500"></span>
+    <section id="portfolio" class="portfolio-section max-w-7xl mx-auto px-4 md:px-8 scroll-mt-10" aria-labelledby="portfolio-heading">
+        <div class="portfolio-shell">
+        <div id="portfolio-panel" class="portfolio-disclosure portfolio-framed relative overflow-hidden">
+            <div class="portfolio-summary flex cursor-pointer list-none flex-col gap-6 md:gap-7 px-5 py-8 sm:px-8 md:px-12 md:py-11 select-none" tabindex="0" role="button" aria-expanded="false" aria-controls="portfolio-disclosure-body">
+                <div class="min-w-0 flex-1 w-full flex flex-col items-center text-center">
+                    <span class="inline-flex items-center gap-2 rounded-full border border-indigo-500/75 bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-600 px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-[0.16em] text-white shadow-lg shadow-indigo-900/30 mb-4 md:mb-6 ring-2 ring-white/60">
+                        <span class="h-1.5 w-1.5 rounded-full bg-amber-300 shrink-0" aria-hidden="true"></span>
                         Portfolio
                     </span>
-                    <h2 id="portfolio-heading" class="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight text-slate-900 leading-snug">
-                        포트폴리오
+                    <h2 id="portfolio-heading" class="py-1.5 md:py-2 text-[1.6875rem] sm:text-4xl md:text-5xl font-black tracking-tight leading-[1.08] md:leading-[1.02]">
+                        <span class="gradient-text">Node68 포트폴리오</span>
                     </h2>
+
                 </div>
-                <div class="flex shrink-0 flex-col items-center gap-1 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 md:gap-1.5 md:px-4 md:py-3">
-                    <span class="portfolio-chevron inline-flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700 shadow-sm transition-transform duration-300 md:h-14 md:w-14" aria-hidden="true">
-                        <svg class="h-5 w-5 md:h-6 md:w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
-                    </span>
-                    <span class="text-[10px] font-bold text-slate-600 hidden sm:block">펼치기 · 접기</span>
-                </div>
-            </summary>
-            <div class="portfolio-disclosure-body px-4 pb-5 pt-3 sm:px-6 md:px-10 md:pb-8 md:pt-5">
-                <p class="mb-3 md:mb-4 text-center text-xs font-semibold text-indigo-600 md:text-sm">카드의 썸네일을 누르면 크게 볼 수 있습니다.</p>
-                <p class="mb-2 text-center text-[10px] font-bold text-slate-800 md:hidden">← 옆으로 밀어 전체 보기 →</p>
-                <div class="portfolio-people space-y-0">
-                    <div class="portfolio-person-group">
-                        <h3 class="portfolio-person-heading">한시아님</h3>
-                        <div class="portfolio-strip flex flex-nowrap gap-3 overflow-x-auto snap-x snap-mandatory px-1 pb-2 md:grid md:grid-cols-3 md:gap-4 md:overflow-visible md:px-0 md:pb-0">
-                    <button type="button" class="portfolio-tile shrink-0 snap-center w-[min(86vw,18rem)] max-w-[18rem] md:max-w-none md:w-auto md:min-w-0 rounded-2xl border border-slate-200/90 bg-white/90 p-2.5 text-left shadow-sm transition-all hover:border-indigo-300 hover:shadow-md md:p-3">
-                        <div class="image-container overflow-hidden rounded-xl border border-slate-200/70 !aspect-[4/3]">
-                            <img src="./img/한시아님_어린이화Ph.png" alt="한시아님 꼬마변신 Ph" class="h-full w-full object-cover" loading="lazy" decoding="async" onerror="this.src='https://via.placeholder.com/400x300?text=Chibi'">
+                <div id="portfolio-disclosure-body" class="portfolio-disclosure-body px-4 pb-5 pt-3 sm:px-6 md:px-10 md:pb-8 md:pt-5">
+                <div class="portfolio-people max-w-5xl mx-auto">
+                    <section class="portfolio-entry" aria-label="미코님 포트폴리오">
+                        <header class="portfolio-entry-header">
+                            <h3 class="portfolio-person-heading"><span class="portfolio-person-name">미코님</span></h3>
+                        </header>
+                        <div class="portfolio-entry-works">
+                            <p class="portfolio-works-label">작업 내용</p>
+                            <ul class="portfolio-work-list">
+                                <li>하트 쏟아지기 Type 1 · 하트 쏟아지기 Type 2</li>
+                                <li>천사모션</li>
+                            </ul>
                         </div>
-                        <p class="portfolio-tile-title mt-2 line-clamp-2 text-xs font-bold text-slate-900 md:text-sm">한시아님 · 꼬마변신</p>
-                    </button>
-                    <button type="button" class="portfolio-tile shrink-0 snap-center w-[min(86vw,18rem)] max-w-[18rem] md:max-w-none md:w-auto md:min-w-0 rounded-2xl border border-slate-200/90 bg-white/90 p-2.5 text-left shadow-sm transition-all hover:border-indigo-300 hover:shadow-md md:p-3">
-                        <div class="image-container overflow-hidden rounded-xl border border-slate-200/70 !aspect-[4/3] !bg-slate-950">
-                            <img src="./img/한시아님_어린이화.webp" alt="한시아님 꼬마변신" class="h-full w-full object-contain object-center" loading="lazy" decoding="async" onerror="this.src='https://via.placeholder.com/400x300?text=Child'">
+                        <div class="aspect-video w-full overflow-hidden rounded-2xl border border-slate-200/90 bg-black shadow-md">
+                            <iframe class="h-full w-full" src="https://www.youtube.com/embed/IwR1xS3P9_k" title="미코님 포트폴리오 영상 (YouTube)" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </div>
-                        <p class="portfolio-tile-title mt-2 line-clamp-2 text-xs font-bold text-slate-900 md:text-sm">한시아님 · 꼬마변신</p>
-                    </button>
-                    <button type="button" class="portfolio-tile shrink-0 snap-center w-[min(86vw,18rem)] max-w-[18rem] md:max-w-none md:w-auto md:min-w-0 rounded-2xl border border-slate-200/90 bg-white/90 p-2.5 text-left shadow-sm transition-all hover:border-indigo-300 hover:shadow-md md:p-3">
-                        <div class="image-container overflow-hidden rounded-xl border border-slate-200/70 !aspect-[4/3]">
-                            <img src="./img/한시아님_입김%20(2).webp" alt="한시아님 입김" class="h-full w-full object-cover" loading="lazy" decoding="async" onerror="this.src='https://via.placeholder.com/400x300?text=Breath'">
+                    </section>
+                    <section class="portfolio-entry" aria-label="모몽님 포트폴리오">
+                        <header class="portfolio-entry-header">
+                            <h3 class="portfolio-person-heading"><span class="portfolio-person-name">모몽님</span></h3>
+                        </header>
+                        <div class="portfolio-entry-works">
+                            <p class="portfolio-works-label">작업 내용</p>
+                            <ul class="portfolio-work-list">
+                                <li>하트 쏟아지기 Type 2</li>
+                            </ul>
                         </div>
-                        <p class="portfolio-tile-title mt-2 line-clamp-2 text-xs font-bold text-slate-900 md:text-sm">한시아님 · 입김</p>
-                    </button>
-                    <button type="button" class="portfolio-tile shrink-0 snap-center w-[min(86vw,18rem)] max-w-[18rem] md:max-w-none md:w-auto md:min-w-0 rounded-2xl border border-slate-200/90 bg-white/90 p-2.5 text-left shadow-sm transition-all hover:border-indigo-300 hover:shadow-md md:p-3">
-                        <div class="image-container overflow-hidden rounded-xl border border-slate-200/70 !aspect-[4/3]">
-                            <img src="./img/한시아님_하트.webp" alt="한시아님 하트" class="h-full w-full object-cover" loading="lazy" decoding="async" onerror="this.src='https://via.placeholder.com/400x300?text=Heart2'">
+                        <div class="aspect-video w-full overflow-hidden rounded-2xl border border-slate-200/90 bg-black shadow-md">
+                            <iframe class="h-full w-full" src="https://www.youtube.com/embed/C6w1ZJNSLCk" title="모몽님 포트폴리오 영상 (YouTube)" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </div>
-                        <p class="portfolio-tile-title mt-2 line-clamp-2 text-xs font-bold text-slate-900 md:text-sm">한시아님 · 하트</p>
-                    </button>
+                    </section>
+                    <section class="portfolio-entry" aria-label="류헤나님 포트폴리오">
+                        <header class="portfolio-entry-header">
+                            <h3 class="portfolio-person-heading"><span class="portfolio-person-name">류헤나님</span></h3>
+                        </header>
+                        <div class="portfolio-entry-works">
+                            <p class="portfolio-works-label">작업 내용</p>
+                            <ul class="portfolio-work-list">
+                                <li>꼬마변신</li>
+                            </ul>
                         </div>
-                    </div>
-                    <div class="portfolio-person-group">
-                        <h3 class="portfolio-person-heading">단테님</h3>
-                        <div class="portfolio-strip flex flex-nowrap gap-3 overflow-x-auto snap-x snap-mandatory px-1 pb-2 md:grid md:grid-cols-2 md:gap-4 md:overflow-visible md:px-0 md:pb-0">
-                    <button type="button" class="portfolio-tile shrink-0 snap-center w-[min(86vw,18rem)] max-w-[18rem] md:max-w-none md:w-auto md:min-w-0 rounded-2xl border border-slate-200/90 bg-white/90 p-2.5 text-left shadow-sm transition-all hover:border-indigo-300 hover:shadow-md md:p-3">
-                        <div class="image-container overflow-hidden rounded-xl border border-slate-200/70 !aspect-[4/3]">
-                            <img src="./img/단테님_졸기.webp" alt="단테님 졸기" class="h-full w-full object-cover" loading="lazy" decoding="async" onerror="this.src='https://via.placeholder.com/400x300?text=Sleep'">
+                        <div class="aspect-video w-full overflow-hidden rounded-2xl border border-slate-200/90 bg-black shadow-md">
+                            <iframe class="h-full w-full" src="https://www.youtube.com/embed/CUGODJNgVDE" title="류헤나님 포트폴리오 영상 (YouTube)" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </div>
-                        <p class="portfolio-tile-title mt-2 line-clamp-2 text-xs font-bold text-slate-900 md:text-sm">단테님 · 졸기</p>
-                    </button>
-                    <button type="button" class="portfolio-tile shrink-0 snap-center w-[min(86vw,18rem)] max-w-[18rem] md:max-w-none md:w-auto md:min-w-0 rounded-2xl border border-slate-200/90 bg-white/90 p-2.5 text-left shadow-sm transition-all hover:border-indigo-300 hover:shadow-md md:p-3">
-                        <div class="image-container overflow-hidden rounded-xl border border-slate-200/70 !aspect-[4/3]">
-                            <img src="./img/단테님_하트.webp" alt="단테님 하트" class="h-full w-full object-cover" loading="lazy" decoding="async" onerror="this.src='https://via.placeholder.com/400x300?text=Heart'">
+                    </section>
+                    <section class="portfolio-entry" aria-label="한시아님 포트폴리오">
+                        <header class="portfolio-entry-header">
+                            <h3 class="portfolio-person-heading"><span class="portfolio-person-name">한시아님</span></h3>
+                        </header>
+                        <div class="portfolio-entry-works">
+                            <p class="portfolio-works-label">작업 내용</p>
+                            <ul class="portfolio-work-list">
+                                <li>한숨</li>
+                                <li>윙크</li>
+                                <li>하트 쏟아지기 Type 1</li>
+                                <li>꼬마변신</li>
+                            </ul>
                         </div>
-                        <p class="portfolio-tile-title mt-2 line-clamp-2 text-xs font-bold text-slate-900 md:text-sm">단테님 · 하트</p>
-                    </button>
+                        <div class="aspect-video w-full overflow-hidden rounded-2xl border border-slate-200/90 bg-black shadow-md">
+                            <iframe class="h-full w-full" src="https://www.youtube.com/embed/wK5Kj3YtzTA" title="한시아님 포트폴리오 영상 (YouTube)" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </div>
-                    </div>
-                    <div class="portfolio-person-group">
-                        <h3 class="portfolio-person-heading">김뚜야님</h3>
-                        <div class="portfolio-strip flex flex-nowrap gap-3 overflow-x-auto snap-x snap-mandatory px-1 pb-2 md:grid md:grid-cols-3 md:gap-4 md:overflow-visible md:px-0 md:pb-0">
-                    <button type="button" class="portfolio-tile shrink-0 snap-center w-[min(86vw,18rem)] max-w-[18rem] md:max-w-none md:w-auto md:min-w-0 rounded-2xl border border-slate-200/90 bg-white/90 p-2.5 text-left shadow-sm transition-all hover:border-indigo-300 hover:shadow-md md:p-3">
-                        <div class="image-container overflow-hidden rounded-xl border border-slate-200/70 !aspect-[4/3]">
-                            <img src="./img/김뚜야님_동전쏟아지기.webp" alt="김뚜야님 동전 쏟아지기" class="h-full w-full object-cover" loading="lazy" decoding="async" onerror="this.src='https://via.placeholder.com/400x300?text=Coins'">
+                    </section>
+                    <section class="portfolio-entry" aria-label="김담담님 포트폴리오">
+                        <header class="portfolio-entry-header">
+                            <h3 class="portfolio-person-heading"><span class="portfolio-person-name">김담담님</span></h3>
+                        </header>
+                        <div class="portfolio-entry-works">
+                            <p class="portfolio-works-label">작업 내용</p>
+                            <ul class="portfolio-work-list">
+                                <li>꼬마변신</li>
+                            </ul>
                         </div>
-                        <p class="portfolio-tile-title mt-2 line-clamp-2 text-xs font-bold text-slate-900 md:text-sm">김뚜야님 · 동전 쏟아지기</p>
-                    </button>
-                    <button type="button" class="portfolio-tile shrink-0 snap-center w-[min(86vw,18rem)] max-w-[18rem] md:max-w-none md:w-auto md:min-w-0 rounded-2xl border border-slate-200/90 bg-white/90 p-2.5 text-left shadow-sm transition-all hover:border-indigo-300 hover:shadow-md md:p-3">
-                        <div class="image-container overflow-hidden rounded-xl border border-slate-200/70 !aspect-[4/3]">
-                            <img src="./img/김뚜야님_하트.webp" alt="김뚜야님 하트" class="h-full w-full object-cover" loading="lazy" decoding="async" onerror="this.src='https://via.placeholder.com/400x300?text=Heart'">
+                        <div class="aspect-video w-full overflow-hidden rounded-2xl border border-slate-200/90 bg-black shadow-md">
+                            <iframe class="h-full w-full" src="https://www.youtube.com/embed/2fsVJzgB78o" title="김담담님 포트폴리오 영상 (YouTube)" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </div>
-                        <p class="portfolio-tile-title mt-2 line-clamp-2 text-xs font-bold text-slate-900 md:text-sm">김뚜야님 · 하트</p>
-                    </button>
-                    <button type="button" class="portfolio-tile shrink-0 snap-center w-[min(86vw,18rem)] max-w-[18rem] md:max-w-none md:w-auto md:min-w-0 rounded-2xl border border-slate-200/90 bg-white/90 p-2.5 text-left shadow-sm transition-all hover:border-indigo-300 hover:shadow-md md:p-3">
-                        <div class="image-container overflow-hidden rounded-xl border border-slate-200/70 !aspect-[4/3]">
-                            <img src="./img/김뚜야님_한개던지기.webp" alt="김뚜야님 한 개 던지기" class="h-full w-full object-cover" loading="lazy" decoding="async" onerror="this.src='https://via.placeholder.com/400x300?text=Throw'">
+                    </section>
+                    <section class="portfolio-entry" aria-label="그묘님 포트폴리오">
+                        <header class="portfolio-entry-header">
+                            <h3 class="portfolio-person-heading"><span class="portfolio-person-name">그묘님</span></h3>
+                        </header>
+                        <div class="portfolio-entry-works">
+                            <p class="portfolio-works-label">작업 내용</p>
+                            <ul class="portfolio-work-list">
+                                <li>꼬마변신</li>
+                            </ul>
                         </div>
-                        <p class="portfolio-tile-title mt-2 line-clamp-2 text-xs font-bold text-slate-900 md:text-sm">김뚜야님 · 한 개 던지기</p>
-                    </button>
+                        <div class="aspect-video w-full overflow-hidden rounded-2xl border border-slate-200/90 bg-black shadow-md">
+                            <iframe class="h-full w-full" src="https://www.youtube.com/embed/IoFthj38AwA" title="그묘님 포트폴리오 영상 (YouTube)" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </div>
-                    </div>
+                    </section>
+                    <section class="portfolio-entry" aria-label="김뚜야님 포트폴리오">
+                        <header class="portfolio-entry-header">
+                            <h3 class="portfolio-person-heading"><span class="portfolio-person-name">김뚜야님</span></h3>
+                        </header>
+                        <div class="portfolio-entry-works">
+                            <p class="portfolio-works-label">작업 내용</p>
+                            <ul class="portfolio-work-list">
+                                <li>윙크</li>
+                                <li>물음표 채팅</li>
+                                <li>하나 던지기</li>
+                                <li>하트 쏟아지기 Type 1</li>
+                                <li>동전 쏟아지기</li>
+                            </ul>
+                        </div>
+                        <div class="aspect-video w-full overflow-hidden rounded-2xl border border-slate-200/90 bg-black shadow-md">
+                            <iframe class="h-full w-full" src="https://www.youtube.com/embed/JM2f0soDyXU" title="김뚜야님 포트폴리오 영상 (YouTube)" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
+                    </section>
+                    <section class="portfolio-entry" aria-label="뮤히님 포트폴리오">
+                        <header class="portfolio-entry-header">
+                            <h3 class="portfolio-person-heading"><span class="portfolio-person-name">뮤히님</span></h3>
+                        </header>
+                        <div class="portfolio-entry-works">
+                            <p class="portfolio-works-label">작업 내용</p>
+                            <ul class="portfolio-work-list">
+                                <li>꼬마변신</li>
+                            </ul>
+                        </div>
+                        <div class="aspect-video w-full overflow-hidden rounded-2xl border border-slate-200/90 bg-black shadow-md">
+                            <iframe class="h-full w-full" src="https://www.youtube.com/embed/uxPlpkfmwIk" title="뮤히님 포트폴리오 영상 (YouTube)" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
+                    </section>
+                    <section class="portfolio-entry" aria-label="밍몬님 포트폴리오">
+                        <header class="portfolio-entry-header">
+                            <h3 class="portfolio-person-heading"><span class="portfolio-person-name">밍몬님</span></h3>
+                        </header>
+                        <div class="portfolio-entry-works">
+                            <p class="portfolio-works-label">작업 내용</p>
+                            <ul class="portfolio-work-list">
+                                <li>꼬마변신</li>
+                            </ul>
+                        </div>
+                        <div class="aspect-video w-full overflow-hidden rounded-2xl border border-slate-200/90 bg-black shadow-md">
+                            <iframe class="h-full w-full" src="https://www.youtube.com/embed/-s6t9DsQsYo" title="밍몬님 포트폴리오 영상 (YouTube)" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
+                    </section>
+                    <section class="portfolio-entry" aria-label="앙단테님 포트폴리오">
+                        <header class="portfolio-entry-header">
+                            <h3 class="portfolio-person-heading"><span class="portfolio-person-name">앙단테님</span></h3>
+                        </header>
+                        <div class="portfolio-entry-works">
+                            <p class="portfolio-works-label">작업 내용</p>
+                            <ul class="portfolio-work-list">
+                                <li>윙크</li>
+                                <li>ZZZ 졸기</li>
+                                <li>하트 쏟아지기 Type 1</li>
+                            </ul>
+                        </div>
+                        <div class="aspect-video w-full overflow-hidden rounded-2xl border border-slate-200/90 bg-black shadow-md">
+                            <iframe class="h-full w-full" src="https://www.youtube.com/embed/8k7B3JpnBwI" title="앙단테님 포트폴리오 영상 (YouTube)" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
+                    </section>
                 </div>
             </div>
-        </details>
+                <div class="portfolio-more-btn tap-press" role="presentation">
+                    <span class="portfolio-more-label portfolio-more-label-closed">더보기</span>
+                    <span class="portfolio-more-label portfolio-more-label-open">접기</span>
+                    <span class="portfolio-chevron" aria-hidden="true">
+                        <svg class="h-5 w-5 sm:h-[1.3rem] sm:w-[1.3rem] shrink-0" fill="none" stroke="currentColor" stroke-width="2.75" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
+                    </span>
+                </div>
+            </div>
+        </div>
+        </div>
     </section>
 
     <!-- Order Process -->
-    <section class="max-w-4xl mx-auto px-4 pb-12 md:px-6 md:pb-24">
+    <section id="order-flow" class="max-w-4xl mx-auto px-4 pb-12 md:px-6 md:pb-24 scroll-mt-10" aria-label="진행 순서">
         <div class="section-shell rounded-2xl md:rounded-[2.5rem] p-4 sm:p-6 md:p-10">
             <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-2 sm:gap-4 mb-4 md:mb-8">
                 <div>
@@ -821,7 +1360,7 @@
                     <h2 class="text-lg sm:text-xl md:text-3xl font-bold text-slate-900 leading-snug">문의부터 작업 완료까지</h2>
                 </div>
             </div>
-            <div class="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-3 md:gap-4 relative">
+            <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 md:gap-4 lg:grid-cols-6 relative">
                 <div class="text-center group soft-card rounded-xl md:rounded-[1.75rem] p-2 sm:p-3 md:p-4">
                     <div class="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-white rounded-lg sm:rounded-xl md:rounded-2xl shadow-sm border border-slate-200 flex items-center justify-center mx-auto mb-1.5 sm:mb-2 md:mb-3">
                         <span class="text-indigo-600 font-bold text-xs sm:text-sm md:text-base">01</span>
@@ -895,7 +1434,7 @@
     </section>
 
     <!-- Inquiry Form Section -->
-    <section class="max-w-4xl mx-auto px-4 pb-12 md:px-6 md:pb-24">
+    <section id="inquiry-form" class="max-w-4xl mx-auto px-4 pb-12 md:px-6 md:pb-24 scroll-mt-10">
         <div class="overflow-hidden rounded-2xl md:rounded-[2.75rem] border border-white/70 shadow-[0_32px_80px_rgba(15,23,42,0.12)] bg-white/85 backdrop-blur-xl">
             <div class="hero-bg px-4 py-6 sm:px-8 sm:py-8 md:px-14 md:py-10 relative overflow-hidden">
                 <div class="hero-outline"></div>
@@ -917,11 +1456,11 @@
                             1. 방송 플랫폼 <span class="text-red-500 font-bold">* (필수)</span>
                         </label>
                         <div class="flex gap-2 sm:gap-3 md:gap-4">
-                            <label class="flex-1 flex items-center justify-center gap-2 sm:gap-3 p-3 sm:p-4 bg-slate-50 border-2 border-slate-200 rounded-xl sm:rounded-2xl cursor-pointer has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 transition-all min-h-[3rem]">
+                            <label class="flex-1 flex items-center justify-center gap-2 sm:gap-3 p-3 sm:p-4 bg-slate-50 border-2 border-slate-200 rounded-xl sm:rounded-2xl cursor-pointer has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 transition-all min-h-[3rem] choose-pill">
                                 <input type="radio" name="platform" id="platformChzz" value="치지직" class="accent-indigo-600 w-4 h-4 shrink-0">
                                 <span class="font-bold text-slate-800 text-sm sm:text-base">치지직</span>
                             </label>
-                            <label class="flex-1 flex items-center justify-center gap-2 sm:gap-3 p-3 sm:p-4 bg-slate-50 border-2 border-slate-200 rounded-xl sm:rounded-2xl cursor-pointer has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 transition-all min-h-[3rem]">
+                            <label class="flex-1 flex items-center justify-center gap-2 sm:gap-3 p-3 sm:p-4 bg-slate-50 border-2 border-slate-200 rounded-xl sm:rounded-2xl cursor-pointer has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 transition-all min-h-[3rem] choose-pill">
                                 <input type="radio" name="platform" id="platformSoop" value="SOOP" class="accent-indigo-600 w-4 h-4 shrink-0">
                                 <span class="font-bold text-slate-800 text-sm sm:text-base">SOOP</span>
                             </label>
@@ -942,11 +1481,11 @@
                         3. Warudo Mod 버전 <span class="text-red-500 font-bold">* (필수)</span>
                     </label>
                     <div class="flex gap-2 sm:gap-3 md:gap-4 md:max-w-md">
-                        <label class="flex-1 flex items-center justify-center gap-2 sm:gap-3 p-3 sm:p-4 bg-slate-50 border-2 border-slate-200 rounded-xl sm:rounded-2xl cursor-pointer has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 transition-all min-h-[3rem]">
+                        <label class="flex-1 flex items-center justify-center gap-2 sm:gap-3 p-3 sm:p-4 bg-slate-50 border-2 border-slate-200 rounded-xl sm:rounded-2xl cursor-pointer has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 transition-all min-h-[3rem] choose-pill">
                             <input type="radio" name="warudoMod" id="modPro" value="Pro" class="accent-indigo-600 w-4 h-4 shrink-0">
                             <span class="font-bold text-slate-800 text-sm sm:text-base">Pro</span>
                         </label>
-                        <label class="flex-1 flex items-center justify-center gap-2 sm:gap-3 p-3 sm:p-4 bg-slate-50 border-2 border-slate-200 rounded-xl sm:rounded-2xl cursor-pointer has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 transition-all min-h-[3rem]">
+                        <label class="flex-1 flex items-center justify-center gap-2 sm:gap-3 p-3 sm:p-4 bg-slate-50 border-2 border-slate-200 rounded-xl sm:rounded-2xl cursor-pointer has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 transition-all min-h-[3rem] choose-pill">
                             <input type="radio" name="warudoMod" id="modStandard" value="일반" class="accent-indigo-600 w-4 h-4 shrink-0">
                             <span class="font-bold text-slate-800 text-sm sm:text-base">일반</span>
                         </label>
@@ -961,8 +1500,8 @@
                         <div class="api-option flex flex-wrap items-center gap-2 p-3 sm:flex-nowrap sm:items-center sm:gap-3 sm:p-4 bg-slate-50 rounded-xl sm:rounded-2xl border-2 border-slate-200 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 transition-all">
                             <label class="flex items-center gap-2 sm:gap-3 flex-1 cursor-pointer min-w-0">
                                 <img src="./img/날개.webp" class="w-10 h-10 sm:w-12 sm:h-12 object-cover rounded-md sm:rounded-lg shadow-sm shrink-0" onerror="this.src='https://via.placeholder.com/48?text=WG'">
-                                <span class="text-xs sm:text-sm font-medium text-slate-600 flex-1 min-w-0 leading-snug"><span class="inline-flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-slate-900 text-white text-[10px] sm:text-xs font-black mr-1.5 sm:mr-2 align-middle shrink-0">01</span>천사 모션</span>
-                                <input type="checkbox" name="apiItems" value="01. 천사 모션" class="api-checkbox h-5 w-5 accent-indigo-600 shrink-0">
+                                <span class="text-xs sm:text-sm font-medium text-slate-600 flex-1 min-w-0 leading-snug"><span class="inline-flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-slate-900 text-white text-[10px] sm:text-xs font-black mr-1.5 sm:mr-2 align-middle shrink-0">01</span>천사모션</span>
+                                <input type="checkbox" name="apiItems" value="01. 천사모션" class="api-checkbox h-5 w-5 accent-indigo-600 shrink-0">
                             </label>
                             <input type="number" min="1" placeholder="개수" class="api-count-input w-[4.25rem] sm:w-20 min-h-[2.75rem] sm:min-h-0 px-2 sm:px-3 py-2 text-xs sm:text-sm text-center bg-white rounded-lg sm:rounded-xl border border-slate-300 focus:border-indigo-500 outline-none font-bold disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed shrink-0" disabled>
                         </div>
@@ -976,8 +1515,8 @@
                         <div class="api-option no-api-count-input flex flex-wrap items-center gap-2 p-3 sm:flex-nowrap sm:items-center sm:gap-3 sm:p-4 bg-slate-50 rounded-xl sm:rounded-2xl border-2 border-slate-200 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 transition-all">
                             <label class="flex items-center gap-2 sm:gap-3 flex-1 cursor-pointer min-w-0">
                                 <img src="./img/자리비움.webp" class="w-10 h-10 sm:w-12 sm:h-12 object-cover rounded-md sm:rounded-lg shadow-sm shrink-0" onerror="this.src='https://via.placeholder.com/48?text=AFK'">
-                                <span class="text-xs sm:text-sm font-medium text-slate-600 flex-1 min-w-0 leading-snug"><span class="inline-flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-slate-900 text-white text-[10px] sm:text-xs font-black mr-1.5 sm:mr-2 align-middle shrink-0">03</span>ZZZ 애니메이션 & 졸기</span>
-                                <input type="checkbox" name="apiItems" value="03. ZZZ 애니메이션 & 졸기" class="api-checkbox h-5 w-5 accent-indigo-600 shrink-0">
+                                <span class="text-xs sm:text-sm font-medium text-slate-600 flex-1 min-w-0 leading-snug"><span class="inline-flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-slate-900 text-white text-[10px] sm:text-xs font-black mr-1.5 sm:mr-2 align-middle shrink-0">03</span>ZZZ 졸기</span>
+                                <input type="checkbox" name="apiItems" value="03. ZZZ 졸기" class="api-checkbox h-5 w-5 accent-indigo-600 shrink-0">
                             </label>
                         </div>
                         <div class="api-option flex flex-wrap items-center gap-2 p-3 sm:flex-nowrap sm:items-center sm:gap-3 sm:p-4 bg-slate-50 rounded-xl sm:rounded-2xl border-2 border-slate-200 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 transition-all">
@@ -991,8 +1530,8 @@
                         <div class="api-option no-api-count-input flex flex-wrap items-center gap-2 p-3 sm:flex-nowrap sm:items-center sm:gap-3 sm:p-4 bg-slate-50 rounded-xl sm:rounded-2xl border-2 border-slate-200 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 transition-all">
                             <label class="flex items-center gap-2 sm:gap-3 flex-1 cursor-pointer min-w-0">
                                 <img src="./img/물음표핑.webp" class="w-10 h-10 sm:w-12 sm:h-12 object-cover rounded-md sm:rounded-lg shadow-sm shrink-0" onerror="this.src='https://via.placeholder.com/48?text=QM'">
-                                <span class="text-xs sm:text-sm font-medium text-slate-600 flex-1 min-w-0 leading-snug"><span class="inline-flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-slate-900 text-white text-[10px] sm:text-xs font-black mr-1.5 sm:mr-2 align-middle shrink-0">05</span>물음표 채팅 인터랙션</span>
-                                <input type="checkbox" name="apiItems" value="05. 물음표 채팅 인터랙션" class="api-checkbox h-5 w-5 accent-indigo-600 shrink-0">
+                                <span class="text-xs sm:text-sm font-medium text-slate-600 flex-1 min-w-0 leading-snug"><span class="inline-flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-slate-900 text-white text-[10px] sm:text-xs font-black mr-1.5 sm:mr-2 align-middle shrink-0">05</span>물음표 채팅</span>
+                                <input type="checkbox" name="apiItems" value="05. 물음표 채팅" class="api-checkbox h-5 w-5 accent-indigo-600 shrink-0">
                             </label>
                         </div>
                         <div class="api-option flex flex-wrap items-center gap-2 p-3 sm:flex-nowrap sm:items-center sm:gap-3 sm:p-4 bg-slate-50 rounded-xl sm:rounded-2xl border-2 border-slate-200 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 transition-all">
@@ -1086,7 +1625,7 @@
 
                 <!-- Copy Button -->
                 <div class="pt-1 md:pt-2">
-                    <button id="copyBtn" type="button" class="w-full bg-slate-900 text-white text-sm sm:text-base font-bold py-4 sm:py-5 rounded-xl sm:rounded-2xl hover:bg-indigo-600 transition-all transform active:scale-[0.98] flex items-center justify-center gap-2 sm:gap-3 shadow-xl min-h-[3.25rem]">
+                    <button id="copyBtn" type="button" class="tap-press w-full bg-slate-900 text-white text-sm sm:text-base font-bold py-4 sm:py-5 rounded-xl sm:rounded-2xl hover:bg-indigo-600 flex items-center justify-center gap-2 sm:gap-3 shadow-xl min-h-[3.25rem]">
                         <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
                         <span class="text-center leading-tight">작성한 양식 복사하기</span>
                     </button>
@@ -1097,26 +1636,6 @@
             </div>
         </div>
     </section>
-
-    <!-- iframe 등으로 삽입됐을 때 하단 스크롤 유도 (직접 접속 시 숨김) -->
-    <div id="iframe-scroll-hint" class="hidden max-w-4xl mx-auto px-4 pb-10 pt-4 md:pb-14" aria-hidden="true">
-        <div class="flex flex-col items-center justify-center gap-2 rounded-2xl border border-slate-200/90 bg-white/70 py-5 text-center shadow-sm backdrop-blur-sm">
-            <svg class="h-5 w-5 text-indigo-400 motion-safe:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-            </svg>
-            <p class="text-sm font-semibold tracking-tight text-slate-600">스크롤 계속</p>
-            <p class="text-xs text-slate-400">프레임 안에서 아래로 더 내려 주세요</p>
-        </div>
-    </div>
-    <script>
-    (function () {
-        var el = document.getElementById('iframe-scroll-hint');
-        if (!el) return;
-        try {
-            if (window.self !== window.top) el.classList.remove('hidden');
-        } catch (e) { /* ignore */ }
-    })();
-    </script>
 
     <!-- Validation Modal -->
     <div id="validationModal" class="fixed inset-0 z-50 flex items-center justify-center hidden">
@@ -1129,20 +1648,7 @@
             </div>
             <h3 class="text-xl font-bold text-slate-900 mb-3">잠시만요!</h3>
             <p id="modalMsg" class="text-slate-500 text-sm leading-relaxed mb-8 font-medium"></p>
-            <button id="modalClose" class="w-full bg-slate-900 text-white font-bold py-4 rounded-2xl hover:bg-indigo-600 transition-all shadow-lg">확인했습니다</button>
-        </div>
-    </div>
-
-    <div id="imageLightbox" class="fixed inset-0 z-50 hidden">
-        <div id="imageLightboxOverlay" class="absolute inset-0 bg-slate-950/80 backdrop-blur-md"></div>
-        <div class="image-lightbox relative z-10 min-h-full flex items-center justify-center p-4 md:p-8">
-            <div class="relative w-full max-w-5xl">
-                <button id="imageLightboxClose" class="absolute -top-3 right-0 md:-top-4 md:right-2 w-12 h-12 rounded-full bg-white/10 border border-white/15 text-white text-xl font-bold hover:bg-white/20 transition-colors" aria-label="이미지 닫기">×</button>
-                <div class="rounded-[2rem] overflow-hidden border border-white/10 bg-white/5">
-                    <img id="imageLightboxImg" src="" alt="" class="w-full max-h-[80vh] object-contain bg-slate-950">
-                </div>
-                <p id="imageLightboxTitle" class="text-center text-white text-base md:text-lg font-bold mt-4"></p>
-            </div>
+            <button id="modalClose" class="tap-press w-full bg-slate-900 text-white font-bold py-4 rounded-2xl hover:bg-indigo-600 shadow-lg">확인했습니다</button>
         </div>
     </div>
 
@@ -1150,6 +1656,25 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            const portfolioRoot = document.getElementById('portfolio-panel');
+            const portfolioToggle = portfolioRoot?.querySelector('.portfolio-summary');
+            const portfolioBody = document.getElementById('portfolio-disclosure-body');
+            if (portfolioRoot && portfolioToggle && portfolioBody) {
+                portfolioToggle.addEventListener('click', () => {
+                    portfolioRoot.classList.toggle('portfolio-panel--open');
+                    portfolioToggle.setAttribute(
+                        'aria-expanded',
+                        portfolioRoot.classList.contains('portfolio-panel--open') ? 'true' : 'false',
+                    );
+                });
+                portfolioToggle.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        portfolioToggle.click();
+                    }
+                });
+            }
+
             document.addEventListener('contextmenu', (event) => {
                 event.preventDefault();
             });
@@ -1186,41 +1711,6 @@
                 el.classList.add('opacity-0', 'translate-y-10', 'transition-all', 'duration-700');
                 observer.observe(el);
             });
-
-            const imageLightbox = document.getElementById('imageLightbox');
-            const imageLightboxOverlay = document.getElementById('imageLightboxOverlay');
-            const imageLightboxClose = document.getElementById('imageLightboxClose');
-            const imageLightboxImg = document.getElementById('imageLightboxImg');
-            const imageLightboxTitle = document.getElementById('imageLightboxTitle');
-            const closeImageLightbox = () => imageLightbox.classList.add('hidden');
-            const openImageLightbox = (src, alt, title) => {
-                imageLightboxImg.src = src;
-                imageLightboxImg.alt = alt || title;
-                imageLightboxTitle.textContent = title;
-                imageLightbox.classList.remove('hidden');
-            };
-
-            document.querySelectorAll('.product-card').forEach(card => {
-                card.addEventListener('click', () => {
-                    const image = card.querySelector('.image-container img');
-                    const title = card.querySelector('h3')?.textContent?.trim() || '';
-                    if (!image) return;
-                    openImageLightbox(image.src, image.alt, title);
-                });
-            });
-
-            document.querySelectorAll('.portfolio-tile').forEach(tile => {
-                tile.addEventListener('click', () => {
-                    const image = tile.querySelector('.image-container img');
-                    const title = tile.querySelector('.portfolio-tile-title')?.textContent?.trim() || '';
-                    if (!image) return;
-                    openImageLightbox(image.src, image.alt, title);
-                });
-            });
-
-            imageLightbox.addEventListener('click', closeImageLightbox);
-            imageLightboxClose.addEventListener('click', closeImageLightbox);
-            imageLightboxOverlay.addEventListener('click', closeImageLightbox);
 
             const modal = document.getElementById('validationModal');
             const modalMsg = document.getElementById('modalMsg');
