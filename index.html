@@ -1524,7 +1524,7 @@
                 </div>
                 <div class="soft-card rounded-xl md:rounded-[1.75rem] p-4 md:p-6">
                     <p class="text-[10px] md:text-xs font-bold tracking-[0.15em] md:tracking-[0.18em] uppercase text-violet-500 mb-1.5 md:mb-3">Timeline</p>
-                    <p class="text-base md:text-lg font-bold text-slate-900 mb-1 md:mb-2 leading-snug">작업 기간 최대 일주일</p>
+                    <p class="text-base md:text-lg font-bold text-slate-900 mb-1 md:mb-2 leading-snug">작업 기간 최대 2주</p>
                     <p class="text-xs md:text-sm text-slate-500 leading-snug md:leading-relaxed">주문량과 난이도에 따라 기간이 달라질 수 있으며, 일정은 사전 안내드립니다.</p>
                 </div>
                 <div class="soft-card rounded-xl md:rounded-[1.75rem] p-4 md:p-6">
@@ -1743,6 +1743,30 @@
                     </div>
                 </div>
 
+                <div>
+                    <label class="block text-sm font-bold text-slate-800 mb-2 md:mb-3">7. 안내사항</label>
+                    <div class="bg-indigo-50 border border-indigo-200 rounded-xl sm:rounded-2xl p-3 sm:p-4 space-y-3 sm:space-y-4">
+                        <div>
+                            <p class="text-xs sm:text-sm font-bold text-indigo-800 mb-1">작업 시작 안내</p>
+                            <p class="text-[11px] sm:text-xs text-slate-600 leading-snug sm:leading-relaxed">작업은 결제순이 아닌, 필요한 파일을 모두 전달받은 순서대로 진행됩니다.</p>
+                        </div>
+                        <div>
+                            <p class="text-xs sm:text-sm font-bold text-indigo-800 mb-1">완료예정일</p>
+                            <p class="text-[11px] sm:text-xs text-slate-600 leading-snug sm:leading-relaxed">작업은 파일 전달 및 사전 확인이 완료된 이후부터 시작되며, 일정 여유를 위해 <span class="font-bold text-indigo-700">완료 요청일은 1개월</span>로 설정 부탁드립니다.</p>
+                            <p class="mt-1.5 text-[11px] sm:text-xs text-slate-600 leading-snug sm:leading-relaxed">실제 작업 기간은 이보다 짧게 소요됩니다.</p>
+                        </div>
+                        <div>
+                            <p class="text-xs sm:text-sm font-bold text-indigo-800 mb-1">커스텀 API 제작 안내</p>
+                            <p class="text-[11px] sm:text-xs text-slate-600 leading-snug sm:leading-relaxed">현재 개인 전용 독점 커스텀 API 제작은 접수 받고 있지 않습니다.</p>
+                            <p class="mt-1.5 text-[11px] sm:text-xs text-slate-600 leading-snug sm:leading-relaxed">판매 중이지 않은 기능이나 연출을 원하실 경우, 말씀해주시면 제작 가능 여부를 검토해드립니다.</p>
+                        </div>
+                        <div>
+                            <p class="text-xs sm:text-sm font-bold text-indigo-800 mb-1">작업물 이용 안내</p>
+                            <p class="text-[11px] sm:text-xs text-slate-600 leading-snug sm:leading-relaxed">판매 중인 API 및 작업물은 타 작업자분께 제작 참고자료로 전달하지 말아주세요.</p>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Essential Checkbox -->
                 <div class="pt-3 md:pt-4 border-t border-slate-100">
                     <label class="flex items-start gap-2.5 sm:gap-3 cursor-pointer group">
@@ -1753,7 +1777,7 @@
                             </svg>
                         </div>
                         <span class="text-xs sm:text-sm text-slate-600 font-medium group-hover:text-slate-900 transition-colors leading-snug">
-                            상기 <span class="text-indigo-600 font-bold underline">이용 순서, 유의사항</span>을 모두 확인하였으며 이에 동의합니다. <span class="text-red-500 font-bold">(필수)</span>
+                            상기 <span class="text-indigo-600 font-bold underline">이용 순서, 유의사항, 안내사항</span>을 모두 확인하였으며 이에 동의합니다. <span class="text-red-500 font-bold">(필수)</span>
                         </span>
                     </label>
                 </div>
@@ -1963,7 +1987,7 @@
 
                 const extraNote = document.getElementById('extraNote').value.trim();
                 const extraLine = extraNote ? `\n5. 기타 문의사항:\n${extraNote}\n` : '';
-                const finalMessage = `[Warudo Custom API 문의 양식]\n\n1. 방송 플랫폼: ${platform}\n2. 방송 닉네임: ${nickname}\n3. Warudo Mod 버전: ${warudoMod}\n\n4. 요청 내역:\n${productList}${extraLine}\n[이용 순서, 유의사항 확인 완료: 동의함]\n위와 같이 문의 드립니다.`;
+                const finalMessage = `[Warudo Custom API 문의 양식]\n\n1. 방송 플랫폼: ${platform}\n2. 방송 닉네임: ${nickname}\n3. Warudo Mod 버전: ${warudoMod}\n\n4. 요청 내역:\n${productList}${extraLine}\n[이용 순서, 유의사항, 안내사항 확인 완료: 동의함]\n위와 같이 문의 드립니다.`;
 
                 const tempTextArea = document.createElement('textarea');
                 tempTextArea.value = finalMessage;
