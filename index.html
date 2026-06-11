@@ -615,6 +615,11 @@
                 background-color 0.2s ease,
                 box-shadow 0.22s ease !important;
         }
+        .api-option img {
+            pointer-events: none;
+            transform: translateZ(0);
+            backface-visibility: hidden;
+        }
 
         @media (prefers-reduced-motion: no-preference) {
             .choose-pill:active,
@@ -1541,7 +1546,7 @@
 
     <!-- Inquiry Form Section -->
     <section id="inquiry-form" class="max-w-4xl mx-auto px-4 pb-12 md:px-6 md:pb-24 scroll-mt-10">
-        <div class="overflow-hidden rounded-2xl md:rounded-[2.75rem] border border-white/70 shadow-[0_32px_80px_rgba(15,23,42,0.12)] bg-white/85 backdrop-blur-xl">
+        <div class="overflow-hidden rounded-2xl md:rounded-[2.75rem] border border-white/70 shadow-[0_32px_80px_rgba(15,23,42,0.12)] bg-white">
             <div class="hero-bg px-4 py-6 sm:px-8 sm:py-8 md:px-14 md:py-10 relative overflow-hidden">
                 <div class="hero-outline"></div>
                 <div class="relative z-10">
@@ -1603,7 +1608,7 @@
                     <label class="block text-sm font-bold text-slate-800 mb-2 md:mb-4">4. 원하시는 API 선택<span class="text-red-500 font-bold"> * (필수)</span></label>
                     <p class="text-xs sm:text-sm text-slate-500 leading-relaxed mb-3 md:mb-5">원하시는 API를 체크한 뒤 발동될 개수를 입력해 주세요. 예) 별풍선 10개가 들어오면 치즈가 날아옵니다.</p>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 md:gap-4">
-                        <div class="api-option flex flex-wrap items-center gap-2 p-3 sm:flex-nowrap sm:items-center sm:gap-3 sm:p-4 bg-slate-50 rounded-xl sm:rounded-2xl border-2 border-slate-200 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 transition-all">
+                        <div class="api-option flex flex-wrap items-center gap-2 p-3 sm:flex-nowrap sm:items-center sm:gap-3 sm:p-4 bg-slate-50 rounded-xl sm:rounded-2xl border-2 border-slate-200 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50">
                             <label class="flex items-center gap-2 sm:gap-3 flex-1 cursor-pointer min-w-0">
                                 <img src="./img/날개.webp" class="w-10 h-10 sm:w-12 sm:h-12 object-cover rounded-md sm:rounded-lg shadow-sm shrink-0" onerror="this.src='https://via.placeholder.com/48?text=WG'">
                                 <span class="text-xs sm:text-sm font-medium text-slate-600 flex-1 min-w-0 leading-snug"><span class="inline-flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-slate-900 text-white text-[10px] sm:text-xs font-black mr-1.5 sm:mr-2 align-middle shrink-0">01</span>천사모션</span>
@@ -1611,7 +1616,7 @@
                             </label>
                             <input type="number" min="1" placeholder="개수" class="api-count-input w-[4.25rem] sm:w-20 min-h-[2.75rem] sm:min-h-0 px-2 sm:px-3 py-2 text-xs sm:text-sm text-center bg-white rounded-lg sm:rounded-xl border border-slate-300 focus:border-indigo-500 outline-none font-bold disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed shrink-0" disabled>
                         </div>
-                        <div class="api-option flex flex-wrap items-center gap-2 p-3 sm:flex-nowrap sm:items-center sm:gap-3 sm:p-4 bg-slate-50 rounded-xl sm:rounded-2xl border-2 border-slate-200 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 transition-all">
+                        <div class="api-option flex flex-wrap items-center gap-2 p-3 sm:flex-nowrap sm:items-center sm:gap-3 sm:p-4 bg-slate-50 rounded-xl sm:rounded-2xl border-2 border-slate-200 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50">
                             <label class="flex items-center gap-2 sm:gap-3 flex-1 cursor-pointer min-w-0">
                                 <img src="./img/포춘쿠키.webp" class="w-10 h-10 sm:w-12 sm:h-12 object-cover rounded-md sm:rounded-lg shadow-sm shrink-0" onerror="this.src='https://via.placeholder.com/48?text=FC'">
                                 <span class="text-xs sm:text-sm font-medium text-slate-600 flex-1 min-w-0 leading-snug"><span class="inline-flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-slate-900 text-white text-[10px] sm:text-xs font-black mr-1.5 sm:mr-2 align-middle shrink-0">02</span>포춘쿠키</span>
@@ -1619,7 +1624,7 @@
                             </label>
                             <input type="number" min="1" placeholder="개수" class="api-count-input w-[4.25rem] sm:w-20 min-h-[2.75rem] sm:min-h-0 px-2 sm:px-3 py-2 text-xs sm:text-sm text-center bg-white rounded-lg sm:rounded-xl border border-slate-300 focus:border-indigo-500 outline-none font-bold disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed shrink-0" disabled>
                         </div>
-                        <div class="api-option flex flex-wrap items-center gap-2 p-3 sm:flex-nowrap sm:items-center sm:gap-3 sm:p-4 bg-slate-50 rounded-xl sm:rounded-2xl border-2 border-slate-200 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 transition-all">
+                        <div class="api-option flex flex-wrap items-center gap-2 p-3 sm:flex-nowrap sm:items-center sm:gap-3 sm:p-4 bg-slate-50 rounded-xl sm:rounded-2xl border-2 border-slate-200 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50">
                             <label class="flex items-center gap-2 sm:gap-3 flex-1 cursor-pointer min-w-0">
                                 <img src="./img/후라이팬.webp" class="w-10 h-10 sm:w-12 sm:h-12 object-cover rounded-md sm:rounded-lg shadow-sm shrink-0" onerror="this.src='https://via.placeholder.com/48?text=FP'">
                                 <span class="text-xs sm:text-sm font-medium text-slate-600 flex-1 min-w-0 leading-snug"><span class="inline-flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-slate-900 text-white text-[10px] sm:text-xs font-black mr-1.5 sm:mr-2 align-middle shrink-0">03</span>후라이팬</span>
@@ -1627,7 +1632,7 @@
                             </label>
                             <input type="number" min="1" placeholder="개수" class="api-count-input w-[4.25rem] sm:w-20 min-h-[2.75rem] sm:min-h-0 px-2 sm:px-3 py-2 text-xs sm:text-sm text-center bg-white rounded-lg sm:rounded-xl border border-slate-300 focus:border-indigo-500 outline-none font-bold disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed shrink-0" disabled>
                         </div>
-                        <div class="api-option flex flex-wrap items-center gap-2 p-3 sm:flex-nowrap sm:items-center sm:gap-3 sm:p-4 bg-slate-50 rounded-xl sm:rounded-2xl border-2 border-slate-200 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 transition-all">
+                        <div class="api-option flex flex-wrap items-center gap-2 p-3 sm:flex-nowrap sm:items-center sm:gap-3 sm:p-4 bg-slate-50 rounded-xl sm:rounded-2xl border-2 border-slate-200 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50">
                             <label class="flex items-center gap-2 sm:gap-3 flex-1 cursor-pointer min-w-0">
                                 <img src="./img/물풍선.webp" class="w-10 h-10 sm:w-12 sm:h-12 object-cover rounded-md sm:rounded-lg shadow-sm shrink-0" onerror="this.src='https://via.placeholder.com/48?text=WB'">
                                 <span class="text-xs sm:text-sm font-medium text-slate-600 flex-1 min-w-0 leading-snug"><span class="inline-flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-slate-900 text-white text-[10px] sm:text-xs font-black mr-1.5 sm:mr-2 align-middle shrink-0">04</span>물풍선</span>
@@ -1635,14 +1640,14 @@
                             </label>
                             <input type="number" min="1" placeholder="개수" class="api-count-input w-[4.25rem] sm:w-20 min-h-[2.75rem] sm:min-h-0 px-2 sm:px-3 py-2 text-xs sm:text-sm text-center bg-white rounded-lg sm:rounded-xl border border-slate-300 focus:border-indigo-500 outline-none font-bold disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed shrink-0" disabled>
                         </div>
-                        <div class="api-option no-api-count-input flex flex-wrap items-center gap-2 p-3 sm:flex-nowrap sm:items-center sm:gap-3 sm:p-4 bg-slate-50 rounded-xl sm:rounded-2xl border-2 border-slate-200 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 transition-all">
+                        <div class="api-option no-api-count-input flex flex-wrap items-center gap-2 p-3 sm:flex-nowrap sm:items-center sm:gap-3 sm:p-4 bg-slate-50 rounded-xl sm:rounded-2xl border-2 border-slate-200 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50">
                             <label class="flex items-center gap-2 sm:gap-3 flex-1 cursor-pointer min-w-0">
                                 <img src="./img/sio.gif" alt="" class="w-10 h-10 sm:w-12 sm:h-12 object-contain bg-black rounded-md sm:rounded-lg shadow-sm shrink-0" onerror="this.src='https://via.placeholder.com/48?text=SIO'">
                                 <span class="text-xs sm:text-sm font-medium text-slate-600 flex-1 min-w-0 leading-snug"><span class="inline-flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-slate-900 text-white text-[10px] sm:text-xs font-black mr-1.5 sm:mr-2 align-middle shrink-0">05</span>꼬마변신</span>
                                 <input type="checkbox" name="apiItems" value="05. 꼬마변신" class="api-checkbox h-5 w-5 accent-indigo-600 shrink-0">
                             </label>
                         </div>
-                        <div class="api-option flex flex-wrap items-center gap-2 p-3 sm:flex-nowrap sm:items-center sm:gap-3 sm:p-4 bg-slate-50 rounded-xl sm:rounded-2xl border-2 border-slate-200 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 transition-all">
+                        <div class="api-option flex flex-wrap items-center gap-2 p-3 sm:flex-nowrap sm:items-center sm:gap-3 sm:p-4 bg-slate-50 rounded-xl sm:rounded-2xl border-2 border-slate-200 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50">
                             <label class="flex items-center gap-2 sm:gap-3 flex-1 cursor-pointer min-w-0">
                                 <img src="./img/아봉.webp" class="w-10 h-10 sm:w-12 sm:h-12 object-cover rounded-md sm:rounded-lg shadow-sm shrink-0" onerror="this.src='https://via.placeholder.com/48?text=CL'">
                                 <span class="text-xs sm:text-sm font-medium text-slate-600 flex-1 min-w-0 leading-snug"><span class="inline-flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-slate-900 text-white text-[10px] sm:text-xs font-black mr-1.5 sm:mr-2 align-middle shrink-0">06</span>아봉</span>
@@ -1650,14 +1655,14 @@
                             </label>
                             <input type="number" min="1" placeholder="개수" class="api-count-input w-[4.25rem] sm:w-20 min-h-[2.75rem] sm:min-h-0 px-2 sm:px-3 py-2 text-xs sm:text-sm text-center bg-white rounded-lg sm:rounded-xl border border-slate-300 focus:border-indigo-500 outline-none font-bold disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed shrink-0" disabled>
                         </div>
-                        <div class="api-option no-api-count-input flex flex-wrap items-center gap-2 p-3 sm:flex-nowrap sm:items-center sm:gap-3 sm:p-4 bg-slate-50 rounded-xl sm:rounded-2xl border-2 border-slate-200 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 transition-all">
+                        <div class="api-option no-api-count-input flex flex-wrap items-center gap-2 p-3 sm:flex-nowrap sm:items-center sm:gap-3 sm:p-4 bg-slate-50 rounded-xl sm:rounded-2xl border-2 border-slate-200 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50">
                             <label class="flex items-center gap-2 sm:gap-3 flex-1 cursor-pointer min-w-0">
                                 <img src="./img/자리비움.webp" class="w-10 h-10 sm:w-12 sm:h-12 object-cover rounded-md sm:rounded-lg shadow-sm shrink-0" onerror="this.src='https://via.placeholder.com/48?text=AFK'">
                                 <span class="text-xs sm:text-sm font-medium text-slate-600 flex-1 min-w-0 leading-snug"><span class="inline-flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-slate-900 text-white text-[10px] sm:text-xs font-black mr-1.5 sm:mr-2 align-middle shrink-0">07</span>ZZZ 졸기</span>
                                 <input type="checkbox" name="apiItems" value="07. ZZZ 졸기" class="api-checkbox h-5 w-5 accent-indigo-600 shrink-0">
                             </label>
                         </div>
-                        <div class="api-option flex flex-wrap items-center gap-2 p-3 sm:flex-nowrap sm:items-center sm:gap-3 sm:p-4 bg-slate-50 rounded-xl sm:rounded-2xl border-2 border-slate-200 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 transition-all">
+                        <div class="api-option flex flex-wrap items-center gap-2 p-3 sm:flex-nowrap sm:items-center sm:gap-3 sm:p-4 bg-slate-50 rounded-xl sm:rounded-2xl border-2 border-slate-200 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50">
                             <label class="flex items-center gap-2 sm:gap-3 flex-1 cursor-pointer min-w-0">
                                 <img src="./img/동전쏟아지기.webp" class="w-10 h-10 sm:w-12 sm:h-12 object-cover rounded-md sm:rounded-lg shadow-sm shrink-0" onerror="this.src='https://via.placeholder.com/48?text=CN'">
                                 <span class="text-xs sm:text-sm font-medium text-slate-600 flex-1 min-w-0 leading-snug"><span class="inline-flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-slate-900 text-white text-[10px] sm:text-xs font-black mr-1.5 sm:mr-2 align-middle shrink-0">08</span>동전 쏟아지기</span>
@@ -1665,14 +1670,14 @@
                             </label>
                             <input type="number" min="1" placeholder="개수" class="api-count-input w-[4.25rem] sm:w-20 min-h-[2.75rem] sm:min-h-0 px-2 sm:px-3 py-2 text-xs sm:text-sm text-center bg-white rounded-lg sm:rounded-xl border border-slate-300 focus:border-indigo-500 outline-none font-bold disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed shrink-0" disabled>
                         </div>
-                        <div class="api-option no-api-count-input flex flex-wrap items-center gap-2 p-3 sm:flex-nowrap sm:items-center sm:gap-3 sm:p-4 bg-slate-50 rounded-xl sm:rounded-2xl border-2 border-slate-200 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 transition-all">
+                        <div class="api-option no-api-count-input flex flex-wrap items-center gap-2 p-3 sm:flex-nowrap sm:items-center sm:gap-3 sm:p-4 bg-slate-50 rounded-xl sm:rounded-2xl border-2 border-slate-200 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50">
                             <label class="flex items-center gap-2 sm:gap-3 flex-1 cursor-pointer min-w-0">
                                 <img src="./img/물음표핑.webp" class="w-10 h-10 sm:w-12 sm:h-12 object-cover rounded-md sm:rounded-lg shadow-sm shrink-0" onerror="this.src='https://via.placeholder.com/48?text=QM'">
                                 <span class="text-xs sm:text-sm font-medium text-slate-600 flex-1 min-w-0 leading-snug"><span class="inline-flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-slate-900 text-white text-[10px] sm:text-xs font-black mr-1.5 sm:mr-2 align-middle shrink-0">09</span>물음표 채팅</span>
                                 <input type="checkbox" name="apiItems" value="09. 물음표 채팅" class="api-checkbox h-5 w-5 accent-indigo-600 shrink-0">
                             </label>
                         </div>
-                        <div class="api-option flex flex-wrap items-center gap-2 p-3 sm:flex-nowrap sm:items-center sm:gap-3 sm:p-4 bg-slate-50 rounded-xl sm:rounded-2xl border-2 border-slate-200 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 transition-all">
+                        <div class="api-option flex flex-wrap items-center gap-2 p-3 sm:flex-nowrap sm:items-center sm:gap-3 sm:p-4 bg-slate-50 rounded-xl sm:rounded-2xl border-2 border-slate-200 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50">
                             <label class="flex items-center gap-2 sm:gap-3 flex-1 cursor-pointer min-w-0">
                                 <img src="./img/하트쏟아지기.webp" class="w-10 h-10 sm:w-12 sm:h-12 object-cover rounded-md sm:rounded-lg shadow-sm shrink-0" onerror="this.src='https://via.placeholder.com/48?text=H1'">
                                 <span class="text-xs sm:text-sm font-medium text-slate-600 flex-1 min-w-0 leading-snug"><span class="inline-flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-slate-900 text-white text-[10px] sm:text-xs font-black mr-1.5 sm:mr-2 align-middle shrink-0">10</span>하트 쏟아지기 Type 1</span>
@@ -1680,7 +1685,7 @@
                             </label>
                             <input type="number" min="1" placeholder="개수" class="api-count-input w-[4.25rem] sm:w-20 min-h-[2.75rem] sm:min-h-0 px-2 sm:px-3 py-2 text-xs sm:text-sm text-center bg-white rounded-lg sm:rounded-xl border border-slate-300 focus:border-indigo-500 outline-none font-bold disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed shrink-0" disabled>
                         </div>
-                        <div class="api-option flex flex-wrap items-center gap-2 p-3 sm:flex-nowrap sm:items-center sm:gap-3 sm:p-4 bg-slate-50 rounded-xl sm:rounded-2xl border-2 border-slate-200 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 transition-all">
+                        <div class="api-option flex flex-wrap items-center gap-2 p-3 sm:flex-nowrap sm:items-center sm:gap-3 sm:p-4 bg-slate-50 rounded-xl sm:rounded-2xl border-2 border-slate-200 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50">
                             <label class="flex items-center gap-2 sm:gap-3 flex-1 cursor-pointer min-w-0">
                                 <img src="./img/하트발사.webp" class="w-10 h-10 sm:w-12 sm:h-12 object-cover rounded-md sm:rounded-lg shadow-sm shrink-0" onerror="this.src='https://via.placeholder.com/48?text=H2'">
                                 <span class="text-xs sm:text-sm font-medium text-slate-600 flex-1 min-w-0 leading-snug"><span class="inline-flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-slate-900 text-white text-[10px] sm:text-xs font-black mr-1.5 sm:mr-2 align-middle shrink-0">11</span>하트 쏟아지기 Type 2</span>
@@ -1688,7 +1693,7 @@
                             </label>
                             <input type="number" min="1" placeholder="개수" class="api-count-input w-[4.25rem] sm:w-20 min-h-[2.75rem] sm:min-h-0 px-2 sm:px-3 py-2 text-xs sm:text-sm text-center bg-white rounded-lg sm:rounded-xl border border-slate-300 focus:border-indigo-500 outline-none font-bold disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed shrink-0" disabled>
                         </div>
-                        <div class="api-option flex flex-wrap items-center gap-2 p-3 sm:flex-nowrap sm:items-center sm:gap-3 sm:p-4 bg-slate-50 rounded-xl sm:rounded-2xl border-2 border-slate-200 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 transition-all">
+                        <div class="api-option flex flex-wrap items-center gap-2 p-3 sm:flex-nowrap sm:items-center sm:gap-3 sm:p-4 bg-slate-50 rounded-xl sm:rounded-2xl border-2 border-slate-200 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50">
                             <label class="flex items-center gap-2 sm:gap-3 flex-1 cursor-pointer min-w-0">
                                 <img src="./img/치즈붙히기.webp" class="w-10 h-10 sm:w-12 sm:h-12 object-cover rounded-md sm:rounded-lg shadow-sm shrink-0" onerror="this.src='https://via.placeholder.com/48?text=CH'">
                                 <span class="text-xs sm:text-sm font-medium text-slate-600 flex-1 min-w-0 leading-snug"><span class="inline-flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-slate-900 text-white text-[10px] sm:text-xs font-black mr-1.5 sm:mr-2 align-middle shrink-0">12</span>Prop 랜덤 붙이기</span>
@@ -1696,21 +1701,21 @@
                             </label>
                             <input type="number" min="1" placeholder="개수" class="api-count-input w-[4.25rem] sm:w-20 min-h-[2.75rem] sm:min-h-0 px-2 sm:px-3 py-2 text-xs sm:text-sm text-center bg-white rounded-lg sm:rounded-xl border border-slate-300 focus:border-indigo-500 outline-none font-bold disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed shrink-0" disabled>
                         </div>
-                        <div class="api-option no-api-count-input flex flex-wrap items-center gap-2 p-3 sm:flex-nowrap sm:items-center sm:gap-3 sm:p-4 bg-slate-50 rounded-xl sm:rounded-2xl border-2 border-slate-200 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 transition-all">
+                        <div class="api-option no-api-count-input flex flex-wrap items-center gap-2 p-3 sm:flex-nowrap sm:items-center sm:gap-3 sm:p-4 bg-slate-50 rounded-xl sm:rounded-2xl border-2 border-slate-200 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50">
                             <label class="flex items-center gap-2 sm:gap-3 flex-1 cursor-pointer min-w-0">
                                 <img src="./img/비누방울.webp" class="w-10 h-10 sm:w-12 sm:h-12 object-cover rounded-md sm:rounded-lg shadow-sm shrink-0" onerror="this.src='https://via.placeholder.com/48?text=BB'">
                                 <span class="text-xs sm:text-sm font-medium text-slate-600 flex-1 min-w-0 leading-snug"><span class="inline-flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-slate-900 text-white text-[10px] sm:text-xs font-black mr-1.5 sm:mr-2 align-middle shrink-0">13</span>비누방울</span>
                                 <input type="checkbox" name="apiItems" value="13. 비누방울" class="api-checkbox h-5 w-5 accent-indigo-600 shrink-0">
                             </label>
                         </div>
-                        <div class="api-option no-api-count-input flex flex-wrap items-center gap-2 p-3 sm:flex-nowrap sm:items-center sm:gap-3 sm:p-4 bg-slate-50 rounded-xl sm:rounded-2xl border-2 border-slate-200 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 transition-all">
+                        <div class="api-option no-api-count-input flex flex-wrap items-center gap-2 p-3 sm:flex-nowrap sm:items-center sm:gap-3 sm:p-4 bg-slate-50 rounded-xl sm:rounded-2xl border-2 border-slate-200 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50">
                             <label class="flex items-center gap-2 sm:gap-3 flex-1 cursor-pointer min-w-0">
                                 <img src="./img/윙크.webp" class="w-10 h-10 sm:w-12 sm:h-12 object-cover rounded-md sm:rounded-lg shadow-sm shrink-0" onerror="this.src='https://via.placeholder.com/48?text=WK'">
                                 <span class="text-xs sm:text-sm font-medium text-slate-600 flex-1 min-w-0 leading-snug"><span class="inline-flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-slate-900 text-white text-[10px] sm:text-xs font-black mr-1.5 sm:mr-2 align-middle shrink-0">14</span>윙크</span>
                                 <input type="checkbox" name="apiItems" value="14. 윙크" class="api-checkbox h-5 w-5 accent-indigo-600 shrink-0">
                             </label>
                         </div>
-                        <div class="api-option no-api-count-input flex flex-wrap items-center gap-2 p-3 sm:flex-nowrap sm:items-center sm:gap-3 sm:p-4 bg-slate-50 rounded-xl sm:rounded-2xl border-2 border-slate-200 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 transition-all">
+                        <div class="api-option no-api-count-input flex flex-wrap items-center gap-2 p-3 sm:flex-nowrap sm:items-center sm:gap-3 sm:p-4 bg-slate-50 rounded-xl sm:rounded-2xl border-2 border-slate-200 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50">
                             <label class="flex items-center gap-2 sm:gap-3 flex-1 cursor-pointer min-w-0">
                                 <img src="./img/입김.webp" class="w-10 h-10 sm:w-12 sm:h-12 object-cover rounded-md sm:rounded-lg shadow-sm shrink-0" onerror="this.src='https://via.placeholder.com/48?text=BR'">
                                 <span class="text-xs sm:text-sm font-medium text-slate-600 flex-1 min-w-0 leading-snug"><span class="inline-flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-slate-900 text-white text-[10px] sm:text-xs font-black mr-1.5 sm:mr-2 align-middle shrink-0">15</span>입김</span>
@@ -2149,6 +2154,11 @@
                 const checkbox = option.querySelector('.api-checkbox');
                 const countInput = option.querySelector('.api-count-input');
                 const isNoApiCountInput = option.classList.contains('no-api-count-input');
+                const thumb = option.querySelector('img');
+
+                if (thumb) {
+                    freezeApiOptionThumb(thumb);
+                }
 
                 if (countInput) {
                     countInput.disabled = !checkbox.checked || isNoApiCountInput;
@@ -2190,6 +2200,36 @@
             document.getElementById('agreeTerms').addEventListener('change', () => {
                 document.getElementById('agreeTerms').closest('label').classList.remove('ring-4', 'ring-red-500/20');
             });
+
+            function freezeApiOptionThumb(img) {
+                if (img.dataset.frozen === 'true') return;
+
+                const draw = () => {
+                    if (!img.naturalWidth || img.dataset.frozen === 'true') return;
+
+                    const size = 96;
+                    const canvas = document.createElement('canvas');
+                    canvas.width = size;
+                    canvas.height = size;
+                    const ctx = canvas.getContext('2d');
+                    if (!ctx) return;
+
+                    const iw = img.naturalWidth;
+                    const ih = img.naturalHeight;
+                    const scale = Math.max(size / iw, size / ih);
+                    const sw = size / scale;
+                    const sh = size / scale;
+                    const sx = (iw - sw) / 2;
+                    const sy = (ih - sh) / 2;
+
+                    ctx.drawImage(img, sx, sy, sw, sh, 0, 0, size, size);
+                    img.dataset.frozen = 'true';
+                    img.src = canvas.toDataURL('image/jpeg', 0.82);
+                };
+
+                if (img.complete) draw();
+                else img.addEventListener('load', draw, { once: true });
+            }
 
             document.addEventListener('keydown', (event) => {
                 if (event.key === 'Escape') {
