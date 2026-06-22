@@ -2229,8 +2229,16 @@
     <script>
     (function () {
         if (window.self === window.top) return; // iframe 안에서만 동작
+        // iframe 안에서는 body의 min-height:100vh가 iframe 높이를 따라 부풀어
+        // "내 높이 = iframe 높이"로 보고되는 순환이 생긴다 → 임베드 시 해제.
+        document.documentElement.style.minHeight = '0';
+        document.body.style.minHeight = '0';
         function postHeight() {
-            var h = document.documentElement.scrollHeight;
+            var h = Math.max(
+                document.body.scrollHeight,
+                document.body.offsetHeight,
+                document.documentElement.offsetHeight
+            );
             parent.postMessage({ type: 'nodebox:height', height: h }, '*');
         }
         window.addEventListener('load', postHeight);
