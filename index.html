@@ -2224,5 +2224,21 @@
             });
         });
     </script>
+
+    <!-- artmug 등 부모 페이지 임베드 시: 자기 콘텐츠 높이를 부모에게 알려 iframe 높이 자동 맞춤 -->
+    <script>
+    (function () {
+        if (window.self === window.top) return; // iframe 안에서만 동작
+        function postHeight() {
+            var h = document.documentElement.scrollHeight;
+            parent.postMessage({ type: 'nodebox:height', height: h }, '*');
+        }
+        window.addEventListener('load', postHeight);
+        window.addEventListener('resize', postHeight);
+        try { new ResizeObserver(postHeight).observe(document.body); } catch (e) {}
+        setTimeout(postHeight, 800);
+        setTimeout(postHeight, 2000);
+    })();
+    </script>
 </body>
 </html>
