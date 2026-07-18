@@ -2274,6 +2274,20 @@
         try { new ResizeObserver(postHeight).observe(document.body); } catch (e) {}
         setTimeout(postHeight, 800);
         setTimeout(postHeight, 2000);
+
+        // 앵커(해시) 링크: iframe 안에서는 자체 스크롤이 없으므로
+        // 대상 위치를 부모에게 전달해 부모 페이지가 스크롤하도록 한다.
+        document.addEventListener('click', function (e) {
+            var link = e.target.closest('a[href^="#"]');
+            if (!link) return;
+            var id = link.getAttribute('href').slice(1);
+            if (!id) return;
+            var target = document.getElementById(id);
+            if (!target) return;
+            e.preventDefault();
+            var top = target.getBoundingClientRect().top + window.scrollY;
+            parent.postMessage({ type: 'nodebox:scrollTo', top: top }, '*');
+        });
     })();
     </script>
 </body>
